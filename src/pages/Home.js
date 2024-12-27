@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Home.css";
 
 function Home() {
-  
+
   const handlePrompt = () => {
     const url = prompt("Please enter the image URL");
     if (url == null || url === "") {
