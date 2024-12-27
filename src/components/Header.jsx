@@ -7,7 +7,6 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
-
 import logo from "../assets/images/mylogo.png";
 import "../styles/Header.css";
 
