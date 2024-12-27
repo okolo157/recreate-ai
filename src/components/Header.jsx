@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import "../styles/Header.css";
-
-import logo from "../assets/images/mylogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretRight,
   faCartShopping,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+
+
+import logo from "../assets/images/mylogo.png";
+import "../styles/Header.css";
 
 function Header() {
   const [showPointer, setShowPointer] = React.useState(false);
