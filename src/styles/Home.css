@@ -38,7 +38,7 @@ p {
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 26px;
 
   &:hover {
     background-color: #43a5fe;

@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import Features from "./pages/Features";
 
 function App() {
   return (
@@ -8,8 +9,11 @@ function App() {
       <header>
         <Header />
       </header>
-      <main style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh"}}>
+      <main className="main">
         <Home />
+        <div className="feaures-stars">
+          <Features />
+        </div>
       </main>
     </div>
   );

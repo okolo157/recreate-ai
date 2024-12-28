@@ -1,0 +1,40 @@
+.features {
+  display: flex;
+  margin: 0px 8px 20px;
+  justify-content: space-between;
+  /* background-color: yellow; */
+  padding: 20px;
+  gap: 20px;
+}
+
+.all {
+  margin: 80px 20px 20px;
+}
+
+.feature {
+  width: 23%;
+  height: 400px;
+  backdrop-filter: blur(40px);
+  border: 1px inset #424286;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: start;
+  padding: 40px;
+
+  &:hover {
+    background: linear-gradient(90deg, #0a0c26, #101128);
+    transition: 0.4s ease-in-out;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  h3 {  
+    font-size: 27px;
+    color: white;
+  }
+}
