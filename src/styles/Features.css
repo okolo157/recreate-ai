@@ -13,7 +13,7 @@
 
 .feature {
   width: 23%;
-  height: 400px;
+  height: 300px;
   backdrop-filter: blur(40px);
   border: 1px inset #424286;
   border-radius: 2px;
@@ -22,7 +22,8 @@
   text-align: left;
   justify-content: center;
   align-items: start;
-  padding: 40px;
+  padding: 20px;
+  margin-bottom: 100px;
 
   &:hover {
     background: linear-gradient(90deg, #0a0c26, #101128);
@@ -30,11 +31,11 @@
   }
 
   p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   h3 {  
-    font-size: 27px;
+    font-size: 24px;
     color: white;
   }
 }

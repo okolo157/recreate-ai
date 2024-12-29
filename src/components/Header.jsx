@@ -39,7 +39,7 @@ function Header() {
           About Us
         </Link>
         <Link className="link-item" to="/portfolio">
-          Portfolio
+          Features
         </Link>
         <Link className="link-item" to="/services">
           Services

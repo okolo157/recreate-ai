@@ -8,9 +8,9 @@
   width: 100%;
 }
 
-.feaures-stars {
+.features-stars {
   background-image: url("./assets/images/background-5.png");
-  /* background-size: cover; */
+  background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
 }

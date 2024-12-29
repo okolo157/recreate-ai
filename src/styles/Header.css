@@ -59,7 +59,7 @@
 
 .btn {
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-  animation: gradientTransition 5s infinite; /* Animation for the gradient */
+  animation: gradientTransition 5s infinite; 
 }
 
 @keyframes gradientTransition {

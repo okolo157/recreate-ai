@@ -1,13 +1,43 @@
 import React from "react";
 import "../styles/Home.css";
+import Modal from "../components/Modal";
 
 function Home() {
+  const [showUploadModal, setShowUploadModal] = React.useState(false);
+  const [selectedFile, setSelectedFile] = React.useState(null);
+
+  const handleProceed = () => {
+    setShowUploadModal(true);
+  };
+
+  const onFileChange = async (event) => {
+    try {
+      setSelectedFile(event.target.files[0]);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(selectedFile);
+    setShowUploadModal(false);
+  };
+
+  const FileData = () => {
+    if (selectedFile) {
+      return (
+        <div>
+          Selected file: {selectedFile.name} and type is {selectedFile.type}
+        </div>
+      );
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowUploadModal(false);
+  };
 
   const handlePrompt = () => {
     const url = prompt("Please enter the image URL");
-    if (url == null || url === "") {
+    if (url === null || url === "") {
       alert("Please enter the url");
-      prompt("Please enter the image URL");
     } else {
       localStorage.setItem("url", url);
     }
@@ -27,7 +57,7 @@ function Home() {
         <div className="h1-1">from screenshots/mockups</div>
       </h1>
       <div className="upload-container">
-        <button> Upload Image </button>
+        <button onClick={handleProceed}> Upload Image </button>
         <p>
           or drop a file, <br />
           input image{" "}
@@ -43,6 +73,14 @@ function Home() {
           </span>
         </p>
       </div>
+      {showUploadModal && (
+        <Modal
+          handleCloseModal={handleCloseModal}
+          onFileChange={onFileChange}
+          fileData={FileData}
+        />
+      )}
+      <FileData />
     </div>
   );
 }

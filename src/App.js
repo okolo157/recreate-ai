@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import Features from "./pages/Features";
+import Features from "./components/Features";
+import AboutSection from "./components/AboutSection";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       </header>
       <main className="main">
         <Home />
-        <div className="feaures-stars">
+        <div className="features-stars">
           <Features />
         </div>
+        <AboutSection />
       </main>
     </div>
   );
