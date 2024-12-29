@@ -50,4 +50,6 @@
   padding: 14px;
   margin: 10px;
   cursor: pointer;
+  width: 140px;
+  border-radius: 2px;
 }

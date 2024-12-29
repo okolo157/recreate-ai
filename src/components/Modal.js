@@ -2,7 +2,7 @@ import React from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Modal.css";
-function Modal({ handleCloseModal, onFileChange, fileData }) {
+function Modal({ handleCloseModal, onFileChange }) {
   return (
     <div>
       <div className="modal">

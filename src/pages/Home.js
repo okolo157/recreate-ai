@@ -10,15 +10,19 @@ function Home() {
     setShowUploadModal(true);
   };
 
-  const onFileChange = async (event) => {
-    try {
-      setSelectedFile(event.target.files[0]);
-    } catch (error) {
-      console.log(error);
-    }
-    console.log(selectedFile);
+  const onFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
     setShowUploadModal(false);
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64String = reader.result;
+      localStorage.setItem("image", base64String);
+    };
+    reader.readAsDataURL(file);
   };
+
 
   const FileData = () => {
     if (selectedFile) {
@@ -28,6 +32,7 @@ function Home() {
         </div>
       );
     }
+    return null;
   };
 
   const handleCloseModal = () => {
@@ -77,10 +82,14 @@ function Home() {
         <Modal
           handleCloseModal={handleCloseModal}
           onFileChange={onFileChange}
-          fileData={FileData}
         />
       )}
       <FileData />
+      {selectedFile && (
+        <div>
+          {/* <img src={URL.createObjectURL(selectedFile)} alt="selected-img" /> */}
+        </div>
+      )}
     </div>
   );
 }
