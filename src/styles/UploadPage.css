@@ -5,7 +5,10 @@
   justify-content: center;
   height: 110vh;
   color: white;
-  /* background-color: red; */
+  background-image: url("../assets/images/background-5.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 }
 
 .top-items {
