@@ -5,7 +5,13 @@
   /* justify-content: space-around; */
   align-items: center;
   border-bottom: solid 1px rgb(39, 39, 39);
-  padding: 0px 30px 0px;
+  /* background-color: red; */
+  backdrop-filter: blur(10px); /* Blur effect */
+  /* top: 0; */
+  width: 100%;
+  position: fixed; 
+  z-index: 1000;
+
 }
 
 .link-item {
@@ -48,7 +54,6 @@
 .logo {
   width: 200px;
   cursor: pointer;
-  
 }
 
 .icon {
@@ -59,7 +64,7 @@
 
 .btn {
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-  animation: gradientTransition 5s infinite; 
+  animation: gradientTransition 5s infinite;
 }
 
 @keyframes gradientTransition {
@@ -77,7 +82,7 @@
 .icon-pointer {
   display: inline-block;
   margin-left: 10px;
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -92,23 +97,21 @@
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateX(20px); 
+    transform: translateX(20px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0); 
+    transform: translateX(0);
   }
 }
 
 @keyframes slideOut {
   0% {
     opacity: 1;
-    transform: translateX(0); 
+    transform: translateX(0);
   }
   100% {
     opacity: 0;
-    transform: translateX(-20px); 
+    transform: translateX(-20px);
   }
 }
-
-

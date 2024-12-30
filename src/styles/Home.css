@@ -9,6 +9,7 @@
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+  height: 110vh;
 }
 
 p {
