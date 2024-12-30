@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/Features.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoxesStacked,
@@ -7,6 +6,8 @@ import {
   faGears,
   faPeopleArrows,
 } from "@fortawesome/free-solid-svg-icons";
+
+import "../styles/Features.css";
 
 function Features() {
   const features = [
@@ -44,10 +45,10 @@ function Features() {
           <div className="feature" key={index}>
             <FontAwesomeIcon
               icon={feature.icon}
-              size="3x" 
+              size="3x"
               style={{ marginBottom: "30px" }}
               color="white"
-             />
+            />
             <h3>{feature.heading}</h3>
             <p className="p">{feature.description}</p>
           </div>

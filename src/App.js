@@ -1,8 +1,9 @@
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Newpage from "./pages/Newpage";
-import { Route, Routes } from "react-router-dom";
+
+import "./App.css";
 
 function App() {
   return (
