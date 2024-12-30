@@ -22,15 +22,14 @@ p {
   padding: 39px;
   width: 24%;
   border-radius: 10px;
-  backdrop-filter: blur(
-    40px
-  );
+  backdrop-filter: blur(40px);
   position: relative;
   z-index: 1;
   border: 1px solid rgb(69, 69, 69);
 }
 
-.upload-container button {
+.upload-container .button {
+  all: unset;
   margin-top: 10px;
   padding: 10px 20px;
   background-color: #0b6fcb;
@@ -38,7 +37,7 @@ p {
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 26px;
+  font-size: 27px;
 
   &:hover {
     background-color: #43a5fe;

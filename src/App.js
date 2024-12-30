@@ -1,8 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import Features from "./components/Features";
-import AboutSection from "./components/AboutSection";
+import Newpage from "./pages/Newpage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -10,12 +10,11 @@ function App() {
       <header>
         <Header />
       </header>
-      <main className="main">
-        <Home />
-        <div className="features-stars">
-          <Features />
-        </div>
-        <AboutSection />
+      <main>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/upload" element={<Newpage />} />
+        </Routes>
       </main>
     </div>
   );
