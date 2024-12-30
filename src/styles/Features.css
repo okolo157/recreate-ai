@@ -1,6 +1,6 @@
 .features {
   display: flex;
-  margin: 0px 8px 20px;
+  margin: 0px 8px 0px;
   justify-content: space-between;
   /* background-color: yellow; */
   padding: 20px;
@@ -8,7 +8,7 @@
 }
 
 .all {
-  margin: 80px 20px 20px;
+  margin: 0px 20px 0px;
   background-image: url("../assets/images/background-5.png");
   background-size: cover;
   background-position: center;

@@ -1,17 +1,13 @@
 .App-header {
-  /* background-color: yellow; */
   display: flex;
   height: 15vh;
-  /* justify-content: space-around; */
   align-items: center;
   border-bottom: solid 1px rgb(39, 39, 39);
-  /* background-color: red; */
-  backdrop-filter: blur(10px); /* Blur effect */
-  /* top: 0; */
+  backdrop-filter: blur(10px);
+  top: 0;
   width: 100%;
-  position: fixed; 
+  position: fixed;
   z-index: 1000;
-
 }
 
 .link-item {
@@ -19,6 +15,11 @@
   font-weight: 600;
   font-size: 17px;
   text-decoration: none;
+}
+
+.link-item:hover {
+  color: #43a5fe;
+  transition: 0.4s ease;
 }
 
 .nav-items {
@@ -60,6 +61,11 @@
   color: white;
   font-size: 20px;
   cursor: pointer;
+} 
+
+.icon:hover {
+  color: #43a5fe;
+  transition: 0.4s ease;
 }
 
 .btn {

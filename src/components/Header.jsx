@@ -60,7 +60,7 @@ function Header() {
               height: "60px",
               width: "140px",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "30px",
               color: "white",
               fontWeight: "bold",
               cursor: "pointer",
