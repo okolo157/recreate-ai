@@ -57,12 +57,11 @@ function NewPage() {
       {isImagePicked && selectedFile && (
         <div className="handle-image-container">
           <div className="left-elements">
-            <h1>Your Image</h1>
             <div className="left-inner">
               <img
                 src={URL.createObjectURL(selectedFile)}
                 alt="selected"
-                style={{ width: "100%" }}
+                style={{ width: "100%", height: "100%" }}
               />
             </div>
           </div>
