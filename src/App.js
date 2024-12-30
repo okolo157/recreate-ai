@@ -1,13 +1,14 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Newpage from "./pages/Upload";
 import Footer from "./components/Footer";
 
-
 import "./App.css";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
       <header>
@@ -16,13 +17,15 @@ function App() {
       <main>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Upload" element={<Newpage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/upload" element={<Newpage />} />
         </Routes>
-        </main>
+      </main>
+      {location.pathname !== "/upload" && (
         <footer>
           <Footer />
         </footer>
+      )}
     </div>
   );
 }

@@ -1,64 +1,47 @@
-.footer {
-  background: linear-gradient(90deg, #062d52, #062d52);
+.footer-container {
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   color: white;
   text-align: center;
   padding: 10px;
   left: 0;
   bottom: 0;
-  /* height: 90px; */
-  margin-top: 200px;
-  position: relative;
-}
-
-.footer-wave {
-  position: absolute;
-  top: -190px; /* Adjust this value to control the position of the wave */
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 1;
-}
-
-.footer-wave-path {
-  fill: url(#footer-gradient); /* Reference the gradient defined in the SVG */
-}
-
-.footer-content {
-  position: relative;
-  z-index: 2;
+  height: 20vh;
+  margin-top: 100px;
   display: flex;
-  justify-content: center;
+  /* justify-content: space-evenly; */
   align-items: center;
-  /* background-color: aliceblue; */
-  height: 40px;
+  color: white;
 }
 
-.brand-icons {
+.footer-copyright {
+  flex: 25%;
+}
+
+.footer-icons {
+  flex: 25%;
+}
+
+.footer-nav {
+  all: unset;
+  flex: 25%;
+  font-size: 18px;
+  color: white;
+  text-decoration: underline;
   padding: 20px;
-  width: 24%;
   display: flex;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 
-.footer-nav-items {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 20%;
-  text-decoration: none;
+.icon-item {
+  all: unset;
 }
 
-.right-footer-nav {
-  background-color: yellow;
-}
+.highcon {
+  padding-right: 10px;
+  cursor: pointer;
 
-.textIcons {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex: 60%;
-}
-
-.right-footer-nav {
-  flex: 20%;
+  &:hover {
+    color: #0b6fcb;
+  }
 }
