@@ -1,0 +1,39 @@
+.upload-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  color: white;
+  /* background-color: red; */
+}
+
+.top-items {
+  /* background-color: red; */
+  flex: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bottom {
+  flex: 20%;
+  width: 40%;
+}
+
+.button {
+  /* all: unset; */
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0b6fcb;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 27px;
+
+  &:hover {
+    background-color: #43a5fe;
+    transition: 0.3s ease;
+  }
+}
