@@ -1,5 +1,5 @@
 .footer-container {
-  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  /* background: linear-gradient(90deg, #0b6fcb, #43a5fe); */
   color: white;
   text-align: center;
   padding: 10px;
@@ -8,9 +8,14 @@
   height: 14vh;
   margin-top: 100px;
   display: flex;
-  /* justify-content: space-evenly; */
+  backdrop-filter: blur(40px);
+  border: 1px inset #424286;
   align-items: center;
   color: white;
+  background-image: url("../assets/images/background-5.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 }
 
 .footer-copyright {

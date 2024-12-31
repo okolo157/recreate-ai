@@ -18,6 +18,12 @@ function Features() {
       icon: faCheckDouble,
     },
     {
+      heading: "Accurate Detection",
+      description:
+        "Our tool provides precise and accurate detection of UI componens to provide reusable code.",
+      icon: faCheckDouble,
+    },
+    {
       heading: "Optimized Code",
       description:
         "With specialized AI machine learning algorithms, we can ensure we provide optimized code that works.",
@@ -35,14 +41,26 @@ function Features() {
         "Our seamless GUI provides an interactive experience to our users, with limitless customization.",
       icon: faPeopleArrows,
     },
+    {
+      heading: "Interactivity support",
+      description:
+        "Our seamless GUI provides an interactive experience to our users, with limitless customization.",
+      icon: faPeopleArrows,
+    },
   ];
 
   return (
-    <div className="all">
-      <h2 style={{ color: "white", fontSize: "40px" }}>Why Choose Us?</h2>
-      <div className="features">
+    <div className="features-all">
+      <h2 style={{ color: "white", fontSize: "40px" }}>Why Choose Us ❔</h2>
+      <p style={{ fontSize: "20px", marginBottom: "30px" }}>
+        Take advantage of all the tools and features jam-packed into a
+        drag-and-drop platform
+        <br /> that works like a design to code converter, and create responsive
+        prototypes straight in your browser.
+      </p>
+      <div className="features-main">
         {features.map((feature, index) => (
-          <div className="feature" key={index}>
+          <div className="feature-item" key={index}>
             <FontAwesomeIcon
               icon={feature.icon}
               size="3x"

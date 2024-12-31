@@ -1,0 +1,48 @@
+.features-teams {
+  display: flex;
+  margin: 0px 8px 0px;
+  justify-content: space-evenly;
+  /* background-color: yellow; */
+  padding: 20px;
+  gap: 20px;
+}
+
+.all-teams {
+  margin-top: 80px;
+  background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-8.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}
+
+.feature-team {
+  width: 23%;
+  height: 220px;
+  backdrop-filter: blur(40px);
+  border: 1px inset #424286;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: space-evenly;
+  padding: 30px;
+  margin-bottom: 40px;
+  color: white;
+
+  &:hover {
+    background: linear-gradient(90deg, #0a0c26, #101128);
+    transition: 0.4s ease-in-out;
+  }
+
+  h3 {
+    font-size: 24px;
+    color: white;
+  }
+}
+
+.img-container {
+  width: 100%;
+  background-color: #d1d1ff;
+  border-radius: 10px;
+}

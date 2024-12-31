@@ -1,6 +1,10 @@
 .section-container {
   display: flex;
   /* background-color: #43a5fe; */
+  background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-7.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 }
 
 .left {
