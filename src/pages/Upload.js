@@ -35,7 +35,7 @@ function NewPage() {
                 Because who has time to write code from scratch?
               </span>{" "}
             </h1>
-            <ButtonComponent onFileChange={onFileChange} />
+            <ButtonComponent Text="upload" onFileChange={onFileChange} />
           </div>
           <div className="bottom">
             <p

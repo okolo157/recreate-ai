@@ -25,7 +25,7 @@ function UploadContainer() {
         <div className="h1-1">from screenshots/mockups</div>
       </h1>
       <div className="upload-container">
-        <ButtonComponent handleNavigate={handleNavigate} />
+        <ButtonComponent Text="Upload for Free" disclaimer="10 credits left" handleNavigate={handleNavigate} />
       </div>
     </div>
   );

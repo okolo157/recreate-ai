@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import CloudUpload from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material";
 
-function ButtonComponent({ onFileChange, handleNavigate }) {
+function ButtonComponent({ onFileChange, handleNavigate, Text, disclaimer }) {
   const handlePrompt = () => {
     const url = prompt("Please enter the image URL");
     if (url === null || url === "") {
@@ -41,23 +41,33 @@ function ButtonComponent({ onFileChange, handleNavigate }) {
           component="span"
           onClick={handleNavigate}
         >
-          Upload Image
+          {Text}
         </StyledButton>
       </label>
-      <p>
-        or drop a file, <br />
-        input image{" "}
-        <span
-          style={{
-            color: "grey",
-            cursor: "pointer",
-            textDecoration: "underline",
-          }}
-          onClick={handlePrompt}
-        >
-          url
-        </span>
-      </p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <p>
+          or drop a file, <br />
+          input image{" "}
+          <span
+            style={{
+              color: "grey",
+              cursor: "pointer",
+              textDecoration: "underline",
+            }}
+            onClick={handlePrompt}
+          >
+            url
+          </span>
+        </p>
+        {/* <div style={{ marginTop: "10px", color: "grey" }}>
+          <em>{disclaimer}</em>
+        </div> */}
+      </div>
     </div>
   );
 }
