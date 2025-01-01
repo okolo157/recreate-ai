@@ -54,9 +54,7 @@ function AboutSection() {
             <p>Easy to use</p>
           </div>
         </div>
-        <button className="about-btn">
-          <Link to="signup">Get Started</Link>
-        </button>
+          <Link to="signup" className="about-btn">Get Started</Link>
       </div>
     </div>
   );
