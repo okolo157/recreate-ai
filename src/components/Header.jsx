@@ -130,7 +130,7 @@ function Header() {
                 zIndex: 1000,
                 padding: "10px",
                 borderRadius: "4px",
-                width: "170px",
+                width: "180px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",

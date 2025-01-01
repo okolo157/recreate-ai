@@ -6,7 +6,7 @@ export function SitemarkIcon() {
     <img
       src={logo}
       width="200px"
-      style={{ margin: "-40px -40px -40px 10px" }}
+      style={{ margin: "-40px 0px -70px 10px" }}
       alt="site-logo"
     />
   );

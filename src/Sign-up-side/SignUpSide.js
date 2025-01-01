@@ -10,7 +10,14 @@ export default function SignInSide(props) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-      <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
+      <ColorModeSelect
+        sx={{
+           // Ensure it remains fixed relative to the viewport
+          // left: "1rem", // Position it 2rem from the left side of the screen
+          top: "calc(7rem + var(--navbar-height, 0px))", // Adjust position to account for the fixed navbar
+          zIndex: 10, // Keep it above other elements
+        }}
+      />
       <Stack
         direction="column"
         component="main"
