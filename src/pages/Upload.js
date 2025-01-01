@@ -2,7 +2,7 @@ import React from "react";
 import ButtonComponent from "../components/ButtonComponent";
 import "../styles/UploadPage.css";
 
-function NewPage() {
+function Upload() {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [isImagePicked, setIsImagePicked] = React.useState(false);
 
@@ -72,4 +72,4 @@ function NewPage() {
   );
 }
 
-export default NewPage;
+export default Upload;

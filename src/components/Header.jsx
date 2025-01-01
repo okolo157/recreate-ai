@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBook,
+  faBookOpen,
+  faCaretRight,
+  faComputer,
+  faRobot,
+} from "@fortawesome/free-solid-svg-icons";
 import { ArrowDropDown } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/mylogo.png";
 
 import "../styles/Header.css";
@@ -27,6 +34,12 @@ function Header() {
   const handleMouseLeave = () => {
     setShowPointer(false);
     setAnimateClass("slide-out");
+  };
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/signup");
   };
 
   return (
@@ -67,15 +80,22 @@ function Header() {
                   zIndex: 1000,
                   padding: "10px",
                   borderRadius: "4px",
-                  width: "300px",
+                  width: "270px",
                   display: "flex",
                   flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Link to="/service1" className="dropdown-item">
+                  <FontAwesomeIcon className="dropdown-icon" icon={faRobot} />{" "}
                   AI based Solutions & Consultancy
                 </Link>
                 <Link to="/service2" className="dropdown-item">
+                  <FontAwesomeIcon
+                    className="dropdown-icon"
+                    icon={faComputer}
+                  />{" "}
                   Professional Web development
                 </Link>
               </div>
@@ -90,6 +110,7 @@ function Header() {
           <Link className="link-item">
             <div
               style={{
+                color: "white",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -109,15 +130,19 @@ function Header() {
                 zIndex: 1000,
                 padding: "10px",
                 borderRadius: "4px",
-                width: "200px",
+                width: "170px",
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Link to="/docs1" className="dropdown-item">
+                <FontAwesomeIcon className="dropdown-icon" icon={faBook} />{" "}
                 Getting Started Guide
               </Link>
               <Link to="/docs2" className="dropdown-item">
+                <FontAwesomeIcon className="dropdown-icon" icon={faBookOpen} />{" "}
                 API Reference
               </Link>
             </div>
@@ -132,6 +157,7 @@ function Header() {
             className="btn"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={handleNavigate}
             style={{
               height: "60px",
               width: "140px",

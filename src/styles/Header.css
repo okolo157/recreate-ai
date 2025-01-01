@@ -130,4 +130,14 @@
 .dropdown-item {
   margin: 8px;
   text-decoration: none;
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  width: 100%;
+}
+
+.dropdown-icon {
+  margin-right: 10px;
 }

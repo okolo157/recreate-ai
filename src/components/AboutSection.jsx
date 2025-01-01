@@ -4,6 +4,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/gen-ai.webp";
 
 import "../styles/AboutSection.css";
+import { Link } from "react-router-dom";
 function AboutSection() {
   return (
     <div className="section-container">
@@ -53,7 +54,9 @@ function AboutSection() {
             <p>Easy to use</p>
           </div>
         </div>
-        <button className="about-btn">Get Started</button>
+        <button className="about-btn">
+          <Link to="signup">Get Started</Link>
+        </button>
       </div>
     </div>
   );

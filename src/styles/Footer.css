@@ -27,18 +27,23 @@
 
 .footer-nav {
   all: unset;
-  flex: 25%;
-  font-size: 18px;
+  flex: 20%;
+  font-size: 14px;
   color: white;
   text-decoration: underline;
   padding: 20px;
   display: flex;
   justify-content: space-evenly;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .icon-item {
   all: unset;
+
+  &:hover {
+    color: rgb(61, 190, 255);
+  }
 }
 
 .highcon {

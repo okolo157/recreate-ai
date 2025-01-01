@@ -29,12 +29,9 @@ function Steps() {
   return (
     <div className="all">
       <h2 style={{ color: "white", fontSize: "40px" }}>
-        Design ↔ <code> code</code> in 3 easy steps ⤵
+        From design to <code>{"<code>"}</code> in 3 easy steps ⤵
       </h2>
-      <p style={{ fontSize: "18px", marginBottom: "30px" }}>
-        With Recreate, you will find how to convert UI design to HTML easily
-        and create powerful products with your team.
-      </p>
+    
       <div className="features">
         {features.map((feature, index) => (
           <div className="feature" key={index}>
