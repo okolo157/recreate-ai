@@ -10,7 +10,7 @@ const FaqContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
+  padding: 30px;
   background-image: url(${faqbg});
   background-size: cover;
   background-position: center;
@@ -24,7 +24,6 @@ const ContentWrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
   overflow: hidden;
 `;
 

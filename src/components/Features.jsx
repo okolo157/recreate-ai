@@ -116,7 +116,7 @@ function Features() {
 
   return (
     <FeaturesAll>
-      <Title>Why Choose Us ❔</Title>
+      <Title>Why Choose Us</Title>
       <Subtitle>
         Take advantage of all the tools and features jam-packed into a
         drag-and-drop platform

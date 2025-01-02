@@ -27,15 +27,16 @@ function UploadContainer() {
 
   const StyledHeading = styled.h1`
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 65px;
+    font-size: 60px;
     font-weight: 800;
     margin-top: -10px;
-    color: "alicewhite"
+    color: "alicewhite";
+    width: 90%;
   `;
 
   const SubHeading = styled.div`
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 65px;
+    font-size: 60px;
     font-weight: 800;
     margin-top: -10px;
     background: linear-gradient(90deg, #0b6fcb, #43a5fe);
@@ -69,7 +70,7 @@ function UploadContainer() {
       </StyledHeading>
       <UploadContainerDiv>
         <ButtonComponent
-          Text="Try it now"
+          Text="Try for free"
           disclaimer="10 credits left"
           handleNavigate={handleNavigate}
         />

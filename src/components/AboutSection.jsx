@@ -5,7 +5,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import bg from "../assets/images/gen-ai.webp";
-import bg2 from "../assets/images/background-7.png";
+import bg2 from "../assets/images/section-bg-6.png";
 
 const SectionContainer = styled.div`
   display: flex;
@@ -13,6 +13,7 @@ const SectionContainer = styled.div`
   background-size: cover;
   background-position: left;
   background-blend-mode: overlay;
+  padding-top: 40px;
 `;
 
 const Left = styled.div`

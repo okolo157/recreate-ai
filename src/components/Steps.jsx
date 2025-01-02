@@ -33,7 +33,7 @@ const FeatureCard = styled.div`
   text-align: left;
   justify-content: center;
   padding: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   transition: background 0.4s ease-in-out;
 
   &:hover {
