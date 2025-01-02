@@ -12,7 +12,6 @@ export default function SignInSide(props) {
       <CssBaseline enableColorScheme />
       <ColorModeSelect
         sx={{
-          top: "calc(7rem + var(--navbar-height, 0px))", 
           zIndex: 10, 
         }}
       />
@@ -23,7 +22,6 @@ export default function SignInSide(props) {
           {
             justifyContent: "center",
             height: "calc((1 - var(--template-frame-height, 0)) * 100%)",
-            marginTop: "max(40px - var(--template-frame-height, 0px), 0px)",
             minHeight: "100%",
           },
           (theme) => ({

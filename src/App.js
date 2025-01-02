@@ -8,6 +8,7 @@ import "./App.css";
 
 import SignUpSide from "./Sign-up-side/SignUpSide";
 import SignIn from "./sign-in/SignIn";
+import Faq from "./pages/Faq";
 
 function App() {
   const location = useLocation();
@@ -17,13 +18,14 @@ function App() {
       <header>
         <Header />
       </header>
-      <main>
+      <main className="safearea">
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/signup" element={<SignUpSide />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/frequently-asked-questions" element={<Faq />} />
         </Routes>
       </main>
       {location.pathname !== "/upload" && (
