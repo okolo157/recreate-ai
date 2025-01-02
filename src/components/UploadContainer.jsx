@@ -69,7 +69,7 @@ function UploadContainer() {
       </StyledHeading>
       <UploadContainerDiv>
         <ButtonComponent
-          Text="Upload for Free"
+          Text="Try it now"
           disclaimer="10 credits left"
           handleNavigate={handleNavigate}
         />

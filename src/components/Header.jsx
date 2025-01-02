@@ -35,7 +35,7 @@ const Logo = styled.img`
 `;
 
 const NavItems = styled.nav`
-  flex: 6;
+  flex: 4;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -81,7 +81,7 @@ const DropdownItem = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color:rgb(0, 36, 69);
+  color: rgb(0, 36, 69);
 
   &:hover {
     color: #43a5fe;
@@ -191,7 +191,6 @@ function Header() {
             </DropdownMenu>
           )}
         </div>
-        <LinkItem to="/faqs">FAQs</LinkItem>
         <LinkItem to="/pricing">Pricing</LinkItem>
       </NavItems>
       <RightElements>

@@ -5,8 +5,8 @@ import Upload from "./pages/Upload";
 import Footer from "./components/Footer";
 import SignUpSide from "./Sign-up-side/SignUpSide";
 import SignIn from "./sign-in/SignIn";
-import Faq from "./pages/Faq";
 import styled, { createGlobalStyle } from "styled-components";
+import Pricing from "./components/Pricing";
 
 function App() {
   const GlobalStyle = createGlobalStyle`
@@ -45,7 +45,7 @@ function App() {
             <Route path="/upload" element={<Upload />} />
             <Route path="/signup" element={<SignUpSide />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/frequently-asked-questions" element={<Faq />} />
+            <Route path="/pricing" element={<Pricing />} />
           </Routes>
         </MainContent>
         {location.pathname !== "/upload" && (
