@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import SignUpSide from "./Sign-up-side/SignUpSide";
 import SignIn from "./sign-in/SignIn";
 import styled, { createGlobalStyle } from "styled-components";
-import Pricing from "./components/Pricing";
+import Pricing from "./pages/Pricing";
 
 function App() {
   const GlobalStyle = createGlobalStyle`

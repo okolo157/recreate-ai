@@ -103,7 +103,7 @@ const SubscribeButton = styled.button`
   }
 `;
 
-function Pricing() {
+function PricingComponent() {
   const plans = [
     {
       name: "Free",
@@ -164,4 +164,4 @@ function Pricing() {
   );
 }
 
-export default Pricing;
+export default PricingComponent;
