@@ -3,24 +3,21 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import faqbg from "../assets/images/section-bg.png";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const FaqContainer = styled.div`
   margin-top: 70px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
   // background-image: url(${faqbg});
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
   color: white;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   max-width: 1200px;
   background: rgba(0, 0, 0, 0.6);
@@ -155,7 +152,7 @@ function FAQs() {
             </div>
           ))}
         </RightContent>
-        <p>
+        {/* <p>
           If you need further information please{" "}
           <Link
             style={{ textDecoration: "none", color: "#0b6fcb" }}
@@ -163,7 +160,7 @@ function FAQs() {
           >
             Contact us
           </Link>
-        </p>
+        </p> */}
       </ContentWrapper>
     </FaqContainer>
   );

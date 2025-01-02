@@ -3,18 +3,18 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import Content from "./Content";
 import AppTheme from "../shared-themee/AppTheme";
-import ColorModeSelect from "../shared-themee/ColorModeSelect";
+// import ColorModeSelect from "../shared-themee/ColorModeSelect";
 import SignUp from "./SignUp";
 
 export default function SignInSide(props) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-      <ColorModeSelect
+      {/* <ColorModeSelect
         sx={{
           zIndex: 10, 
         }}
-      />
+      /> */}
       <Stack
         direction="column"
         component="main"

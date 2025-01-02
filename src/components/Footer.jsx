@@ -11,7 +11,7 @@ const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   height: 14vh;
-  margin-top: 100px;
+  // margin-top: 100px;
   display: flex;
   border: 1px inset #424286;
   align-items: center;

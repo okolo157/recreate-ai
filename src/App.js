@@ -21,11 +21,13 @@ function App() {
     width: 100%;
   `;
 
+
+ const MainContent = styled.main`
+   margin-top: 110px;
+ `;
   const HeaderWrapper = styled.header``;
 
-  const MainContent = styled.main`
-    margin-top: 110px;
-  `;
+ 
 
   const FooterWrapper = styled.footer``;
 
@@ -57,5 +59,9 @@ function App() {
     </>
   );
 }
+
+// function Loader() {
+//   useEffect({} => {},[] )
+// }
 
 export default App;
