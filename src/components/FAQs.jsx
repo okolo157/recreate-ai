@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import faqbg from "../assets/images/section-bg.png";
-// import { Link } from "react-router-dom";
 
 const FaqContainer = styled.div`
   margin-top: 70px;
@@ -12,7 +11,15 @@ const FaqContainer = styled.div`
   align-items: center;
   padding: 20px;
   // background-image: url(${faqbg});
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
   color: white;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -22,17 +29,31 @@ const ContentWrapper = styled.div`
   max-width: 1200px;
   background: rgba(0, 0, 0, 0.6);
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const LeftContent = styled.div`
   flex: 40%;
   padding: 40px;
   backdrop-filter: blur(20px);
+
+  @media (max-width: 768px) {
+    flex: 100%;
+    padding: 20px;
+  }
 `;
 
 const RightContent = styled.div`
   flex: 60%;
   padding: 40px;
+
+  @media (max-width: 768px) {
+    flex: 100%;
+    padding: 20px;
+  }
 `;
 
 const Title = styled.h2`
@@ -41,6 +62,11 @@ const Title = styled.h2`
   margin-bottom: 20px;
   color: alicewhite;
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+    text-align: left;
+  }
 `;
 
 const Question = styled.h3`
@@ -52,6 +78,10 @@ const Question = styled.h3`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const Answer = styled.p`
@@ -60,6 +90,11 @@ const Answer = styled.p`
   margin-bottom: 20px;
   line-height: 1.6;
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 100%;
+  }
 `;
 
 const Divider = styled.hr`
@@ -78,6 +113,10 @@ const ToggleButton = styled.button`
   margin-left: auto;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
 function FAQs() {
@@ -152,15 +191,6 @@ function FAQs() {
             </div>
           ))}
         </RightContent>
-        {/* <p>
-          If you need further information please{" "}
-          <Link
-            style={{ textDecoration: "none", color: "#0b6fcb" }}
-            to="/contact"
-          >
-            Contact us
-          </Link>
-        </p> */}
       </ContentWrapper>
     </FaqContainer>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Email, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import bg from '../assets/images/background-5.png'
+import bg from "../assets/images/background-5.png";
 
 const FooterContainer = styled.div`
   color: white;
@@ -11,7 +11,7 @@ const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   height: 14vh;
-  // margin-top: 100px;
+  margin-top: 100px;
   display: flex;
   border: 1px inset #424286;
   align-items: center;
@@ -19,10 +19,20 @@ const FooterContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
 `;
 
 const FooterCopyright = styled.div`
   flex: 25%;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const FooterNav = styled.div`
@@ -43,6 +53,16 @@ const FooterNav = styled.div`
       color: rgb(61, 190, 255);
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+
+    a {
+      padding-right: 10px;
+    }
+  }
 `;
 
 const FooterIcons = styled.div`
@@ -55,6 +75,10 @@ const FooterIcons = styled.div`
     &:hover {
       color: #0b6fcb;
     }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
   }
 `;
 

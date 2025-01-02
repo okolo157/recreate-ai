@@ -14,6 +14,11 @@ const PricingContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    padding-bottom: 100px;
+  }
 `;
 
 const Title = styled.h2`
@@ -21,6 +26,11 @@ const Title = styled.h2`
   font-weight: 700;
   margin-bottom: 30px;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+    text-align: center;
+  }
 `;
 
 const PricingWrapper = styled.div`
@@ -28,6 +38,10 @@ const PricingWrapper = styled.div`
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 const PricingCard = styled.div`
@@ -38,12 +52,21 @@ const PricingCard = styled.div`
   padding: 20px;
   width: 300px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 15px;
+  }
 `;
 
 const PlanName = styled.h3`
   font-size: 1.5em;
   font-weight: 600;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+  }
 `;
 
 const Price = styled.p`
@@ -51,11 +74,19 @@ const Price = styled.p`
   font-weight: 700;
   margin-bottom: 20px;
   color: #43a5fe;
+
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+  }
 `;
 
 const PriceSmall = styled.span`
   font-size: 0.8em;
   color: #b0c4de;
+
+  @media (max-width: 768px) {
+    font-size: 0.7em;
+  }
 `;
 
 const FeaturesList = styled.ul`
@@ -68,6 +99,10 @@ const FeaturesList = styled.ul`
   justify-content: center;
   align-items: center;
   width: 64%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const FeaturesContainer = styled.div`
@@ -82,6 +117,10 @@ const FeatureItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    font-size: 0.9em;
+  }
 `;
 
 const CheckIcon = styled(FontAwesomeIcon)`
@@ -100,6 +139,11 @@ const SubscribeButton = styled.button`
 
   &:hover {
     background-color: #0b6fcb;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 0.9em;
   }
 `;
 

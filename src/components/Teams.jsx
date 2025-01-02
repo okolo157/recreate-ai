@@ -2,72 +2,113 @@ import React from "react";
 import { DesignServices, DeveloperMode, Message } from "@mui/icons-material";
 import styled from "styled-components";
 
-function Teams() {
-  const AllTeams = styled.div`
-    margin-top: 80px;
-    background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-8.png");
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
+const AllTeams = styled.div`
+  margin-top: 80px;
+  background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-8.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  padding: 20px;
 
-    h2 {
-      color: white;
-      font-size: 40px;
+  h2 {
+    color: white;
+    font-size: 40px;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+      text-align: center;
     }
+  }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      text-align: center;
     }
-  `;
+  }
 
-  const FeaturesTeams = styled.div`
-    display: flex;
-    margin: 0px 8px 0px;
-    justify-content: space-evenly;
-    padding: 20px;
-    gap: 20px;
-  `;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+`;
 
-  const FeatureTeam = styled.div`
-    width: 23%;
-    height: 220px;
-    backdrop-filter: blur(40px);
-    border: 1px inset #424286;
-    border-radius: 2px;
-    display: flex;
+const FeaturesTeams = styled.div`
+  display: flex;
+  margin: 0px 8px 0px;
+  justify-content: space-evenly;
+  padding: 20px;
+  gap: 20px;
+
+  @media (max-width: 1024px) {
     flex-direction: column;
-    text-align: left;
-    justify-content: center;
-    align-items: space-evenly;
-    padding: 30px;
-    margin-bottom: 40px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    gap: 10px;
+  }
+`;
+
+const FeatureTeam = styled.div`
+  width: 23%;
+  height: 220px;
+  backdrop-filter: blur(40px);
+  border: 1px inset #424286;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 40px;
+  color: white;
+  transition: background 0.4s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(90deg, #0a0c26, #101128);
+  }
+
+  h3 {
+    font-size: 24px;
     color: white;
 
-    &:hover {
-      background: linear-gradient(90deg, #0a0c26, #101128);
-      transition: 0.4s ease-in-out;
-    }
-
-    h3 {
-      font-size: 24px;
-      color: white;
-    }
-
-    p {
-      all: unset;
+    @media (max-width: 768px) {
       font-size: 20px;
-      color: white;
     }
-  `;
+  }
 
-  const Paragraph = styled.p`
-    background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  `;
+  p {
+    all: unset;
+    font-size: 20px;
+    color: white;
 
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+`;
+
+const Paragraph = styled.p`
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+function Teams() {
   const features = [
     {
       icon: <DesignServices />,

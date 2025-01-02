@@ -15,23 +15,37 @@ import logo from "../assets/images/mylogo.png";
 
 const HeaderContainer = styled.header`
   display: flex;
-  height: 15vh;
   align-items: center;
+  height: 15vh;
   border-bottom: solid 1px rgb(39, 39, 39);
   backdrop-filter: blur(10px);
   top: 0;
   width: 100%;
   position: fixed;
   z-index: 1000;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    height: 10vh;
+    padding: 0 10px;
+  }
 `;
 
 const LogoContainer = styled.div`
   flex: 2;
+
+  @media (max-width: 768px) {
+    flex: 1;
+  }
 `;
 
 const Logo = styled.img`
   width: 200px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 150px;
+  }
 `;
 
 const NavItems = styled.nav`
@@ -40,7 +54,19 @@ const NavItems = styled.nav`
   justify-content: space-around;
   align-items: center;
   height: 100%;
-  padding: 20px 20px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    display: ${({ open }) => (open ? "flex" : "none")};
+    flex-direction: column;
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    z-index: 999;
+  }
 `;
 
 const LinkItem = styled(Link)`
@@ -51,7 +77,6 @@ const LinkItem = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
 
   &:hover {
     color: #43a5fe;
@@ -88,10 +113,32 @@ const DropdownItem = styled(Link)`
   }
 `;
 
+const HamburgerMenu = styled.div`
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+    flex: 1;
+    padding-left: 10px;
+  }
+`;
+
+const Line = styled.div`
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+`;
+
 const RightElements = styled.div`
   flex: 2;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const GradientButton = styled.button`
@@ -105,51 +152,26 @@ const GradientButton = styled.button`
   cursor: pointer;
 `;
 
-const slideIn = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const slideOut = keyframes`
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-`;
-
-const IconPointer = styled(FontAwesomeIcon)`
-  margin-left: 10px;
-  opacity: ${({ show }) => (show ? "1" : "0")};
-  animation: ${({ animate }) => (animate === "slide-in" ? slideIn : slideOut)}
-    0.3s forwards;
-`;
-
 function Header() {
-  const [showPointer, setShowPointer] = React.useState(false);
-  const [animateClass, setAnimateClass] = React.useState("");
-  const [showDocsDropdown, setShowDocsDropdown] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [showServicesDropdown, setShowServicesDropdown] = React.useState(false);
+  const [showDocsDropdown, setShowDocsDropdown] = React.useState(false);
 
   const navigate = useNavigate();
 
   return (
     <HeaderContainer>
+      <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <Line />
+        <Line />
+        <Line />
+      </HamburgerMenu>
       <LogoContainer>
         <Link to="/home">
           <Logo src={logo} alt="logo" />
         </Link>
       </LogoContainer>
-      <NavItems>
+      <NavItems open={isMenuOpen}>
         <LinkItem to="/home">Home</LinkItem>
         <div
           onMouseEnter={() => setShowServicesDropdown(true)}
@@ -162,7 +184,7 @@ function Header() {
           {showServicesDropdown && (
             <DropdownMenu width="270px">
               <DropdownItem to="/service1">
-                <FontAwesomeIcon icon={faRobot} /> AI based Solutions &
+                <FontAwesomeIcon icon={faRobot} /> AI-based Solutions &
                 Consultancy
               </DropdownItem>
               <DropdownItem to="/service2">
@@ -194,21 +216,8 @@ function Header() {
         <LinkItem to="/pricing">Pricing</LinkItem>
       </NavItems>
       <RightElements>
-        <GradientButton
-          onMouseEnter={() => {
-            setShowPointer(true);
-            setAnimateClass("slide-in");
-          }}
-          onMouseLeave={() => {
-            setShowPointer(false);
-            setAnimateClass("slide-out");
-          }}
-          onClick={() => navigate("/signup")}
-        >
+        <GradientButton onClick={() => navigate("/signup")}>
           Get Started
-          {showPointer && (
-            <IconPointer icon={faCaretRight} animate={animateClass} />
-          )}
         </GradientButton>
       </RightElements>
     </HeaderContainer>

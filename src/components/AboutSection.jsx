@@ -14,10 +14,22 @@ const SectionContainer = styled.div`
   background-position: left;
   background-blend-mode: overlay;
   padding-top: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
 `;
 
 const Left = styled.div`
   flex: 50%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const RightSide = styled.div`
@@ -27,10 +39,20 @@ const RightSide = styled.div`
   justify-content: center;
   align-items: flex-start;
   color: white;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
 `;
 
 const Image = styled.img`
   width: 70%;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const Title = styled.h2`
@@ -38,11 +60,21 @@ const Title = styled.h2`
   font-weight: 700;
   text-align: left;
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: xx-large;
+    text-align: center;
+  }
 `;
 
 const Subtitle = styled.h3`
   text-align: left;
   width: 80%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const CheckElementsContainer = styled.div`
@@ -52,6 +84,10 @@ const CheckElementsContainer = styled.div`
   align-items: flex-start;
   font-size: 18px;
   padding: 10px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 const CheckElement = styled.div`
@@ -73,6 +109,11 @@ const AboutButton = styled(Link)`
   color: white;
   font-weight: bold;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const Paragraph = styled.p`

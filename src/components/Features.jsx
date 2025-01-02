@@ -13,23 +13,39 @@ const FeaturesAll = styled.div`
   margin-top: 100px;
   background-image: url(${bg});
   background-size: cover;
-  // background-position: center;
   background-blend-mode: overlay;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 50px;
+    padding: 10px;
+  }
 `;
 
- const Paragraph = styled.p`
-   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-   background-clip: text;
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
- `;
+const Paragraph = styled.p`
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
 
 const FeaturesMain = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   margin: 0px 8px 0px;
   padding: 30px;
   gap: 40px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
 `;
 
 const FeatureItem = styled.div`
@@ -52,17 +68,30 @@ const FeatureItem = styled.div`
 
   p {
     font-size: 18px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   h3 {
     font-size: 24px;
     color: white;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
   }
 `;
 
 const Title = styled.h2`
   color: white;
   font-size: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    text-align: center;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -72,6 +101,11 @@ const Subtitle = styled.p`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    text-align: center;
+  }
 `;
 
 function Features() {
@@ -79,13 +113,7 @@ function Features() {
     {
       heading: "Accurate Detection",
       description:
-        "Our tool provides precise and accurate detection of UI componens to provide reusable code.",
-      icon: faCheckDouble,
-    },
-    {
-      heading: "Accurate Detection",
-      description:
-        "Our tool provides precise and accurate detection of UI componens to provide reusable code.",
+        "Our tool provides precise and accurate detection of UI components to provide reusable code.",
       icon: faCheckDouble,
     },
     {
@@ -99,12 +127,6 @@ function Features() {
       description:
         "Our tool provides code for multiple frameworks like React, Angular, Vue, etc.",
       icon: faBoxesStacked,
-    },
-    {
-      heading: "Interactivity support",
-      description:
-        "Our seamless GUI provides an interactive experience to our users, with limitless customization.",
-      icon: faPeopleArrows,
     },
     {
       heading: "Interactivity support",
