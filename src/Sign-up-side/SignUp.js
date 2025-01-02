@@ -14,8 +14,8 @@ import Stack from "@mui/material/Stack";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import AppTheme from "../shared-themee/AppTheme";
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from "./CustomIcons";
-import ColorModeSelect from "../shared-themee/ColorModeSelect";
+import { GoogleIcon, FacebookIcon } from "./CustomIcons";
+// import ColorModeSelect from "../shared-themee/ColorModeSelect";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
