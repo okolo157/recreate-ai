@@ -5,8 +5,6 @@ import AboutSection from "../components/AboutSection";
 import Steps from "../components/Steps";
 import Teams from "../components/Teams";
 
-
-import "../styles/Home.css";
 function Home() {
   return (
     <>

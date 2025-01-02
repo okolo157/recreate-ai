@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoxesStacked,
@@ -7,7 +8,70 @@ import {
   faPeopleArrows,
 } from "@fortawesome/free-solid-svg-icons";
 
-import "../styles/Features.css";
+const FeaturesAll = styled.div`
+  margin-top: 100px;
+  background-image: url("../assets/images/background-5.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+`;
+
+ const Paragraph = styled.p`
+   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+ `;
+
+const FeaturesMain = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 0px 8px 0px;
+  padding: 30px;
+  gap: 40px;
+`;
+
+const FeatureItem = styled.div`
+  width: 80%;
+  height: 300px;
+  backdrop-filter: blur(40px);
+  border: 1px inset #424286;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: start;
+  padding: 30px;
+
+  &:hover {
+    background: linear-gradient(90deg, #0a0c26, #101128);
+    transition: 0.4s ease-in-out;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 24px;
+    color: white;
+  }
+`;
+
+const Title = styled.h2`
+  color: white;
+  font-size: 40px;
+`;
+
+const Subtitle = styled.p`
+  font-size: 20px;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
 
 function Features() {
   const features = [
@@ -50,17 +114,17 @@ function Features() {
   ];
 
   return (
-    <div className="features-all">
-      <h2 style={{ color: "white", fontSize: "40px" }}>Why Choose Us ❔</h2>
-      <p style={{ fontSize: "20px", marginBottom: "30px" }}>
+    <FeaturesAll>
+      <Title>Why Choose Us ❔</Title>
+      <Subtitle>
         Take advantage of all the tools and features jam-packed into a
         drag-and-drop platform
         <br /> that works like a design to code converter, and create responsive
         prototypes straight in your browser.
-      </p>
-      <div className="features-main">
+      </Subtitle>
+      <FeaturesMain>
         {features.map((feature, index) => (
-          <div className="feature-item" key={index}>
+          <FeatureItem key={index}>
             <FontAwesomeIcon
               icon={feature.icon}
               size="3x"
@@ -68,11 +132,11 @@ function Features() {
               color="white"
             />
             <h3>{feature.heading}</h3>
-            <p className="p">{feature.description}</p>
-          </div>
+            <Paragraph>{feature.description}</Paragraph>
+          </FeatureItem>
         ))}
-      </div>
-    </div>
+      </FeaturesMain>
+    </FeaturesAll>
   );
 }
 

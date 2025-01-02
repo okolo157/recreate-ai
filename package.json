@@ -8,14 +8,15 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@mui/icons-material": "^5.0.0",
+    "@mui/icons-material": "^6.3.0",
     "@mui/material": "^6.3.0",
     "@mui/system": "^6.3.0",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "styled-components": "^6.1.13"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "babel-plugin-styled-components": "^2.1.4"
   }
 }

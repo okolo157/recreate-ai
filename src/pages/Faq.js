@@ -1,7 +1,16 @@
 import React from "react";
+import styled from "styled-components";
 
 function Faq() {
-  return <div style={{ color: "red" }}>dbfdfudhfudbfsbfysbfysdvy</div>;
+  const Button = styled.button`
+    background: red;
+  `;
+
+  return (
+    <div className="faq-container">
+      <Button> Click me </Button>
+    </div>
+  );
 }
 
 export default Faq;

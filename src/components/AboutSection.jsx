@@ -1,62 +1,128 @@
 import React from "react";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/gen-ai.webp";
-
-import "../styles/AboutSection.css";
 import { Link } from "react-router-dom";
+
+const SectionContainer = styled.div`
+  display: flex;
+  background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-7.png");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+`;
+
+const Left = styled.div`
+  flex: 50%;
+`;
+
+const RightSide = styled.div`
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
+`;
+
+const Image = styled.img`
+  width: 70%;
+`;
+
+const Title = styled.h2`
+  font-size: xxx-large;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 10px;
+`;
+
+const Subtitle = styled.h3`
+  text-align: left;
+  width: 80%;
+`;
+
+const CheckElementsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 18px;
+  padding: 10px;
+`;
+
+const CheckElement = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: -10px;
+`;
+
+const AboutButton = styled(Link)`
+  font-size: 18px;
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  border: none;
+  padding: 14px;
+  margin: 10px;
+  cursor: pointer;
+  width: 140px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+`;
+
+const Paragraph = styled.p`
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
 function AboutSection() {
   return (
-    <div className="section-container">
-      <div className="left">
-        <img className="image" src={bg} height="700px" alt="left side" />
-      </div>
-      <div className="right-side">
-        <p>What recreate can do</p>
-        <h2
-          style={{
-            all: "unset",
-            fontSize: "xxx-large",
-            fontWeight: "700",
-            textAlign: "left",
-            marginBottom: "10px",
-          }}
-        >
-          Code Quicker with Recreate.
-        </h2>
-        <h3 style={{ all: "unset", textAlign: "left", width: "80%" }}>
+    <SectionContainer>
+      <Left>
+        <Image src={bg} height="700px" alt="left side" />
+      </Left>
+      <RightSide>
+        <Paragraph style={{ marginBottom: "-20px" }}>
+          What recreate can do
+        </Paragraph>
+        <Title>Code Quicker with Recreate.</Title>
+        <Subtitle>
           Our AI systems can analyze data, to provide pixel perfect code for
           your UI element, from simple to even more complex elements.
-        </h3>
-        <div className="check-elements-container">
-          <div className="check-elements one">
+        </Subtitle>
+        <CheckElementsContainer>
+          <CheckElement>
             <FontAwesomeIcon
               icon={faCheck}
               color="white"
               style={{ marginRight: "14px" }}
             />
-            <p>Accurate Detection</p>
-          </div>
-          <div className="check-elements two">
+            <Paragraph>Accurate Detection</Paragraph>
+          </CheckElement>
+          <CheckElement>
             <FontAwesomeIcon
               icon={faCheck}
               color="white"
               style={{ marginRight: "14px" }}
             />
-            <p>Quicker coding</p>
-          </div>
-          <div className="check-elements three">
+            <Paragraph>Quicker coding</Paragraph>
+          </CheckElement>
+          <CheckElement>
             <FontAwesomeIcon
               icon={faCheck}
               color="white"
               style={{ marginRight: "14px" }}
             />
-            <p>Easy to use</p>
-          </div>
-        </div>
-          <Link to="/signup" className="about-btn">Get Started</Link>
-      </div>
-    </div>
+            <Paragraph>Easy to use</Paragraph>
+          </CheckElement>
+        </CheckElementsContainer>
+        <AboutButton to="/signup">Get Started</AboutButton>
+      </RightSide>
+    </SectionContainer>
   );
 }
 

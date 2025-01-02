@@ -3,37 +3,58 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import Footer from "./components/Footer";
-
-import "./App.css";
-
 import SignUpSide from "./Sign-up-side/SignUpSide";
 import SignIn from "./sign-in/SignIn";
 import Faq from "./pages/Faq";
+import styled, { createGlobalStyle } from "styled-components";
 
 function App() {
+  const GlobalStyle = createGlobalStyle`
+  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+`;
+
+  const AppContainer = styled.div`
+    text-align: center;
+    background-color: #05051e;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  `;
+
+  const HeaderWrapper = styled.header``;
+
+  const MainContent = styled.main`
+    margin-top: 110px;
+  `;
+
+  const FooterWrapper = styled.footer``;
+
   const location = useLocation();
 
   return (
-    <div className="App">
-      <header>
-        <Header />
-      </header>
-      <main className="safearea">
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/signup" element={<SignUpSide />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/frequently-asked-questions" element={<Faq />} />
-        </Routes>
-      </main>
-      {location.pathname !== "/upload" && (
-        <footer>
-          <Footer />
-        </footer>
-      )}
-    </div>
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <HeaderWrapper>
+          <Header />
+        </HeaderWrapper>
+        <MainContent>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/signup" element={<SignUpSide />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/frequently-asked-questions" element={<Faq />} />
+          </Routes>
+        </MainContent>
+        {location.pathname !== "/upload" && (
+          <FooterWrapper>
+            <Footer />
+          </FooterWrapper>
+        )}
+      </AppContainer>
+    </>
   );
 }
 
