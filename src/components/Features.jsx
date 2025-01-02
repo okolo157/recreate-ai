@@ -7,12 +7,13 @@ import {
   faGears,
   faPeopleArrows,
 } from "@fortawesome/free-solid-svg-icons";
+import bg from "../assets/images/background-5.png";
 
 const FeaturesAll = styled.div`
   margin-top: 100px;
-  background-image: url("../assets/images/background-5.png");
+  background-image: url(${bg});
   background-size: cover;
-  background-position: center;
+  // background-position: center;
   background-blend-mode: overlay;
 `;
 

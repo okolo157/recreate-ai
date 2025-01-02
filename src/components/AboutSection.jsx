@@ -5,12 +5,13 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import bg from "../assets/images/gen-ai.webp";
+import bg2 from "../assets/images/background-7.png";
 
 const SectionContainer = styled.div`
   display: flex;
-  background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-7.png");
+  background-image: url(${bg2});
   background-size: cover;
-  background-position: center;
+  background-position: left;
   background-blend-mode: overlay;
 `;
 

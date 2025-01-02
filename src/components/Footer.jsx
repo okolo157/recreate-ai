@@ -64,9 +64,9 @@ function Footer() {
       <FooterCopyright>© 2024 recreate.ai All Rights Reserved</FooterCopyright>
       <FooterNav>
         <Link to="/home">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/features">Features</Link>
-        <Link to="/services">Services</Link>
+        <Link to="/about">Services</Link>
+        <Link to="/features">Docs</Link>
+        <Link to="/services">Pricing</Link>
       </FooterNav>
       <FooterIcons>
         <GitHub />
