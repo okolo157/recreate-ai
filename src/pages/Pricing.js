@@ -8,6 +8,7 @@ import {
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/background-5.png";
+import FAQs from "../components/FAQs";
 
 
 const gradientAnimation = keyframes`
@@ -313,6 +314,7 @@ const Pricing = () => {
           </Table>
         </CompareSection>
       </ContentWrapper>
+      <FAQs />
     </Container>
   );
 };

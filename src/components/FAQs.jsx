@@ -11,7 +11,7 @@ const FaqContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 30px;
-  background-image: url(${faqbg});
+  // background-image: url(${faqbg});
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
@@ -20,7 +20,7 @@ const FaqContainer = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   max-width: 1200px;
   background: rgba(0, 0, 0, 0.6);
@@ -154,16 +154,16 @@ function FAQs() {
               <Divider />
             </div>
           ))}
-          <p>
-            If you need further information please{" "}
-            <Link
-              style={{ textDecoration: "none", color: "#0b6fcb" }}
-              to="/contact"
-            >
-              Contact us
-            </Link>
-          </p>
         </RightContent>
+        <p>
+          If you need further information please{" "}
+          <Link
+            style={{ textDecoration: "none", color: "#0b6fcb" }}
+            to="/contact"
+          >
+            Contact us
+          </Link>
+        </p>
       </ContentWrapper>
     </FaqContainer>
   );
