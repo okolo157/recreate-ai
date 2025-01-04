@@ -1,19 +1,41 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { faBars, faDoorOpen, faGear, faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faDoorOpen,
+  faGear,
+  faHistory,
+  faHome,
+  faPlus,
+  faRocket,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
+  
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
   const projects = [
-    { id: 1, name: "Project 1", thumbnail: "https://via.placeholder.com/150" },
-    { id: 2, name: "Project 2", thumbnail: "https://via.placeholder.com/150" },
-    { id: 3, name: "Project 3", thumbnail: "https://via.placeholder.com/150" },
+    {
+      id: 1,
+      name: "Project 1",
+      thumbnail: "https://teleporthq.io/design-to-code-export-400w.png",
+    },
+    {
+      id: 2,
+      name: "Project 2",
+      thumbnail: "https://teleporthq.io/design-to-code-export-400w.png",
+    },
+    {
+      id: 3,
+      name: "Project 3",
+      thumbnail: "https://teleporthq.io/design-to-code-export-400w.png",
+    },
   ];
 
   return (
@@ -31,6 +53,7 @@ const Dashboard = () => {
             <Nav>
               <NavItem href="#">Settings</NavItem>
               <NavItem href="#">Help</NavItem>
+              <NavItem href="#">History</NavItem>
               <NavItem href="#">Logout</NavItem>
             </Nav>
           </>
@@ -44,6 +67,9 @@ const Dashboard = () => {
                 <FontAwesomeIcon icon={faGear} />
               </NavItem>
               <NavItem href="#">
+                <FontAwesomeIcon icon={faHistory} />
+              </NavItem>
+              <NavItem href="#">
                 <FontAwesomeIcon icon={faDoorOpen} />
               </NavItem>
             </Nav>
@@ -53,12 +79,14 @@ const Dashboard = () => {
       <Content>
         <Header>
           <Title>Your Projects</Title>
-          <CreateButton>Create New Project</CreateButton>
+          <CreateButton>
+            Create New <FontAwesomeIcon icon={faRocket} />
+          </CreateButton>
         </Header>
         <ProjectGrid>
           {projects.map((project) => (
             <ProjectCard key={project.id}>
-              <Thumbnail src={project.thumbnail} alt={project.name} />
+              <Thumbnail src={project.thumbnail} />
               <ProjectName>{project.name}</ProjectName>
             </ProjectCard>
           ))}
@@ -68,7 +96,6 @@ const Dashboard = () => {
   );
 };
 
-
 const Container = styled.div`
   display: flex;
   height: 100vh;
@@ -77,7 +104,7 @@ const Container = styled.div`
 `;
 
 const Sidebar = styled.aside`
-  width: ${(props) => (props.isOpen ? "250px" : "80px")};
+  width: ${(props) => (props.isOpen ? "200px" : "70px")};
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   color: white;
   display: flex;
@@ -95,14 +122,13 @@ const ToggleIcon = styled.div`
   margin-bottom: 20px;
   position: absolute;
   top: 20px;
-  color:  #0b6fcb;
+  color: #0b6fcb;
   align-self: flex-end;
   z-index: 10;
   &:hover {
     color: #1d3557;
   }
 `;
-
 
 const Nav = styled.nav`
   display: flex;
@@ -119,7 +145,6 @@ const NavItem = styled.a`
   border-radius: 5px;
   transition: background 0.3s, transform 0.2s;
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
     transform: translateX(10px);
   }
 `;
@@ -135,12 +160,16 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  background: rgb(0, 36, 69);
+  border-radius: 20px;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
 `;
 
 const Title = styled.h2`
   font-size: 24px;
   font-weight: bold;
-  color: #1d3557;
+  color: white;
 `;
 
 const CreateButton = styled.button`
@@ -150,7 +179,7 @@ const CreateButton = styled.button`
   color: white;
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s, box-shadow 0.3s;

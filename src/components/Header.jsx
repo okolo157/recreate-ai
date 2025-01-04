@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,17 +8,27 @@ import {
   faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { ArrowDropDown } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/mylogo.png";
-
+import avatar from "../assets/images/unnamed.jpg";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [showServicesDropdown, setShowServicesDropdown] = React.useState(false);
   const [showDocsDropdown, setShowDocsDropdown] = React.useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      setIsSignedIn(true);
+    } else {
+      setIsSignedIn(false);
+    }
+  }, [location.pathname]);
 
   return (
     <HeaderContainer>
@@ -77,9 +87,23 @@ function Header() {
         <LinkItem to="/pricing">Pricing</LinkItem>
       </NavItems>
       <RightElements>
-        <GradientButton onClick={() => navigate("/signup")}>
-          Get Started
-        </GradientButton>
+        {location.pathname !== "/dashboard" && (
+          <GradientButton
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            Get Started
+          </GradientButton>
+        )}
+        {isSignedIn && (
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <Avatar src={avatar} alt="User Avatar" />
+            <p style={{ margin: 0, cursor: "pointer", color: "#fff", fontSize: "small" }}>
+              Sign out
+            </p>
+          </div>
+        )}
       </RightElements>
     </HeaderContainer>
   );
@@ -222,6 +246,13 @@ const GradientButton = styled.button`
   color: white;
   font-weight: bold;
   cursor: pointer;
+`;
+
+const Avatar = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 export default Header;
