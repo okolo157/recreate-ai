@@ -4,6 +4,71 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/background-5.png";
 
+
+function PricingComponent() {
+  const plans = [
+    {
+      name: "Free",
+      price: "$0",
+      features: [
+        "10 credits per month",
+        "Basic support",
+        "Access to basic features",
+      ],
+    },
+    {
+      name: "Pro",
+      price: "$19.99",
+      priceSmall: "/month",
+      features: [
+        "Unlimited credits",
+        "Priority support",
+        "Access to all features",
+      ],
+    },
+    {
+      name: "Enterprise",
+      price: "Contact us",
+      features: [
+        "Custom solutions",
+        "Dedicated support",
+        "Access to all features",
+      ],
+    },
+  ];
+
+  return (
+    <PricingContainer>
+      <Title>Get a plan and start creating</Title>
+      <PricingWrapper>
+        {plans.map((plan, index) => (
+          <PricingCard key={index}>
+            <PlanName>{plan.name}</PlanName>
+            <Price>
+              {plan.price}
+              {plan.priceSmall && <PriceSmall>{plan.priceSmall}</PriceSmall>}
+            </Price>
+            <FeaturesContainer>
+              <FeaturesList>
+                {plan.features.map((feature, idx) => (
+                  <FeatureItem key={idx}>
+                    <CheckIcon icon={faCheck} />
+                    {feature}
+                  </FeatureItem>
+                ))}
+              </FeaturesList>
+            </FeaturesContainer>
+            <SubscribeButton>Subscribe</SubscribeButton>
+          </PricingCard>
+        ))}
+      </PricingWrapper>
+    </PricingContainer>
+  );
+}
+
+
+
+
 const PricingContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -147,65 +212,5 @@ const SubscribeButton = styled.button`
   }
 `;
 
-function PricingComponent() {
-  const plans = [
-    {
-      name: "Free",
-      price: "$0",
-      features: [
-        "10 credits per month",
-        "Basic support",
-        "Access to basic features",
-      ],
-    },
-    {
-      name: "Pro",
-      price: "$19.99",
-      priceSmall: "/month",
-      features: [
-        "Unlimited credits",
-        "Priority support",
-        "Access to all features",
-      ],
-    },
-    {
-      name: "Enterprise",
-      price: "Contact us",
-      features: [
-        "Custom solutions",
-        "Dedicated support",
-        "Access to all features",
-      ],
-    },
-  ];
-
-  return (
-    <PricingContainer>
-      <Title>Get a plan and start creating</Title>
-      <PricingWrapper>
-        {plans.map((plan, index) => (
-          <PricingCard key={index}>
-            <PlanName>{plan.name}</PlanName>
-            <Price>
-              {plan.price}
-              {plan.priceSmall && <PriceSmall>{plan.priceSmall}</PriceSmall>}
-            </Price>
-            <FeaturesContainer>
-              <FeaturesList>
-                {plan.features.map((feature, idx) => (
-                  <FeatureItem key={idx}>
-                    <CheckIcon icon={faCheck} />
-                    {feature}
-                  </FeatureItem>
-                ))}
-              </FeaturesList>
-            </FeaturesContainer>
-            <SubscribeButton>Subscribe</SubscribeButton>
-          </PricingCard>
-        ))}
-      </PricingWrapper>
-    </PricingContainer>
-  );
-}
 
 export default PricingComponent;

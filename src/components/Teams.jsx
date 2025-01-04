@@ -2,6 +2,53 @@ import React from "react";
 import { DesignServices, DeveloperMode, Message } from "@mui/icons-material";
 import styled from "styled-components";
 
+
+
+function Teams() {
+  const features = [
+    {
+      icon: <DesignServices />,
+      heading: "Designers",
+      description:
+        "Create responsive prototypes using Figma. With the Figma plugin, they can export their projects to Recreate.",
+    },
+    {
+      icon: <DeveloperMode />,
+      heading: "Developers",
+      description:
+        "Speed up the process and build on existing designs to create functional apps or websites that can be exported to code.",
+    },
+    {
+      icon: <Message />,
+      heading: "Product & Marketing",
+      description:
+        "Can take control over their future website by previewing, testing, and making all the necessary changes on the fly",
+    },
+  ];
+
+  return (
+    <AllTeams>
+      <h2>Connect the dots between teams</h2>
+      <Paragraph>
+        Build communication without friction across teams and keep everyone in
+        the loop whether they’re working in an office or remotely. <br />{" "}
+        Deliver better outcomes faster with a design to CSS tool that makes the
+        collaboration process easy.
+      </Paragraph>
+      <FeaturesTeams>
+        {features.map((feature, index) => (
+          <FeatureTeam key={index}>
+            {feature.icon}
+            <h3>{feature.heading}</h3>
+            <Paragraph>{feature.description}</Paragraph>
+          </FeatureTeam>
+        ))}
+      </FeaturesTeams>
+    </AllTeams>
+  );
+}
+
+
 const AllTeams = styled.div`
   margin-top: 80px;
   background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-8.png");
@@ -108,48 +155,5 @@ const Paragraph = styled.p`
   -webkit-text-fill-color: transparent;
 `;
 
-function Teams() {
-  const features = [
-    {
-      icon: <DesignServices />,
-      heading: "Designers",
-      description:
-        "Create responsive prototypes using Figma. With the Figma plugin, they can export their projects to Recreate.",
-    },
-    {
-      icon: <DeveloperMode />,
-      heading: "Developers",
-      description:
-        "Speed up the process and build on existing designs to create functional apps or websites that can be exported to code.",
-    },
-    {
-      icon: <Message />,
-      heading: "Product & Marketing",
-      description:
-        "Can take control over their future website by previewing, testing, and making all the necessary changes on the fly",
-    },
-  ];
-
-  return (
-    <AllTeams>
-      <h2>Connect the dots between teams</h2>
-      <Paragraph>
-        Build communication without friction across teams and keep everyone in
-        the loop whether they’re working in an office or remotely. <br />{" "}
-        Deliver better outcomes faster with a design to CSS tool that makes the
-        collaboration process easy.
-      </Paragraph>
-      <FeaturesTeams>
-        {features.map((feature, index) => (
-          <FeatureTeam key={index}>
-            {feature.icon}
-            <h3>{feature.heading}</h3>
-            <Paragraph>{feature.description}</Paragraph>
-          </FeatureTeam>
-        ))}
-      </FeaturesTeams>
-    </AllTeams>
-  );
-}
 
 export default Teams;

@@ -3,6 +3,30 @@ import styled from "styled-components";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+
+function Modal({ handleCloseModal, onFileChange }) {
+  return (
+    <ModalWrapper>
+      <ModalContent>
+        <ModalHeader>
+          <ModalText>
+            <h3>Upload a file</h3>
+            <p>
+              Please select files in the following formats: PNG, JPG, WEBP,
+              AVIF, PDF
+            </p>
+          </ModalText>
+          <CloseIcon icon={faClose} onClick={handleCloseModal} />
+        </ModalHeader>
+        <InputContainer>
+          <StyledInput type="file" onChange={onFileChange} />
+        </InputContainer>
+      </ModalContent>
+    </ModalWrapper>
+  );
+}
+
 const ModalWrapper = styled.div`
   position: fixed;
   z-index: 1000;
@@ -75,26 +99,5 @@ const StyledInput = styled.input`
   border-radius: 5px;
 `;
 
-function Modal({ handleCloseModal, onFileChange }) {
-  return (
-    <ModalWrapper>
-      <ModalContent>
-        <ModalHeader>
-          <ModalText>
-            <h3>Upload a file</h3>
-            <p>
-              Please select files in the following formats: PNG, JPG, WEBP,
-              AVIF, PDF
-            </p>
-          </ModalText>
-          <CloseIcon icon={faClose} onClick={handleCloseModal} />
-        </ModalHeader>
-        <InputContainer>
-          <StyledInput type="file" onChange={onFileChange} />
-        </InputContainer>
-      </ModalContent>
-    </ModalWrapper>
-  );
-}
 
 export default Modal;

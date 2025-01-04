@@ -11,26 +11,7 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import Dashboard from "./pages/Dashboard.js";
 
 function App() {
-  const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-`;
-
-  const AppContainer = styled.div`
-    text-align: center;
-    background-color: #05051e;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  `;
-
-  const MainContent = styled.main`
-    margin-top: 110px;
-  `;
   
-  const HeaderWrapper = styled.header``;
-
-  const FooterWrapper = styled.footer``;
-
   const location = useLocation();
 
   return (
@@ -61,6 +42,28 @@ function App() {
     </>
   );
 }
+
+
+const GlobalStyle = createGlobalStyle`
+  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+`;
+
+const AppContainer = styled.div`
+  text-align: center;
+  background-color: #05051e;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const MainContent = styled.main`
+  margin-top: 110px;
+`;
+
+const HeaderWrapper = styled.header``;
+
+const FooterWrapper = styled.footer``;
+
 
 // function Loader() {
 //   useEffect({} => {},[] )

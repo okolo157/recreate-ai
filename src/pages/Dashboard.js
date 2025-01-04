@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { faBars, faDoorOpen, faGear, faGears, faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faDoorOpen, faGear, faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Dashboard = () => {

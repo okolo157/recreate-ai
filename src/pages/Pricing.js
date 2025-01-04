@@ -11,6 +11,168 @@ import bg from "../assets/images/background-5.png";
 import FAQs from "../components/FAQs";
 import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 
+
+
+const Support = () => {
+  return (
+    <SupportContainer>
+      <TextElements>
+        <h1>We're here to help!</h1>
+        <Paragraph>
+          Choosing the right plan can be a big decision, and we want to make
+          sure you find the one that fits your needs best. If you have any
+          questions or if something’s not covered in our FAQ, we’re here for
+          you. Just reach out in the way that’s easiest for you!
+        </Paragraph>
+      </TextElements>
+      <OtherElements>
+        <Logoleft>
+          <div
+            style={{
+              background: "linear-gradient(90deg, #0b6fcb, #43a5fe)",
+              padding: "7px",
+              borderRadius: "8px",
+            }}
+          >
+            <MailOutline sx={{ fontSize: "40px" }} />
+          </div>
+        </Logoleft>
+        <ContentRight>
+          <Bold>
+            Send us a message <KeyboardArrowRight />{" "}
+          </Bold>
+          <p>We usually get back to you within a few hours.</p>
+        </ContentRight>
+      </OtherElements>
+    </SupportContainer>
+  );
+};
+
+const Pricing = () => {
+  const plans = [
+    {
+      name: "Free",
+      icon: faStar,
+      price: "$0",
+      interval: "",
+      features: [
+        "10 credits per month",
+        "Basic support",
+        "Access to basic features",
+      ],
+      moreInfo: "Ideal for individuals who want to try out our service.",
+    },
+    {
+      name: "Pro",
+      icon: faRocket,
+      price: "$19.99",
+      interval: "/month",
+      features: [
+        "Unlimited credits",
+        "Priority support",
+        "Access to all features",
+      ],
+      moreInfo: "Perfect for professionals who need more credits and support.",
+    },
+    {
+      name: "Enterprise",
+      icon: faBuilding,
+      price: "Contact us",
+      interval: "",
+      features: [
+        "Custom solutions",
+        "Dedicated support",
+        "Access to all features",
+      ],
+      moreInfo: "Best for large organizations with custom needs.",
+    },
+  ];
+
+  return (
+    <>
+      <Container>
+        <ContentWrapper>
+          <Header>
+            <Title>Get a plan and start creating</Title>
+          </Header>
+
+          <CardsContainer>
+            {plans.map((plan, index) => (
+              <Card key={index}>
+                <CardHeader>
+                  <PlanName>
+                    <PlanIcon icon={plan.icon} />
+                    <PlanTitle>{plan.name}</PlanTitle>
+                  </PlanName>
+                  <Price>
+                    {plan.price}
+                    <span>{plan.interval}</span>
+                  </Price>
+                </CardHeader>
+                <CardContent>
+                  <FeaturesList>
+                    {plan.features.map((feature, idx) => (
+                      <Feature key={idx}>
+                        <CheckIcon icon={faCheck} />
+                        {feature}
+                      </Feature>
+                    ))}
+                  </FeaturesList>
+                  <SubscribeButton>Subscribe</SubscribeButton>
+                  <MoreInfo>{plan.moreInfo}</MoreInfo>
+                </CardContent>
+              </Card>
+            ))}
+          </CardsContainer>
+
+          <CompareSection>
+            <CompareTitle>Compare Plans</CompareTitle>
+            <Table>
+              <thead>
+                <tr>
+                  <Th>Feature</Th>
+                  {plans.map((plan, index) => (
+                    <Th key={index}>{plan.name}</Th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <Td>Credits</Td>
+                  <Td>10/month</Td>
+                  <Td>Unlimited</Td>
+                  <Td>Unlimited</Td>
+                </tr>
+                <tr>
+                  <Td>Support</Td>
+                  <Td>Basic</Td>
+                  <Td>Priority</Td>
+                  <Td>Dedicated</Td>
+                </tr>
+                <tr>
+                  <Td>Custom Solutions</Td>
+                  <Td>No</Td>
+                  <Td>No</Td>
+                  <Td>Yes</Td>
+                </tr>
+                <tr>
+                  <Td>Access to All Features</Td>
+                  <Td>No</Td>
+                  <Td>Yes</Td>
+                  <Td>Yes</Td>
+                </tr>
+              </tbody>
+            </Table>
+          </CompareSection>
+        </ContentWrapper>
+        <FAQs />
+      </Container>
+      <Support />
+    </>
+  );
+};
+
+
 const gradientAnimation = keyframes`
   0% {
     background-position: 0% 50%;
@@ -236,163 +398,5 @@ const Bold = styled.p`
   justify-items: center;
 `;
 
-const Support = () => {
-  return (
-    <SupportContainer>
-      <TextElements>
-        <h1>We're here to help!</h1>
-        <Paragraph>
-          Choosing the right plan can be a big decision, and we want to make
-          sure you find the one that fits your needs best. If you have any
-          questions or if something’s not covered in our FAQ, we’re here for
-          you. Just reach out in the way that’s easiest for you!
-        </Paragraph>
-      </TextElements>
-      <OtherElements>
-        <Logoleft>
-          <div
-            style={{
-              background: "linear-gradient(90deg, #0b6fcb, #43a5fe)",
-              padding: "7px",
-              borderRadius: "8px",
-            }}
-          >
-            <MailOutline sx={{ fontSize: "40px" }} />
-          </div>
-        </Logoleft>
-        <ContentRight>
-          <Bold>
-            Send us a message <KeyboardArrowRight />{" "}
-          </Bold>
-          <p>We usually get back to you within a few hours.</p>
-        </ContentRight>
-      </OtherElements>
-    </SupportContainer>
-  );
-};
-
-const Pricing = () => {
-  const plans = [
-    {
-      name: "Free",
-      icon: faStar,
-      price: "$0",
-      interval: "",
-      features: [
-        "10 credits per month",
-        "Basic support",
-        "Access to basic features",
-      ],
-      moreInfo: "Ideal for individuals who want to try out our service.",
-    },
-    {
-      name: "Pro",
-      icon: faRocket,
-      price: "$19.99",
-      interval: "/month",
-      features: [
-        "Unlimited credits",
-        "Priority support",
-        "Access to all features",
-      ],
-      moreInfo: "Perfect for professionals who need more credits and support.",
-    },
-    {
-      name: "Enterprise",
-      icon: faBuilding,
-      price: "Contact us",
-      interval: "",
-      features: [
-        "Custom solutions",
-        "Dedicated support",
-        "Access to all features",
-      ],
-      moreInfo: "Best for large organizations with custom needs.",
-    },
-  ];
-
-  return (
-    <>
-      <Container>
-        <ContentWrapper>
-          <Header>
-            <Title>Get a plan and start creating</Title>
-          </Header>
-
-          <CardsContainer>
-            {plans.map((plan, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <PlanName>
-                    <PlanIcon icon={plan.icon} />
-                    <PlanTitle>{plan.name}</PlanTitle>
-                  </PlanName>
-                  <Price>
-                    {plan.price}
-                    <span>{plan.interval}</span>
-                  </Price>
-                </CardHeader>
-                <CardContent>
-                  <FeaturesList>
-                    {plan.features.map((feature, idx) => (
-                      <Feature key={idx}>
-                        <CheckIcon icon={faCheck} />
-                        {feature}
-                      </Feature>
-                    ))}
-                  </FeaturesList>
-                  <SubscribeButton>Subscribe</SubscribeButton>
-                  <MoreInfo>{plan.moreInfo}</MoreInfo>
-                </CardContent>
-              </Card>
-            ))}
-          </CardsContainer>
-
-          <CompareSection>
-            <CompareTitle>Compare Plans</CompareTitle>
-            <Table>
-              <thead>
-                <tr>
-                  <Th>Feature</Th>
-                  {plans.map((plan, index) => (
-                    <Th key={index}>{plan.name}</Th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <Td>Credits</Td>
-                  <Td>10/month</Td>
-                  <Td>Unlimited</Td>
-                  <Td>Unlimited</Td>
-                </tr>
-                <tr>
-                  <Td>Support</Td>
-                  <Td>Basic</Td>
-                  <Td>Priority</Td>
-                  <Td>Dedicated</Td>
-                </tr>
-                <tr>
-                  <Td>Custom Solutions</Td>
-                  <Td>No</Td>
-                  <Td>No</Td>
-                  <Td>Yes</Td>
-                </tr>
-                <tr>
-                  <Td>Access to All Features</Td>
-                  <Td>No</Td>
-                  <Td>Yes</Td>
-                  <Td>Yes</Td>
-                </tr>
-              </tbody>
-            </Table>
-          </CompareSection>
-        </ContentWrapper>
-        <FAQs />
-      </Container>
-      <Support />
-    </>
-  );
-};
 
 export default Pricing;

@@ -12,6 +12,79 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/mylogo.png";
 
+
+function Header() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [showServicesDropdown, setShowServicesDropdown] = React.useState(false);
+  const [showDocsDropdown, setShowDocsDropdown] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  return (
+    <HeaderContainer>
+      <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <Line />
+        <Line />
+        <Line />
+      </HamburgerMenu>
+      <LogoContainer>
+        <Link to="/home">
+          <Logo src={logo} alt="logo" />
+        </Link>
+      </LogoContainer>
+      <NavItems open={isMenuOpen}>
+        <LinkItem to="/home">Home</LinkItem>
+        <div
+          onMouseEnter={() => setShowServicesDropdown(true)}
+          onMouseLeave={() => setShowServicesDropdown(false)}
+          style={{ position: "relative" }}
+        >
+          <LinkItem>
+            Services <ArrowDropDown />
+          </LinkItem>
+          {showServicesDropdown && (
+            <DropdownMenu width="270px">
+              <DropdownItem to="/service1">
+                <FontAwesomeIcon icon={faRobot} /> AI-based Solutions &
+                Consultancy
+              </DropdownItem>
+              <DropdownItem to="/service2">
+                <FontAwesomeIcon icon={faComputer} /> Professional Web
+                Development
+              </DropdownItem>
+            </DropdownMenu>
+          )}
+        </div>
+        <div
+          onMouseEnter={() => setShowDocsDropdown(true)}
+          onMouseLeave={() => setShowDocsDropdown(false)}
+          style={{ position: "relative" }}
+        >
+          <LinkItem>
+            Docs <ArrowDropDown />
+          </LinkItem>
+          {showDocsDropdown && (
+            <DropdownMenu>
+              <DropdownItem to="/docs1">
+                <FontAwesomeIcon icon={faBook} /> Getting Started Guide
+              </DropdownItem>
+              <DropdownItem to="/docs2">
+                <FontAwesomeIcon icon={faBookOpen} /> API Reference
+              </DropdownItem>
+            </DropdownMenu>
+          )}
+        </div>
+        <LinkItem to="/pricing">Pricing</LinkItem>
+      </NavItems>
+      <RightElements>
+        <GradientButton onClick={() => navigate("/signup")}>
+          Get Started
+        </GradientButton>
+      </RightElements>
+    </HeaderContainer>
+  );
+}
+
 const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
@@ -150,77 +223,5 @@ const GradientButton = styled.button`
   font-weight: bold;
   cursor: pointer;
 `;
-
-function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [showServicesDropdown, setShowServicesDropdown] = React.useState(false);
-  const [showDocsDropdown, setShowDocsDropdown] = React.useState(false);
-
-  const navigate = useNavigate();
-
-  return (
-    <HeaderContainer>
-      <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <Line />
-        <Line />
-        <Line />
-      </HamburgerMenu>
-      <LogoContainer>
-        <Link to="/home">
-          <Logo src={logo} alt="logo" />
-        </Link>
-      </LogoContainer>
-      <NavItems open={isMenuOpen}>
-        <LinkItem to="/home">Home</LinkItem>
-        <div
-          onMouseEnter={() => setShowServicesDropdown(true)}
-          onMouseLeave={() => setShowServicesDropdown(false)}
-          style={{ position: "relative" }}
-        >
-          <LinkItem>
-            Services <ArrowDropDown />
-          </LinkItem>
-          {showServicesDropdown && (
-            <DropdownMenu width="270px">
-              <DropdownItem to="/service1">
-                <FontAwesomeIcon icon={faRobot} /> AI-based Solutions &
-                Consultancy
-              </DropdownItem>
-              <DropdownItem to="/service2">
-                <FontAwesomeIcon icon={faComputer} /> Professional Web
-                Development
-              </DropdownItem>
-            </DropdownMenu>
-          )}
-        </div>
-        <div
-          onMouseEnter={() => setShowDocsDropdown(true)}
-          onMouseLeave={() => setShowDocsDropdown(false)}
-          style={{ position: "relative" }}
-        >
-          <LinkItem>
-            Docs <ArrowDropDown />
-          </LinkItem>
-          {showDocsDropdown && (
-            <DropdownMenu>
-              <DropdownItem to="/docs1">
-                <FontAwesomeIcon icon={faBook} /> Getting Started Guide
-              </DropdownItem>
-              <DropdownItem to="/docs2">
-                <FontAwesomeIcon icon={faBookOpen} /> API Reference
-              </DropdownItem>
-            </DropdownMenu>
-          )}
-        </div>
-        <LinkItem to="/pricing">Pricing</LinkItem>
-      </NavItems>
-      <RightElements>
-        <GradientButton onClick={() => navigate("/signup")}>
-          Get Started
-        </GradientButton>
-      </RightElements>
-    </HeaderContainer>
-  );
-}
 
 export default Header;

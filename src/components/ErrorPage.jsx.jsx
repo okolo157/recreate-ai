@@ -2,25 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 function ErrorPage() {
-  const Container = styled.div`
-    height: 100vh;
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    align-items: center;
-  `;
-
-  const Text = styled.p`
-    color: white;
-    font-family: inherit;
-    font-size: 40px;
-  `;
-
-  const Text2 = styled.p`
-    color: white;
-    font-family: inherit;
-    font-size: 13px;
-  `;
+  
 
   return (
     <Container>
@@ -32,5 +14,26 @@ function ErrorPage() {
     </Container>
   );
 }
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Text = styled.p`
+  color: white;
+  font-family: inherit;
+  font-size: 40px;
+`;
+
+const Text2 = styled.p`
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+`;
+
 
 export default ErrorPage;

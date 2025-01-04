@@ -7,6 +7,56 @@ import { Link } from "react-router-dom";
 import bg from "../assets/images/gen-ai.webp";
 import bg2 from "../assets/images/section-bg-6.png";
 
+
+
+function AboutSection() {
+  return (
+    <SectionContainer>
+      <Left>
+        <Image src={bg} height="700px" alt="left side" />
+      </Left>
+      <RightSide>
+        <Paragraph style={{ marginBottom: "-20px" }}>
+          What recreate can do
+        </Paragraph>
+        <Title>Code Quicker with Recreate.</Title>
+        <Subtitle>
+          Our AI systems can analyze data, to provide pixel perfect code for
+          your UI element, from simple to even more complex elements.
+        </Subtitle>
+        <CheckElementsContainer>
+          <CheckElement>
+            <FontAwesomeIcon
+              icon={faCheck}
+              color="white"
+              style={{ marginRight: "14px" }}
+            />
+            <Paragraph>Accurate Detection</Paragraph>
+          </CheckElement>
+          <CheckElement>
+            <FontAwesomeIcon
+              icon={faCheck}
+              color="white"
+              style={{ marginRight: "14px" }}
+            />
+            <Paragraph>Quicker coding</Paragraph>
+          </CheckElement>
+          <CheckElement>
+            <FontAwesomeIcon
+              icon={faCheck}
+              color="white"
+              style={{ marginRight: "14px" }}
+            />
+            <Paragraph>Easy to use</Paragraph>
+          </CheckElement>
+        </CheckElementsContainer>
+        <AboutButton to="/signup">Get Started</AboutButton>
+      </RightSide>
+    </SectionContainer>
+  );
+}
+
+
 const SectionContainer = styled.div`
   display: flex;
   background-image: url(${bg2});
@@ -122,52 +172,5 @@ const Paragraph = styled.p`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
-
-function AboutSection() {
-  return (
-    <SectionContainer>
-      <Left>
-        <Image src={bg} height="700px" alt="left side" />
-      </Left>
-      <RightSide>
-        <Paragraph style={{ marginBottom: "-20px" }}>
-          What recreate can do
-        </Paragraph>
-        <Title>Code Quicker with Recreate.</Title>
-        <Subtitle>
-          Our AI systems can analyze data, to provide pixel perfect code for
-          your UI element, from simple to even more complex elements.
-        </Subtitle>
-        <CheckElementsContainer>
-          <CheckElement>
-            <FontAwesomeIcon
-              icon={faCheck}
-              color="white"
-              style={{ marginRight: "14px" }}
-            />
-            <Paragraph>Accurate Detection</Paragraph>
-          </CheckElement>
-          <CheckElement>
-            <FontAwesomeIcon
-              icon={faCheck}
-              color="white"
-              style={{ marginRight: "14px" }}
-            />
-            <Paragraph>Quicker coding</Paragraph>
-          </CheckElement>
-          <CheckElement>
-            <FontAwesomeIcon
-              icon={faCheck}
-              color="white"
-              style={{ marginRight: "14px" }}
-            />
-            <Paragraph>Easy to use</Paragraph>
-          </CheckElement>
-        </CheckElementsContainer>
-        <AboutButton to="/signup">Get Started</AboutButton>
-      </RightSide>
-    </SectionContainer>
-  );
-}
 
 export default AboutSection;

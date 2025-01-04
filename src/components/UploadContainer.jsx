@@ -3,11 +3,33 @@ import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import background from "../assets/images/bg-image.png";
 
+
+function UploadContainer() {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/signup");
+  };
+
+  return (
+    <Container style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      <StyledParagraph>Recreate AI Code Generator</StyledParagraph>
+      <StyledHeading>
+        Generate clean, reusable UI code <br />
+        <SubHeading>from screenshots/mockups</SubHeading>
+      </StyledHeading>
+      <UploadContainerDiv>
+        <StyledButton onClick={handleNavigate}>Get Started</StyledButton>
+      </UploadContainerDiv>
+    </Container>
+  );
+}
+
+
 const typewriter = keyframes`
   from { width: 0; }
   to { width: 25%; }
 `;
-
 
 const blink = keyframes`
   from { border-right-color: transparent }
@@ -173,25 +195,6 @@ const StyledButton = styled.button`
     transform: translateY(-2px);
   }
 `;
-function UploadContainer() {
-  const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/signup");
-  };
-
-  return (
-    <Container style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-      <StyledParagraph>Recreate AI Code Generator</StyledParagraph>
-      <StyledHeading>
-        Generate clean, reusable UI code <br />
-        <SubHeading>from screenshots/mockups</SubHeading>
-      </StyledHeading>
-      <UploadContainerDiv>
-        <StyledButton onClick={handleNavigate}>Get Started</StyledButton>
-      </UploadContainerDiv>
-    </Container>
-  );
-}
 
 export default UploadContainer;

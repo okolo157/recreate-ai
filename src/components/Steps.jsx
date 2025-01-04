@@ -1,6 +1,54 @@
 import React from "react";
 import styled from "styled-components";
 
+
+
+function Steps() {
+  const features = [
+    {
+      img: "https://teleporthq.io/design-to-code-import-400w.png",
+      alt: "first-step",
+      heading: "Import",
+      description:
+        "Discover a seamless designer to developer handoff with Recreate.",
+    },
+    {
+      img: "https://teleporthq.io/design-to-code-customize-400w.png",
+      alt: "second-step",
+      heading: "Customize",
+      description:
+        "Build and customize projects with the drag-and-drop editor.",
+    },
+    {
+      img: "https://teleporthq.io/design-to-code-export-400w.png",
+      alt: "third-step",
+      heading: "Export",
+      description:
+        "Turn your work into HTML, CSS, and 5 different JS frameworks.",
+    },
+  ];
+
+  return (
+    <AllWrapper>
+      <Title>
+        From design to <code>{"<code>"}</code> in 3 easy steps ⤵
+      </Title>
+      <FeaturesContainer>
+        {features.map((feature, index) => (
+          <FeatureCard key={index}>
+            <ImageContainer>
+              <img src={feature.img} alt={feature.alt} />
+            </ImageContainer>
+            <h3>{feature.heading}</h3>
+            <p>{feature.description}</p>
+          </FeatureCard>
+        ))}
+      </FeaturesContainer>
+    </AllWrapper>
+  );
+}
+
+
 const AllWrapper = styled.div`
   background-image: url("../assets/images/background-5.png");
   background-size: cover;
@@ -100,49 +148,5 @@ const ImageContainer = styled.div`
   }
 `;
 
-function Steps() {
-  const features = [
-    {
-      img: "https://teleporthq.io/design-to-code-import-400w.png",
-      alt: "first-step",
-      heading: "Import",
-      description:
-        "Discover a seamless designer to developer handoff with Recreate.",
-    },
-    {
-      img: "https://teleporthq.io/design-to-code-customize-400w.png",
-      alt: "second-step",
-      heading: "Customize",
-      description:
-        "Build and customize projects with the drag-and-drop editor.",
-    },
-    {
-      img: "https://teleporthq.io/design-to-code-export-400w.png",
-      alt: "third-step",
-      heading: "Export",
-      description:
-        "Turn your work into HTML, CSS, and 5 different JS frameworks.",
-    },
-  ];
-
-  return (
-    <AllWrapper>
-      <Title>
-        From design to <code>{"<code>"}</code> in 3 easy steps ⤵
-      </Title>
-      <FeaturesContainer>
-        {features.map((feature, index) => (
-          <FeatureCard key={index}>
-            <ImageContainer>
-              <img src={feature.img} alt={feature.alt} />
-            </ImageContainer>
-            <h3>{feature.heading}</h3>
-            <p>{feature.description}</p>
-          </FeatureCard>
-        ))}
-      </FeaturesContainer>
-    </AllWrapper>
-  );
-}
 
 export default Steps;

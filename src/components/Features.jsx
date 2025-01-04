@@ -9,6 +9,64 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/background-5.png";
 
+
+
+function Features() {
+  const features = [
+    {
+      heading: "Accurate Detection",
+      description:
+        "Our tool provides precise and accurate detection of UI components to provide reusable code.",
+      icon: faCheckDouble,
+    },
+    {
+      heading: "Optimized Code",
+      description:
+        "With specialized AI machine learning algorithms, we can ensure we provide optimized code that works.",
+      icon: faGears,
+    },
+    {
+      heading: "Multi-framework support",
+      description:
+        "Our tool provides code for multiple frameworks like React, Angular, Vue, etc.",
+      icon: faBoxesStacked,
+    },
+    {
+      heading: "Interactivity support",
+      description:
+        "Our seamless GUI provides an interactive experience to our users, with limitless customization.",
+      icon: faPeopleArrows,
+    },
+  ];
+
+  return (
+    <FeaturesAll>
+      <Title>Why Choose Us</Title>
+      <Subtitle>
+        Take advantage of all the tools and features jam-packed into a
+        drag-and-drop platform
+        <br /> that works like a design to code converter, and create responsive
+        prototypes straight in your browser.
+      </Subtitle>
+      <FeaturesMain>
+        {features.map((feature, index) => (
+          <FeatureItem key={index}>
+            <FontAwesomeIcon
+              icon={feature.icon}
+              size="3x"
+              style={{ marginBottom: "30px" }}
+              color="white"
+            />
+            <h3>{feature.heading}</h3>
+            <Paragraph>{feature.description}</Paragraph>
+          </FeatureItem>
+        ))}
+      </FeaturesMain>
+    </FeaturesAll>
+  );
+}
+
+
 const FeaturesAll = styled.div`
   margin-top: 100px;
   background-image: url(${bg});
@@ -108,59 +166,5 @@ const Subtitle = styled.p`
   }
 `;
 
-function Features() {
-  const features = [
-    {
-      heading: "Accurate Detection",
-      description:
-        "Our tool provides precise and accurate detection of UI components to provide reusable code.",
-      icon: faCheckDouble,
-    },
-    {
-      heading: "Optimized Code",
-      description:
-        "With specialized AI machine learning algorithms, we can ensure we provide optimized code that works.",
-      icon: faGears,
-    },
-    {
-      heading: "Multi-framework support",
-      description:
-        "Our tool provides code for multiple frameworks like React, Angular, Vue, etc.",
-      icon: faBoxesStacked,
-    },
-    {
-      heading: "Interactivity support",
-      description:
-        "Our seamless GUI provides an interactive experience to our users, with limitless customization.",
-      icon: faPeopleArrows,
-    },
-  ];
-
-  return (
-    <FeaturesAll>
-      <Title>Why Choose Us</Title>
-      <Subtitle>
-        Take advantage of all the tools and features jam-packed into a
-        drag-and-drop platform
-        <br /> that works like a design to code converter, and create responsive
-        prototypes straight in your browser.
-      </Subtitle>
-      <FeaturesMain>
-        {features.map((feature, index) => (
-          <FeatureItem key={index}>
-            <FontAwesomeIcon
-              icon={feature.icon}
-              size="3x"
-              style={{ marginBottom: "30px" }}
-              color="white"
-            />
-            <h3>{feature.heading}</h3>
-            <Paragraph>{feature.description}</Paragraph>
-          </FeatureItem>
-        ))}
-      </FeaturesMain>
-    </FeaturesAll>
-  );
-}
 
 export default Features;

@@ -4,73 +4,7 @@ import styled from "styled-components";
 import bgImg from "../assets/images/background-5.png";
 
 function Upload() {
-  const UploadPageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
-    color: white;
-    background-image: url(${bgImg});
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
-  `;
-
-  const TopItems = styled.div`
-    flex: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  `;
-
-  const Subheading = styled.span`
-    font-style: italic;
-    font-size: 24px;
-  `;
-
-  const Bottom = styled.div`
-    flex: 20%;
-    width: 40%;
-    margin-bottom: 0px;
-  `;
-
-  const Disclaimer = styled.p`
-    all: unset;
-    text-align: center;
-    font-size: 10px;
-  `;
-
-  const HandleImageContainer = styled.div`
-    width: 100%;
-    display: flex;
-  `;
-
-  const LeftElements = styled.div`
-    flex: 50%;
-    height: 120vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: -30px;
-  `;
-
-  const LeftInner = styled.div`
-    padding: 40px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    width: 80%;
-    backdrop-filter: blur(40px);
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
-    border: 1px inset rgb(69, 69, 69);
-    max-width: 50%;
-  `;
-
-  const RightElements = styled.div`
-    flex: 50%;
-  `;
+  
 
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [isImagePicked, setIsImagePicked] = React.useState(false);
@@ -134,5 +68,74 @@ function Upload() {
     </UploadPageContainer>
   );
 }
+
+const UploadPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  color: white;
+  background-image: url(${bgImg});
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+`;
+
+const TopItems = styled.div`
+  flex: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Subheading = styled.span`
+  font-style: italic;
+  font-size: 24px;
+`;
+
+const Bottom = styled.div`
+  flex: 20%;
+  width: 40%;
+  margin-bottom: 0px;
+`;
+
+const Disclaimer = styled.p`
+  all: unset;
+  text-align: center;
+  font-size: 10px;
+`;
+
+const HandleImageContainer = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+const LeftElements = styled.div`
+  flex: 50%;
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -30px;
+`;
+
+const LeftInner = styled.div`
+  padding: 40px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  width: 80%;
+  backdrop-filter: blur(40px);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  border: 1px inset rgb(69, 69, 69);
+  max-width: 50%;
+`;
+
+const RightElements = styled.div`
+  flex: 50%;
+`;
+
 
 export default Upload;

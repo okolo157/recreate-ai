@@ -4,6 +4,28 @@ import { Email, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import bg from "../assets/images/background-5.png";
 
+
+
+function Footer() {
+  return (
+    <FooterContainer>
+      <FooterCopyright>© 2024 recreate.ai All Rights Reserved</FooterCopyright>
+      <FooterNav>
+        <Link to="/home">Home</Link>
+        <Link to="/about">Services</Link>
+        <Link to="/features">Docs</Link>
+        <Link to="/services">Pricing</Link>
+      </FooterNav>
+      <FooterIcons>
+        <GitHub />
+        <Instagram />
+        <Twitter />
+        <Email />
+      </FooterIcons>
+    </FooterContainer>
+  );
+}
+
 const FooterContainer = styled.div`
   color: white;
   text-align: center;
@@ -82,24 +104,5 @@ const FooterIcons = styled.div`
   }
 `;
 
-function Footer() {
-  return (
-    <FooterContainer>
-      <FooterCopyright>© 2024 recreate.ai All Rights Reserved</FooterCopyright>
-      <FooterNav>
-        <Link to="/home">Home</Link>
-        <Link to="/about">Services</Link>
-        <Link to="/features">Docs</Link>
-        <Link to="/services">Pricing</Link>
-      </FooterNav>
-      <FooterIcons>
-        <GitHub />
-        <Instagram />
-        <Twitter />
-        <Email />
-      </FooterIcons>
-    </FooterContainer>
-  );
-}
 
 export default Footer;
