@@ -13,9 +13,10 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
+import { styled as style } from "styled-components";
 import AppTheme from "../shared-themee/AppTheme";
 import { GoogleIcon, FacebookIcon } from "./CustomIcons";
-// import ColorModeSelect from "../shared-themee/ColorModeSelect";
+import { useNavigate } from "react-router-dom";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -61,6 +62,21 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
+const StyledButton = style.button`
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+    border-radius: 20px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+
+    &:hover {
+      background-color:rgb(131, 195, 255);
+      color: white;
+      transition: 0.3s ease-in-out;
+    }
+`;
+
 export default function SignUp(props) {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
@@ -68,6 +84,7 @@ export default function SignUp(props) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
+  const navigate = useNavigate();
 
   const validateInputs = () => {
     const email = document.getElementById("email");
@@ -110,14 +127,10 @@ export default function SignUp(props) {
     if (nameError || emailError || passwordError) {
       event.preventDefault();
       return;
-    }
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get("name"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    } 
+    // const data = new FormData(event.currentTarget);
+    // localStorage.setItem("data", data);
+    navigate("/dashboard");
   };
 
   return (
@@ -128,7 +141,10 @@ export default function SignUp(props) {
           <Typography
             component="h1"
             variant="h4"
-            sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
+            sx={{
+              width: "100%",
+              fontSize: "clamp(2rem, 10vw, 2.15rem)",
+            }}
           >
             Sign up
           </Typography>
@@ -163,7 +179,7 @@ export default function SignUp(props) {
                 variant="outlined"
                 error={emailError}
                 helperText={emailErrorMessage}
-                color={passwordError ? "error" : "primary"}
+                color={emailError ? "error" : "primary"}
               />
             </FormControl>
             <FormControl>
@@ -186,14 +202,14 @@ export default function SignUp(props) {
               control={<Checkbox value="allowExtraEmails" color="primary" />}
               label="I want to receive updates via email."
             />
-            <Button
+            <StyledButton
               type="submit"
               fullWidth
               variant="contained"
               onClick={validateInputs}
             >
               Sign up
-            </Button>
+            </StyledButton>
           </Box>
           <Divider>
             <Typography sx={{ color: "text.secondary" }}>or</Typography>

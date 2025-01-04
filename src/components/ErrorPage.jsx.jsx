@@ -19,12 +19,12 @@ function ErrorPage() {
   const Text2 = styled.p`
     color: white;
     font-family: inherit;
-    font-size: 18px;
+    font-size: 13px;
   `;
 
   return (
     <Container>
-      <Text>404, page not found</Text>
+      <Text>404 error, page not found</Text>
       <Text2>
         This location does not appear to exist on our servers, please check the
         url and try again.

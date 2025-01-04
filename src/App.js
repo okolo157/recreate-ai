@@ -8,6 +8,7 @@ import SignIn from "./sign-in/SignIn";
 import styled, { createGlobalStyle } from "styled-components";
 import Pricing from "./pages/Pricing";
 import ErrorPage from "./components/ErrorPage.jsx";
+import Dashboard from "./pages/Dashboard.js";
 
 function App() {
   const GlobalStyle = createGlobalStyle`
@@ -48,6 +49,7 @@ function App() {
             <Route path="/signup" element={<SignUpSide />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </MainContent>
         {location.pathname !== "/upload" && (

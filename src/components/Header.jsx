@@ -4,13 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBook,
   faBookOpen,
-  faCaretRight,
   faComputer,
   faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { ArrowDropDown } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import logo from "../assets/images/mylogo.png";
 
 const HeaderContainer = styled.header`
