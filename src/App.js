@@ -7,6 +7,7 @@ import SignUpSide from "./Sign-up-side/SignUpSide";
 import SignIn from "./sign-in/SignIn";
 import styled, { createGlobalStyle } from "styled-components";
 import Pricing from "./pages/Pricing";
+import ErrorPage from "./components/ErrorPage.jsx";
 
 function App() {
   const GlobalStyle = createGlobalStyle`
@@ -21,13 +22,11 @@ function App() {
     width: 100%;
   `;
 
-
- const MainContent = styled.main`
-   margin-top: 110px;
- `;
+  const MainContent = styled.main`
+    margin-top: 110px;
+  `;
+  
   const HeaderWrapper = styled.header``;
-
- 
 
   const FooterWrapper = styled.footer``;
 
@@ -43,6 +42,7 @@ function App() {
         <MainContent>
           <Routes>
             <Route index element={<Home />} />
+            <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Home />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/signup" element={<SignUpSide />} />
