@@ -17,12 +17,13 @@ function App() {
     <>
       <GlobalStyle />
       <AppContainer>
-        {location.pathname !== "/upload" && (
-          <HeaderWrapper>
-            <Header />
-          </HeaderWrapper>
-        )}
-        <MainContent>
+        {location.pathname !== "/upload" &&
+          location.pathname !== "/dashboard" && (
+            <HeaderWrapper>
+              <Header />
+            </HeaderWrapper>
+          )}
+        <MainContent location={location}>
           <Routes>
             <Route index element={<Home />} />
             <Route path="*" element={<ErrorPage />} />
@@ -34,9 +35,9 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </MainContent>
-        {location.pathname !== "/upload" && (
+        {location.pathname !== "/upload" && location.pathname !== '/dashboard' && (
           <FooterWrapper>
-            <Footer />
+            <Footer />  
           </FooterWrapper>
         )}
       </AppContainer>
@@ -57,15 +58,12 @@ const AppContainer = styled.div`
 `;
 
 const MainContent = styled.main`
-  margin-top: 110px;
+  margin-top: ${({ location }) =>
+    location.pathname === "/dashboard" ? "0" : "110px"};
 `;
 
 const HeaderWrapper = styled.header``;
 
 const FooterWrapper = styled.footer``;
-
-// function Loader() {
-//   useEffect({} => {},[] )
-// }
 
 export default App;
