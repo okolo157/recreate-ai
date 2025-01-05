@@ -6,16 +6,21 @@ import {
   faGear,
   faHistory,
   faHome,
-  faPlus,
   faRocket,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
-  
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/upload");
+  };
+
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -79,7 +84,7 @@ const Dashboard = () => {
       <Content>
         <Header>
           <Title>Your Projects</Title>
-          <CreateButton>
+          <CreateButton onClick={handleNavigate}>
             Create New <FontAwesomeIcon icon={faRocket} />
           </CreateButton>
         </Header>

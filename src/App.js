@@ -11,16 +11,17 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import Dashboard from "./pages/Dashboard.js";
 
 function App() {
-  
   const location = useLocation();
 
   return (
     <>
       <GlobalStyle />
       <AppContainer>
-        <HeaderWrapper>
-          <Header />
-        </HeaderWrapper>
+        {location.pathname !== "/upload" && (
+          <HeaderWrapper>
+            <Header />
+          </HeaderWrapper>
+        )}
         <MainContent>
           <Routes>
             <Route index element={<Home />} />
@@ -43,7 +44,6 @@ function App() {
   );
 }
 
-
 const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 `;
@@ -63,7 +63,6 @@ const MainContent = styled.main`
 const HeaderWrapper = styled.header``;
 
 const FooterWrapper = styled.footer``;
-
 
 // function Loader() {
 //   useEffect({} => {},[] )
