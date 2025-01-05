@@ -10,6 +10,7 @@ import {
   faQuestionCircle,
   faHistory,
   faSignOutAlt,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("name");
   const [selectedWorkspace, setSelectedWorkspace] = useState("personal");
+  const [showNewDropdown, setShowNewDropdown] = useState(false);
 
   const navigate = useNavigate();
 
@@ -51,9 +53,6 @@ const Dashboard = () => {
     },
   ];
 
-  const handleNavigate = () => {
-    navigate("/upload");
-  };
 
   const filteredProjects = projects
     .filter(
@@ -165,8 +164,25 @@ const Dashboard = () => {
             <option value="name">Sort by Name</option>
             <option value="recent">Sort by Recent</option>
           </SortSelect>
-
-          <CreateButton onClick={handleNavigate}> + Create New</CreateButton>
+          <div
+            onMouseEnter={() => setShowNewDropdown(true)}
+            onMouseLeave={() => setShowNewDropdown(false)}
+            style={{ position: "relative" }}
+          >
+            <CreateButton>
+              Create New <FontAwesomeIcon icon={faCaretDown} />
+            </CreateButton>
+            {showNewDropdown && (
+              <DropwdownContainer>
+                <DropdownItem onClick={() => navigate("/upload")}>
+                  New Project
+                </DropdownItem>
+                <DropdownItem onClick={() => navigate("")}>
+                  New Workspace
+                </DropdownItem>
+              </DropwdownContainer>
+            )}
+          </div>
         </ControlsCard>
 
         <ProjectGrid>
@@ -476,5 +492,28 @@ const NavItem = styled.a`
     font-size: 14px;
   }
 `;
+
+
+const DropwdownContainer = styled.div`
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 100;
+  min-width: 200px;
+`;
+
+const DropdownItem = styled.div`
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+
+  &:hover {
+    background-color: #f0f4ff;
+  }
+`;
+
 
 export default Dashboard;
