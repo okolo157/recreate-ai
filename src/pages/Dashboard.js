@@ -26,8 +26,8 @@ const Dashboard = () => {
 
   const workspaces = [
     { id: "personal", name: "Personal" },
-    { id: "team1", name: "Team Alpha" },
-    { id: "team2", name: "Team Beta" },
+    { id: "team1", name: "Work" },
+    { id: "team2", name: "Others" },
   ];
 
   const projects = [
@@ -166,7 +166,7 @@ const Dashboard = () => {
             <option value="recent">Sort by Recent</option>
           </SortSelect>
 
-          <CreateButton onClick={handleNavigate}>Create New</CreateButton>
+          <CreateButton onClick={handleNavigate}> + Create New</CreateButton>
         </ControlsCard>
 
         <ProjectGrid>
@@ -350,69 +350,49 @@ const UpgradeButton = styled.button`
 `;
 
 const ControlsCard = styled.div`
-  background: white;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 24px;
   display: flex;
-  gap: 16px;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 `;
 
 const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  margin-right: 10px;
   flex: 1;
-  position: relative;
+  border: 1px solid;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const SearchIcon = styled.div`
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #666;
+  margin-right: 5px;
+  color: #888;
 `;
 
 const SearchInput = styled.input`
-  width: 100%;
-  padding: 8px 12px 8px 36px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-
-  &:focus {
-    outline: none;
-    border-color: #0b6fcb;
-  }
+  border: none;
+  outline: none;
+  flex: 1;
 `;
 
 const SortSelect = styled.select`
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: white;
-  cursor: pointer;
-  min-width: 140px;
-
-  &:focus {
-    outline: none;
-    border-color: #0b6fcb;
-  }
+  padding: 13px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
 `;
 
 const CreateButton = styled.button`
-  padding: 8px 16px;
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 4px;
+  padding: 5px 10px;
   cursor: pointer;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  padding: 13px;
 `;
 
 const ProjectGrid = styled.div`
