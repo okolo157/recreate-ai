@@ -1,0 +1,5 @@
+-create select-plan
+-signup should navigate to select-plan page, sign in should navigate to dashboard
+-work on dashboard
+-work on new project
+-work intensively on homepage

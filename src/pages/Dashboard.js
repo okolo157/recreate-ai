@@ -205,7 +205,7 @@ const Container = styled.div`
 
 const Sidebar = styled.aside`
   width: ${(props) => (props.isOpen ? "280px" : "80px")};
-  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background: #05051e;
   color: white;
   transition: width 0.3s ease;
   position: relative;
