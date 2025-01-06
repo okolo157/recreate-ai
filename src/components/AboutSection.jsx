@@ -5,8 +5,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import bg from "../assets/images/gen-ai.webp";
-import bg2 from "../assets/images/section-bg-6.png";
-
+import bg2 from "../assets/images/background-5.png";
 
 
 function AboutSection() {
@@ -61,7 +60,7 @@ const SectionContainer = styled.div`
   display: flex;
   background-image: url(${bg2});
   background-size: cover;
-  background-position: left;
+  background-position: center;
   background-blend-mode: overlay;
   padding-top: 40px;
 

@@ -11,7 +11,6 @@ import bg from "../assets/images/background-5.png";
 import FAQs from "../components/FAQs";
 import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 
-
 const Support = () => {
   return (
     <SupportContainer>
@@ -92,7 +91,8 @@ const Pricing = () => {
       <Container>
         <ContentWrapper>
           <Header>
-            <Title>Get a plan and start creating</Title>
+            <Title>Pricing</Title>
+            <Subtitle>Choose the plan that works for you.</Subtitle>
           </Header>
 
           <CardsContainer>
@@ -171,7 +171,6 @@ const Pricing = () => {
   );
 };
 
-
 const gradientAnimation = keyframes`
   0% {
     background-position: 0% 50%;
@@ -179,6 +178,12 @@ const gradientAnimation = keyframes`
   100% {
     background-position: 100% 50%;
   }
+`;
+
+const Subtitle = styled.p`
+  font-size: large;
+  color: white;
+  margin-bottom: 0px;
 `;
 
 const Container = styled.div`
@@ -198,14 +203,12 @@ const ContentWrapper = styled.div`
 
 const Header = styled.div`
   text-align: center;
-  margin-bottom: 2rem;
 `;
 
 const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 1rem;
 `;
 
 const CardsContainer = styled.div`
@@ -396,6 +399,5 @@ const Bold = styled.p`
   align-items: center;
   justify-items: center;
 `;
-
 
 export default Pricing;

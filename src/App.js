@@ -12,6 +12,7 @@ import SignUp from "./components/SignUp.jsx";
 import SignIn from "./components/SignIn.jsx";
 import Password from "./components/Password.jsx";
 import Resetpwd from "./components/Resetpwd.jsx";
+import Settings from "./pages/Settings.js";
 function App() {
   const location = useLocation();
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/password" element={<Password />} />
             <Route path="/resetpwd" element={<Resetpwd />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </MainContent>
         {location.pathname !== "/upload" &&

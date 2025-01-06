@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import avatarPlaceholder from "../assets/images/unnamed.jpg";
 
 const Dashboard = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("name");
   const [selectedWorkspace, setSelectedWorkspace] = useState("personal");
@@ -52,7 +52,6 @@ const Dashboard = () => {
     },
   ];
 
-
   const filteredProjects = projects
     .filter(
       (project) =>
@@ -77,7 +76,7 @@ const Dashboard = () => {
             <UserSection>
               <Avatar src={avatarPlaceholder} alt="User Avatar" />
               <UserName>John Doe</UserName>
-              <PlanBadge>Pro Plan</PlanBadge>
+              <PlanBadge>Free Plan</PlanBadge>
             </UserSection>
 
             <WorkspacesSection>
@@ -94,7 +93,7 @@ const Dashboard = () => {
             </WorkspacesSection>
 
             <Nav>
-              <NavItem href="#">
+              <NavItem href="/settings">
                 <FontAwesomeIcon icon={faGear} />
                 <span>Settings</span>
               </NavItem>
@@ -117,7 +116,7 @@ const Dashboard = () => {
           <CollapsedSidebar>
             <NavIconsWrapper>
               <NavIcon>
-                <FontAwesomeIcon icon={faGear} />
+                <FontAwesomeIcon onClick={()=> navigate('/settings')} icon={faGear} />
               </NavIcon>
               <NavIcon>
                 <FontAwesomeIcon icon={faQuestionCircle} />
@@ -140,7 +139,8 @@ const Dashboard = () => {
           </AlertIcon>
           <AlertText>
             Upgrade to Pro Plan to unlock advanced features!
-            <UpgradeButton>Upgrade Now</UpgradeButton>
+            <UpgradeButton onClick={() => navigate('/settings')}>Upgrade Now</UpgradeButton>
+            <Credits>You have 10 credits remaining</Credits>
           </AlertText>
         </PlanAlert>
 
@@ -339,6 +339,7 @@ const PlanAlert = styled.div`
   align-items: center;
   gap: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
 `;
 
 const AlertIcon = styled.div`
@@ -362,6 +363,14 @@ const UpgradeButton = styled.button`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const Credits = styled.button`
+  color: rgb(99, 99, 99);
+  border: none;
+  background: none;
+  justify-self: flex-end;
+  align-self: flex-end;
 `;
 
 const ControlsCard = styled.div`
@@ -492,7 +501,6 @@ const NavItem = styled.a`
   }
 `;
 
-
 const DropwdownContainer = styled.div`
   position: absolute;
   right: 0;
@@ -513,6 +521,5 @@ const DropdownItem = styled.div`
     background-color: #f0f4ff;
   }
 `;
-
 
 export default Dashboard;

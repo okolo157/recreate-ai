@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/background-5.png";
 
-
 function PricingComponent() {
   const plans = [
     {
@@ -39,7 +38,16 @@ function PricingComponent() {
 
   return (
     <PricingContainer>
-      <Title>Get a plan and start creating</Title>
+      <HeaderContainer>
+        <TextElements>
+          <Title>Get a plan and start creating</Title>
+          <Subtitle>
+            Intelligent, fast, and familiar, Recreate is the best way to code
+            with AI.
+          </Subtitle>
+        </TextElements>
+        <MoreButton>See more features</MoreButton>
+      </HeaderContainer>
       <PricingWrapper>
         {plans.map((plan, index) => (
           <PricingCard key={index}>
@@ -66,9 +74,6 @@ function PricingComponent() {
   );
 }
 
-
-
-
 const PricingContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,10 +91,45 @@ const PricingContainer = styled.div`
   }
 `;
 
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 44px;
+  flex-direction: column;
+`;
+
+const MoreButton = styled.button`
+  border-radius: 24px;
+  background-color: #43a5fe;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 17px;
+
+  &:hover {
+    background-color:rgb(0, 110, 214);
+    cursor: pointer;
+    transition: 0.3s ease
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: large;
+  color: grey;
+`;
+
+const TextElements = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`;
+
 const Title = styled.h2`
   font-size: 2.5em;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: white;
 
   @media (max-width: 768px) {
@@ -114,7 +154,7 @@ const PricingCard = styled.div`
   border: groove 1px green;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 30px;
   width: 300px;
   text-align: center;
 
@@ -211,6 +251,5 @@ const SubscribeButton = styled.button`
     font-size: 0.9em;
   }
 `;
-
 
 export default PricingComponent;

@@ -113,7 +113,7 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   height: 15vh;
-  border-bottom: solid 1px rgb(39, 39, 39);
+  // border-bottom: solid 1px rgb(39, 39, 39);
   backdrop-filter: blur(10px);
   top: 0;
   width: 100%;
