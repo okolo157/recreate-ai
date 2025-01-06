@@ -12,7 +12,6 @@ import FAQs from "../components/FAQs";
 import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 
 
-
 const Support = () => {
   return (
     <SupportContainer>

@@ -4,7 +4,6 @@ import {
   faBars,
   faTimes,
   faSearch,
-  faSort,
   faCreditCard,
   faGear,
   faQuestionCircle,
@@ -14,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/mylogo.png";
+// import logo from "../assets/images/mylogo.png";
 import avatarPlaceholder from "../assets/images/unnamed.jpg";
 
 const Dashboard = () => {

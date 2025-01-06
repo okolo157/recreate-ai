@@ -1,15 +1,17 @@
+import styled, { createGlobalStyle } from "styled-components";
 import { Route, Routes, useLocation } from "react-router-dom";
+
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import Footer from "./components/Footer";
-import SignUpSide from "./Sign-up-side/SignUpSide";
-import SignIn from "./sign-in/SignIn";
-import styled, { createGlobalStyle } from "styled-components";
 import Pricing from "./pages/Pricing";
 import ErrorPage from "./components/ErrorPage.jsx";
 import Dashboard from "./pages/Dashboard.js";
-
+import SignUp from "./components/SignUp.jsx";
+import SignIn from "./components/SignIn.jsx";
+import Password from "./components/Password.jsx";
+import Resetpwd from "./components/Resetpwd.jsx";
 function App() {
   const location = useLocation();
 
@@ -29,17 +31,20 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Home />} />
             <Route path="/upload" element={<Upload />} />
-            <Route path="/signup" element={<SignUpSide />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/password" element={<Password />} />
+            <Route path="/resetpwd" element={<Resetpwd />} />
           </Routes>
         </MainContent>
-        {location.pathname !== "/upload" && location.pathname !== '/dashboard' && (
-          <FooterWrapper>
-            <Footer />  
-          </FooterWrapper>
-        )}
+        {location.pathname !== "/upload" &&
+          location.pathname !== "/dashboard" && (
+            <FooterWrapper>
+              <Footer />
+            </FooterWrapper>
+          )}
       </AppContainer>
     </>
   );
@@ -64,6 +69,7 @@ const MainContent = styled.main`
 
 const HeaderWrapper = styled.header``;
 
-const FooterWrapper = styled.footer``;
+const FooterWrapper = styled.footer`
+`;
 
 export default App;
