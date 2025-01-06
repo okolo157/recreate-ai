@@ -38,7 +38,7 @@ function PasswordScreen() {
     if (isValid) {
       setError("");
       if (isSignUp) {
-        navigate("/home");
+        navigate("/select-plan");
       } else {
         navigate("/dashboard"); 
       }
