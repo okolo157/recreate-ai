@@ -94,7 +94,7 @@ function PasswordScreen() {
           {location.pathname !== "/signup" && !isSignUp && (
             <ForgotPwd>
               Forgot Password? Click{" "}
-              <StyledLink to="/resetpwd">here</StyledLink> {" "}to reset it
+              <StyledLink to="/resetpwd">here</StyledLink>{" "}to reset it
             </ForgotPwd>
           )}
         </Content>
