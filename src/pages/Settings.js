@@ -1,17 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 function Settings() {
+  const [showDelete, setShowDelete] = useState(false);
+
+  const handleAdvanced = () => {
+    if (showDelete === false) {
+      setShowDelete(true);
+    } else {
+      setShowDelete(false);
+    }
+  };
+
   return (
     <Container>
       <Left>
         <BasicInfo>
           <Title>Basic Information</Title>
-          <InfoText>Here you can update your personal details.</InfoText>
+          <InfoText>
+            <b>Name: </b>
+            <p>Victor Okolo</p>
+          </InfoText>
+          <InfoText>
+            <b>Email: </b>Okolodubem9@gmail.com
+          </InfoText>
         </BasicInfo>
         <AccountInfo>
-          <Title>Account Information</Title>
-          <InfoText>Change your username, password, or email address.</InfoText>
+          <Top>
+            <Title>Account</Title>
+            <Plan>Pro Trial 14 days remaining</Plan>
+          </Top>
+            <PlanButtons>
+              <FirstButton>UPGRADE TO PRO</FirstButton>
+              <SecondButton>UPGRADE TO BUSINESS</SecondButton>
+            </PlanButtons>
+            <Advanced onClick={handleAdvanced}>
+              Advanced <FontAwesomeIcon icon={showDelete ? faCaretUp : faCaretDown} />
+            </Advanced>
+            {showDelete && <Modal>Delete Account</Modal>}
         </AccountInfo>
       </Left>
       <Right>
@@ -42,6 +70,10 @@ const InfoText = styled.p`
   color: #fff;
   font-size: 1rem;
   margin-top: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const BasicInfo = styled.div`
@@ -50,7 +82,12 @@ const BasicInfo = styled.div`
   height: 30vh;
   padding: 20px;
   margin-bottom: 20px;
-  background-color: rgba(59, 130, 246, 0.2);
+  background-color:#0d132a;
+`;
+
+const Top = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const AccountInfo = styled.div`
@@ -58,7 +95,11 @@ const AccountInfo = styled.div`
   border-radius: 20px;
   height: 30vh;
   padding: 20px;
-  background-color: rgba(59, 130, 246, 0.2);
+  background-color:#0D132A
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 const Left = styled.div`
@@ -76,7 +117,47 @@ const UsageInfo = styled.div`
   height: 40vh;
   border-radius: 20px;
   padding: 20px;
-  background-color: rgba(59, 130, 246, 0.2);
+  background-color: #0d132a;
 `;
+
+const Plan = styled.button`
+  margin-left: 10px;
+`;
+
+const PlanButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+`;
+
+const FirstButton = styled.button`
+  width: 40%;
+  height: 40px;
+  cursor: pointer;
+`;
+
+const SecondButton = styled.button`
+  width: 40%;
+  height: 40px;
+  cursor: pointer;
+`;
+
+const Advanced = styled.p`
+  color: white;
+  cursor: pointer;
+  margin-left: 20px;
+`;
+
+const Modal = styled.p`
+  color: white;
+  margin: 0px;
+  margin-top: -14px;
+  text-decoration: underline;
+  color: grey;
+  margin-left: 20px;
+`;
+
+
 
 export default Settings;
