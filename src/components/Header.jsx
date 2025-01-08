@@ -96,6 +96,15 @@ function Header() {
             Go to Dashboard
           </DashButton>
         )}
+        {location.pathname === "/stats" && (
+          <DashButton
+            onClick={() => {
+              navigate("/settings");
+            }}
+          >
+            Back to Settings
+          </DashButton>
+        )}
       </RightElements>
     </HeaderContainer>
   );

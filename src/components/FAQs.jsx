@@ -83,12 +83,12 @@ function FAQs() {
 }
 
 
-
 const FaqContainer = styled.div`
   margin-top: 70px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   // background-image: url(${faqbg});
   background-size: cover;
