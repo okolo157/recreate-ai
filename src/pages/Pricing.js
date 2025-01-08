@@ -7,9 +7,9 @@ import {
   faRocket,
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
+import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 import bg from "../assets/images/background-5.png";
 import FAQs from "../components/FAQs";
-import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 
 const Support = () => {
   return (

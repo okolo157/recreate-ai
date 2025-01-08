@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import bg from "../assets/images/background-7.png";
 import { useNavigate } from "react-router-dom";
+
+import bg from "../assets/images/background-7.png";
 
 function Settings() {
   const [showDelete, setShowDelete] = useState(false);
 
   const navigate = useNavigate();
 
-  const storageUsage = 70; // in percentage
-  const apiCallsUsed = 400; // used calls
-  const apiCallsLimit = 1000; // total limit
-
-  function handleAdvanced() {
-    setShowDelete(!showDelete);
-  }
+  //temp hardcoded values
+  const storageUsage = 70;
+  const apiCallsUsed = 400;
+  const apiCallsLimit = 1000;
 
   return (
     <Container>
@@ -51,7 +49,11 @@ function Settings() {
             </ButtonGroup>
 
             <AdvancedSection>
-              <AdvancedButton onClick={handleAdvanced}>
+              <AdvancedButton
+                onClick={() => {
+                  setShowDelete(!showDelete);
+                }}
+              >
                 Advanced
                 <CaretIcon>{showDelete ? "▲" : "▼"}</CaretIcon>
               </AdvancedButton>
