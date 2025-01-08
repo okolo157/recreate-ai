@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 function Resetpwd() {
   const [email, setEmail] = useState("");
@@ -24,7 +26,7 @@ function Resetpwd() {
       return;
     }
     setError("");
-    alert("Login code sent to your email address");
+    toast.info("Login code sent to your email address");
     // Todo: rest of email logic
   };
 
@@ -55,6 +57,7 @@ function Resetpwd() {
           </ForgotPwd>
         </Content>
       </Card>
+      <ToastContainer position="bottom-right" pauseOnHover newestOnTop />
     </Container>
   );
 }

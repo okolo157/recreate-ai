@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -15,12 +16,11 @@ function SignUp() {
 
   const handleSubmit = () => {
     if (!checked) {
-      alert("Please accept terms and conditions");
-      return;
+      toast.info("Please accept terms and conditions");
     }
 
     if (email.includes("gmail.com")) {
-      alert("Please use Sign Up with Google for Gmail accounts");
+      toast.info("Please use Sign Up with Google for Gmail accounts");
       return;
     }
     Navigate("/password", { state: { isSignUp: true } });
@@ -73,6 +73,7 @@ function SignUp() {
           </SignInText>
         </Content>
       </Card>
+      <ToastContainer position="bottom-right" pauseOnHover newestOnTop />
     </Container>
   );
 }

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,7 +16,7 @@ function SignIn() {
 
   const handleSubmit = () => {
     if (email.includes("gmail.com")) {
-      alert("Please use Sign In with Google for Gmail accounts");
+      toast.info("Please use Sign In with Google for Gmail accounts");
       return;
     }
     Navigate("/password", { state: { isSignUp: false } });
@@ -61,6 +63,7 @@ function SignIn() {
           </SignInText>
         </Content>
       </Card>
+      <ToastContainer position="bottom-right" pauseOnHover newestOnTop />
     </Container>
   );
 }
