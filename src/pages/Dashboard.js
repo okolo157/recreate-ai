@@ -75,7 +75,7 @@ const Dashboard = () => {
           <SidebarContent>
             <UserSection>
               <Avatar src={avatarPlaceholder} alt="User Avatar" />
-              <UserName>John Doe</UserName>
+              <UserName>User 0</UserName>
               <PlanBadge>Free Plan</PlanBadge>
             </UserSection>
 
@@ -105,7 +105,7 @@ const Dashboard = () => {
                 <FontAwesomeIcon icon={faHistory} />
                 <span>History</span>
               </NavItem>
-              <NavItem href="#">
+              <NavItem href="/home">
                 <FontAwesomeIcon icon={faSignOutAlt} />
                 <span>Logout</span>
               </NavItem>
@@ -116,7 +116,10 @@ const Dashboard = () => {
           <CollapsedSidebar>
             <NavIconsWrapper>
               <NavIcon>
-                <FontAwesomeIcon onClick={()=> navigate('/settings')} icon={faGear} />
+                <FontAwesomeIcon
+                  onClick={() => navigate("/settings")}
+                  icon={faGear}
+                />
               </NavIcon>
               <NavIcon>
                 <FontAwesomeIcon icon={faQuestionCircle} />
@@ -139,7 +142,9 @@ const Dashboard = () => {
           </AlertIcon>
           <AlertText>
             Upgrade to Pro Plan to unlock advanced features!
-            <UpgradeButton onClick={() => navigate('/settings')}>Upgrade Now</UpgradeButton>
+            <UpgradeButton onClick={() => navigate("/settings")}>
+              Upgrade Now
+            </UpgradeButton>
             <Credits>You have 10 credits remaining</Credits>
           </AlertText>
         </PlanAlert>

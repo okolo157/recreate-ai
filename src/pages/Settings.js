@@ -1,53 +1,105 @@
 import React, { useState } from "react";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import bg from "../assets/images/background-7.png";
+import { useNavigate } from "react-router-dom";
 
 function Settings() {
   const [showDelete, setShowDelete] = useState(false);
 
-  const handleAdvanced = () => {
-    if (showDelete === false) {
-      setShowDelete(true);
-    } else {
-      setShowDelete(false);
-    }
-  };
+  const navigate = useNavigate();
+
+  const storageUsage = 70; // in percentage
+  const apiCallsUsed = 400; // used calls
+  const apiCallsLimit = 1000; // total limit
+
+  function handleAdvanced() {
+    setShowDelete(!showDelete);
+  }
 
   return (
     <Container>
       <Left>
         <BasicInfo>
-          <Title>Basic Information</Title>
-          <InfoText>
-            <b>Name: </b>
-            <p>Victor Okolo</p>
-          </InfoText>
-          <InfoText>
-            <b>Email: </b>Okolodubem9@gmail.com
-          </InfoText>
+          <CardHeader>
+            <Title>Basic Information</Title>
+          </CardHeader>
+          <CardContent>
+            <InfoGroup>
+              <InfoItem>
+                <strong>Name:</strong>
+                <p>Victor Okolo</p>
+              </InfoItem>
+              <InfoItem>
+                <strong>Email:</strong>
+                <p>Okolodubem9@gmail.com</p>
+              </InfoItem>
+            </InfoGroup>
+          </CardContent>
         </BasicInfo>
+
         <AccountInfo>
-          <Top>
-            <Title>Account</Title>
-            <Plan>Pro Trial 14 days remaining</Plan>
-          </Top>
-            <PlanButtons>
-              <FirstButton>UPGRADE TO PRO</FirstButton>
-              <SecondButton>UPGRADE TO BUSINESS</SecondButton>
-            </PlanButtons>
-            <Advanced onClick={handleAdvanced}>
-              Advanced <FontAwesomeIcon icon={showDelete ? faCaretUp : faCaretDown} />
-            </Advanced>
-            {showDelete && <Modal>Delete Account</Modal>}
+          <CardHeader>
+            <HeaderGroup>
+              <Title>Account Information</Title>
+              <PlanBadge>Free Trial 14 days remaining</PlanBadge>
+            </HeaderGroup>
+          </CardHeader>
+          <CardContent>
+            <ButtonGroup>
+              <StyledButton>UPGRADE TO PRO</StyledButton>
+              <StyledButton>UPGRADE TO BUSINESS</StyledButton>
+            </ButtonGroup>
+
+            <AdvancedSection>
+              <AdvancedButton onClick={handleAdvanced}>
+                Advanced
+                <CaretIcon>{showDelete ? "▲" : "▼"}</CaretIcon>
+              </AdvancedButton>
+
+              {showDelete && <DeleteButton>Delete Account</DeleteButton>}
+            </AdvancedSection>
+          </CardContent>
         </AccountInfo>
       </Left>
       <Right>
         <UsageInfo>
-          <Title>Usage Information</Title>
-          <InfoText>See your account usage statistics here.</InfoText>
+          <CardHeader>
+            <Title>Usage Information</Title>
+          </CardHeader>
+          <CardContent>
+            <InfoRow>
+              <StatTitle>Storage Used</StatTitle>
+              <StatValue>{storageUsage}%</StatValue>
+            </InfoRow>
+            <ProgressBar>
+              <ProgressFill percent={storageUsage} color="#4caf50" />
+            </ProgressBar>
+
+            <InfoRow>
+              <StatTitle>API Calls</StatTitle>
+              <StatValue>
+                {apiCallsUsed}/{apiCallsLimit}
+              </StatValue>
+            </InfoRow>
+            <ProgressBar>
+              <ProgressFill
+                percent={(apiCallsUsed / apiCallsLimit) * 100}
+                color="#2196f3"
+              />
+            </ProgressBar>
+
+            <InfoRow>
+              <StatTitle>Plan Usage</StatTitle>
+              <StatValue>Free Trial - 14 Days Left</StatValue>
+            </InfoRow>
+
+            <SeeMoreButton onClick={() => navigate("/stats")}>
+              See More
+            </SeeMoreButton>
+          </CardContent>
         </UsageInfo>
       </Right>
+      ;
     </Container>
   );
 }
@@ -59,21 +111,11 @@ const Container = styled.div`
   align-items: flex-start;
   gap: 20px;
   padding: 40px;
-`;
-
-const Title = styled.h2`
-  color: #fff;
   text-align: left;
-`;
-
-const InfoText = styled.p`
-  color: #fff;
-  font-size: 1rem;
-  margin-top: 10px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-image: url(${bg});
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 `;
 
 const BasicInfo = styled.div`
@@ -82,12 +124,11 @@ const BasicInfo = styled.div`
   height: 30vh;
   padding: 20px;
   margin-bottom: 20px;
-  background-color:#0d132a;
-`;
-
-const Top = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  // background-color: #0d132a;
+  backdrop-filter: blur(10px);
 `;
 
 const AccountInfo = styled.div`
@@ -95,69 +136,195 @@ const AccountInfo = styled.div`
   border-radius: 20px;
   height: 30vh;
   padding: 20px;
-  background-color:#0D132A
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
+  // align-content: center;
+`;
+
+const UsageInfo = styled.div`
+  border: 1px solid grey;
+  border-radius: 20px;
+  height: 40vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  backdrop-filter: blur(10px);
+`;
+
+const InfoRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+
+const StatTitle = styled.p`
+  color: #fff;
+  margin: 0;
+  font-size: 0.9rem;
+`;
+
+const StatValue = styled.p`
+  color: #fff;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+`;
+
+const ProgressBar = styled.div`
+  width: 100%;
+  height: 8px;
+  background-color: grey;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+`;
+
+const ProgressFill = styled.div`
+  width: ${({ percent }) => percent}%;
+  height: 100%;
+  background-color: ${({ color }) => color || "#fff"};
+`;
+
+const SeeMoreButton = styled.button`
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const CardHeader = styled.div`
+  margin-bottom: 20px;
+`;
+
+const CardContent = styled.div``;
+
+const Title = styled.h2`
+  color: #fff;
+  margin: 0;
+`;
+
+const HeaderGroup = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
+  gap: 10px;
+`;
+
+const InfoGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const InfoItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+
+  strong {
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+  }
 `;
 
 const Left = styled.div`
-  flex: 40%;
+  flex: 0.4;
   display: flex;
   flex-direction: column;
 `;
 
 const Right = styled.div`
-  flex: 60%;
+  flex: 0.6;
 `;
 
-const UsageInfo = styled.div`
-  border: 1px solid grey;
-  height: 40vh;
-  border-radius: 20px;
-  padding: 20px;
-  background-color: #0d132a;
+const PlanBadge = styled.button`
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 3px;
+  font-size: 0.875rem;
 `;
 
-const Plan = styled.button`
-  margin-left: 10px;
-`;
-
-const PlanButtons = styled.div`
-  width: 100%;
+const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-around;
-  text-align: left;
+  gap: 16px;
+  margin-bottom: 20px;
 `;
 
-const FirstButton = styled.button`
-  width: 40%;
+const StyledButton = styled.button`
+  flex: 1;
   height: 40px;
   cursor: pointer;
+  color: #fff;
+  border: 1px solid white;
+  background-color: #05051e;
+  border-radius: 3px;
+  font-weight: 500;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
-const SecondButton = styled.button`
-  width: 40%;
-  height: 40px;
-  cursor: pointer;
+const AdvancedSection = styled.div`
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
-const Advanced = styled.p`
+const AdvancedButton = styled.button`
   color: white;
+  background: none;
+  border: none;
   cursor: pointer;
-  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
-const Modal = styled.p`
-  color: white;
-  margin: 0px;
-  margin-top: -14px;
-  text-decoration: underline;
+const CaretIcon = styled.span`
+  display: inline-block;
+  font-size: 0.75rem;
+`;
+
+const DeleteButton = styled.button`
   color: grey;
-  margin-left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  transition: color 0.2s;
+  justify-self: flex-start;
+  align-self: flex-start;
+
+  &:hover {
+    color: #fff;
+  }
 `;
-
-
 
 export default Settings;

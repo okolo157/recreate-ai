@@ -17,18 +17,9 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [showServicesDropdown, setShowServicesDropdown] = React.useState(false);
   const [showDocsDropdown, setShowDocsDropdown] = React.useState(false);
-  // const [isSignedIn, setIsSignedIn] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  // useEffect(() => {
-  //   if (location.pathname === "/dashboard") {
-  //     setIsSignedIn(true);
-  //   } else {
-  //     setIsSignedIn(false);
-  //   }
-  // }, [location.pathname]);
 
   return (
     <HeaderContainer>
@@ -96,14 +87,15 @@ function Header() {
             Get Started
           </GradientButton>
         )}
-        {/* {isSignedIn && (
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            <Avatar src={avatar} alt="User Avatar" />
-            <p style={{ margin: 0, cursor: "pointer", color: "#fff", fontSize: "small" }}>
-              Sign out
-            </p>
-          </div>
-        )} */}
+        {location.pathname === "/settings" && (
+          <DashButton
+            onClick={() => {
+              navigate("/dashboard");
+            }}
+          >
+            Go to Dashboard
+          </DashButton>
+        )}
       </RightElements>
     </HeaderContainer>
   );
@@ -248,11 +240,17 @@ const GradientButton = styled.button`
   cursor: pointer;
 `;
 
-// const Avatar = styled.img`
-//   width: 40px;
-//   height: 40px;
-//   border-radius: 50%;
-//   object-fit: cover;
-// `;
+const DashButton = styled.button`
+  background: none;
+  color: #0b6fcb;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+    transition: 0.2s ease;
+  }
+`;
 
 export default Header;
