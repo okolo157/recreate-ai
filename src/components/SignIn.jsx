@@ -24,7 +24,7 @@ function SignIn() {
     <Container>
       <Card>
         <Header>
-          <Title>Sign In</Title>
+          <Title>Sign in</Title>
         </Header>
 
         <Content>

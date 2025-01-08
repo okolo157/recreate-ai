@@ -24,6 +24,7 @@ function Resetpwd() {
       return;
     }
     setError("");
+    alert("Login code sent to your email address");
     // Todo: rest of email logic
   };
 
