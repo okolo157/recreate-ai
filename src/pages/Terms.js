@@ -103,6 +103,10 @@ const TermsContainer = styled.div`
   backdrop-filter: blur(5px);
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Title = styled.h1`
@@ -122,6 +126,7 @@ const Paragraph = styled.p`
   font-size: 0.9rem;
   line-height: 1.8;
   margin: 10px 0;
+  width: 80%;
 `;
 
 

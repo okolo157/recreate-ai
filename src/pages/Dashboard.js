@@ -17,7 +17,6 @@ import avatarPlaceholder from "../assets/images/unnamed.jpg";
 import Upload from "../components/Upload";
 import bgImg from "../assets/images/background-5.png";
 
-
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -172,7 +171,10 @@ const Dashboard = () => {
                       <DropdownItem>Rename</DropdownItem>
                       <DropdownItem>Duplicate</DropdownItem>
                       <DropdownItem>Archive</DropdownItem>
-                      <DropdownItem danger onClick={() => handleDelete(project.id)}>
+                      <DropdownItem
+                        danger
+                        onClick={() => handleDelete(project.id)}
+                      >
                         Delete
                       </DropdownItem>
                     </DropdownMenu>
@@ -186,13 +188,17 @@ const Dashboard = () => {
                 <FontAwesomeIcon title="settings" icon={faGear} />
               </IconNavItem>
               <IconNavItem>
-                <FontAwesomeIcon title="help" icon={faQuestionCircle} />
+                <FontAwesomeIcon
+                  onClick={() => navigate("/help-center")}
+                  title="Help"
+                  icon={faQuestionCircle}
+                />
               </IconNavItem>
               <IconNavItem>
-                <FontAwesomeIcon title="history" icon={faHistory} />
+                <FontAwesomeIcon title="History" icon={faHistory} />
               </IconNavItem>
               <IconNavItem onClick={() => navigate("/home")}>
-                <FontAwesomeIcon title="logout" icon={faSignOutAlt} />
+                <FontAwesomeIcon title="Logout" icon={faSignOutAlt} />
               </IconNavItem>
             </IconNav>
           </SidebarContent>
@@ -207,13 +213,21 @@ const Dashboard = () => {
                 />
               </NavIcon>
               <NavIcon>
-                <FontAwesomeIcon title="Help" icon={faQuestionCircle} />
+                <FontAwesomeIcon
+                  onClick={() => navigate("/help-center")}
+                  title="Help"
+                  icon={faQuestionCircle}
+                />
               </NavIcon>
               <NavIcon>
                 <FontAwesomeIcon title="History" icon={faHistory} />
               </NavIcon>
               <NavIcon>
-                <FontAwesomeIcon title="Log out" icon={faSignOutAlt} />
+                <FontAwesomeIcon
+                  onClick={() => navigate("/home")}
+                  title="Logout"
+                  icon={faSignOutAlt}
+                />
               </NavIcon>
             </NavIconsWrapper>
           </CollapsedSidebar>
@@ -315,14 +329,14 @@ const Sidebar = styled.aside`
   transition: width 0.3s ease;
   position: relative;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
-  overflow: auto; 
+  overflow: auto;
 
   /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
   ::-webkit-scrollbar {
     width: 0;
   }
 
-  scrollbar-width: none; 
+  scrollbar-width: none;
 
   ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.3);
@@ -332,11 +346,6 @@ const Sidebar = styled.aside`
     background: rgba(0, 0, 0, 0.3);
   }
 `;
-
-
-
-
-
 
 const SidebarContent = styled.div`
   padding: 20px;

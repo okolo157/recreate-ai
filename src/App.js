@@ -15,6 +15,7 @@ import Resetpwd from "./components/Resetpwd.jsx";
 import Settings from "./pages/Settings.js";
 import UsageInfo from "./components/UsageInfo.jsx";
 import Terms from "./pages/Terms";
+import HelpCenter from "./pages/Help.js";
 function App() {
   const location = useLocation();
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/stats" element={<UsageInfo />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="help-center" element={<HelpCenter />} />
           </Routes>
         </MainContent>
         {location.pathname !== "/upload" &&

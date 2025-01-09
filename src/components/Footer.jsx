@@ -14,7 +14,9 @@ function Footer() {
         <Link to="/home">Home</Link>
         <Link to="/about">Services</Link>
         <Link to="/features">Docs</Link>
-        <Link to="/services">Pricing</Link>
+        <Link to="/pricing">Pricing</Link>
+        <Link to="/terms">Terms of Service</Link>
+        <Link to="/help-center">Help</Link>
       </FooterNav>
       <FooterIcons>
         <GitHub />
@@ -32,12 +34,12 @@ const FooterContainer = styled.div`
   padding: 10px;
   left: 0;
   bottom: 0;
-  height: 14vh;
+  height: 10vh;
   // margin-top: 100px;
   display: flex;
   border: 1px inset #424286;
   align-items: center;
-  background-image: url(${bg});
+  // background-image: url(${bg});
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
@@ -51,6 +53,7 @@ const FooterContainer = styled.div`
 
 const FooterCopyright = styled.div`
   flex: 25%;
+  font-size: 13px;
 
   @media (max-width: 768px) {
     margin-bottom: 10px;
@@ -59,13 +62,14 @@ const FooterCopyright = styled.div`
 
 const FooterNav = styled.div`
   flex: 20%;
-  font-size: 14px;
+  font-size: 12px;
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   padding: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   cursor: pointer;
+  color: white;
 
   a {
     text-decoration: none;

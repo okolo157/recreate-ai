@@ -21,7 +21,7 @@ function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const locator = location.pathname;
-  
+
   return (
     <HeaderContainer>
       <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -35,7 +35,7 @@ function Header() {
         </Link>
       </LogoContainer>
       <NavItems open={isMenuOpen}>
-        <LinkItem to="/home">Home</LinkItem>
+        
         <div
           onMouseEnter={() => setShowServicesDropdown(true)}
           onMouseLeave={() => setShowServicesDropdown(false)}
@@ -147,12 +147,13 @@ const Logo = styled.img`
 `;
 
 const NavItems = styled.nav`
-  flex: 4;
+  flex: 3;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   height: 100%;
   padding: 20px;
+
 
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? "flex" : "none")};
