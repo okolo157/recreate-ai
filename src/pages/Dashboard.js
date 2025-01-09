@@ -25,9 +25,9 @@ const Dashboard = () => {
   const [projectModal, setProjectModal] = useState(false);
   const [newProjectName, setNewProjectName] = useState("");
   const [searchModal, setSearchModal] = useState(false);
-   const [hoveredProject, setHoveredProject] = useState(null);
-   const [dropdownProject, setDropdownProject] = useState(null);
-   const dropdownRef = useRef(null);
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [dropdownProject, setDropdownProject] = useState(null);
+  const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -42,9 +42,8 @@ const Dashboard = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
   const handleDotsClick = (e, projectId) => {
-    e.stopPropagation(); // Prevent project selection when clicking dots
+    e.stopPropagation();
     setDropdownProject(dropdownProject === projectId ? null : projectId);
   };
 
@@ -89,6 +88,19 @@ const Dashboard = () => {
   const handleSearchCancel = () => {
     setSearchModal(false);
     setSearchTerm("");
+  };
+
+  const handleDelete = (projectId) => {
+    const updatedProjects = projects.filter(
+      (project) => project.id !== projectId
+    );
+    setProjects(updatedProjects);
+
+    if (selectedProject === projectId && updatedProjects.length > 0) {
+      setSelectedProject(updatedProjects[0].id);
+    } else if (updatedProjects.length === 0) {
+      setSelectedProject(null);
+    }
   };
 
   return (
@@ -157,7 +169,9 @@ const Dashboard = () => {
                       <DropdownItem>Rename</DropdownItem>
                       <DropdownItem>Duplicate</DropdownItem>
                       <DropdownItem>Archive</DropdownItem>
-                      <DropdownItem danger>Delete</DropdownItem>
+                      <DropdownItem danger onClick={() => handleDelete(project.id)}>
+                        Delete
+                      </DropdownItem>
                     </DropdownMenu>
                   )}
                 </ProjectItemWrapper>
@@ -337,7 +351,7 @@ const Modal = styled.div`
 `;
 
 const ModalHeader = styled.div`
-  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background: #05051e;
   color: white;
   padding: 16px;
   font-size: 18px;
@@ -369,11 +383,12 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background: ${(props) => (props.secondary ? "#ccc" : "#0b6fcb")};
+  background: ${(props) => (props.secondary ? "#ccc" : " #05051e;")};
   color: ${(props) => (props.secondary ? "black" : "white")};
 
   &:hover {
-    background: ${(props) => (props.secondary ? "#b3b3b3" : "#084b96")};
+    background: ${(props) =>
+      props.secondary ? "#b3b3b3" : "rgb(21, 21, 53);"};
   }
 `;
 
@@ -442,7 +457,6 @@ const SectionTitle = styled.div`
   padding: 0 12px;
   margin-bottom: 4px;
 `;
-
 
 const NavIconsWrapper = styled.div`
   display: flex;
@@ -641,12 +655,9 @@ const NoResults = styled.div`
   font-style: italic;
 `;
 
-
 const ProjectItemWrapper = styled.div`
   position: relative;
 `;
-
-
 
 const ProjectName = styled.span`
   flex: 1;
