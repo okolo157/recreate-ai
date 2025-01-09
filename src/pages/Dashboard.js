@@ -315,8 +315,28 @@ const Sidebar = styled.aside`
   transition: width 0.3s ease;
   position: relative;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
-  y-overflow: scroll;
+  overflow: auto; 
+
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+  scrollbar-width: none; 
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+  }
 `;
+
+
+
+
+
 
 const SidebarContent = styled.div`
   padding: 20px;
