@@ -20,7 +20,8 @@ function Header() {
 
   const navigate = useNavigate();
   const location = useLocation();
-
+  const locator = location.pathname;
+  
   return (
     <HeaderContainer>
       <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -78,7 +79,7 @@ function Header() {
         <LinkItem to="/pricing">Pricing</LinkItem>
       </NavItems>
       <RightElements>
-        {location.pathname === "/home" && location.pathname === "/pricing" && (
+        {(locator === "/home" || locator === "/pricing") && (
           <GradientButton
             onClick={() => {
               navigate("/signup");
@@ -87,7 +88,7 @@ function Header() {
             Get Started
           </GradientButton>
         )}
-        {location.pathname === "/settings" && (
+        {locator === "/settings" && (
           <DashButton
             onClick={() => {
               navigate("/dashboard");
@@ -96,7 +97,7 @@ function Header() {
             Go to Dashboard
           </DashButton>
         )}
-        {location.pathname === "/stats" && (
+        {locator === "/stats" && (
           <DashButton
             onClick={() => {
               navigate("/settings");

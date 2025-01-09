@@ -14,6 +14,7 @@ import Password from "./components/Password.jsx";
 import Resetpwd from "./components/Resetpwd.jsx";
 import Settings from "./pages/Settings.js";
 import UsageInfo from "./components/UsageInfo.jsx";
+import Terms from "./pages/Terms";
 function App() {
   const location = useLocation();
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/resetpwd" element={<Resetpwd />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/stats" element={<UsageInfo />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </MainContent>
         {location.pathname !== "/upload" &&
