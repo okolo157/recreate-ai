@@ -78,7 +78,7 @@ function Header() {
         <LinkItem to="/pricing">Pricing</LinkItem>
       </NavItems>
       <RightElements>
-        {location.pathname === "/home" && (
+        {location.pathname === "/home" && location.pathname === "/pricing" && (
           <GradientButton
             onClick={() => {
               navigate("/signup");
