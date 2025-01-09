@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 function Upload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("JavaScript");
+    const fileInputRef = useRef(null);  
 
   const onFileChange = (event) => {
     const file = event.target.files[0];
@@ -12,6 +13,10 @@ function Upload() {
       console.log("File selected:", file);
     }
   };
+
+    const triggerFileInput = () => {
+      fileInputRef.current.click();
+    };
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
@@ -36,9 +41,14 @@ function Upload() {
       </DropdownContainer>
 
       <HandleImageContainer>
-        <LeftElements>
-          <h2>Upload Image</h2>
-          <input type="file" accept="image/*" onChange={onFileChange} />
+        <LeftElements onClick={triggerFileInput}>
+          <p>Click anywhere to upload image</p>
+          <FileInput
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+            ref={fileInputRef}
+          />
         </LeftElements>
 
         <RightElements>
@@ -84,6 +94,8 @@ const HandleImageContainer = styled.div`
   justify-content: space-between;
   width: 80%;
   margin-top: 20px;
+  height: 40vh;
+  gap: 20px
 `;
 
 const LeftElements = styled.div`
@@ -92,11 +104,17 @@ const LeftElements = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
+  border: 3px dashed #ccc;
   border-radius: 10px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   margin-right: 10px;
+  cursor: pointer;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 10px;
+  }
 `;
 
 const RightElements = styled.div`
@@ -121,6 +139,10 @@ const CodeContainer = styled.div`
   padding: 10px;
   overflow: auto;
   font-family: monospace;
+`;
+
+const FileInput = styled.input`
+  display: none; /* Hide the default file input */
 `;
 
 export default Upload;
