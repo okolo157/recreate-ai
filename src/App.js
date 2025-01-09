@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import Upload from "./pages/Upload";
+import Upload from "./components/Upload";
 import Footer from "./components/Footer";
 import Pricing from "./pages/Pricing";
 import ErrorPage from "./components/ErrorPage.jsx";

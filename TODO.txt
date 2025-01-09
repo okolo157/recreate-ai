@@ -3,5 +3,5 @@
 -work on dashboard - in progress
 -work on new project
 -pass data dynamically from onboard to dashboard
--work intensively on homepage
+-work intensively on homepage, maybe overhaual
 -backend work && email logic

@@ -14,6 +14,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import avatarPlaceholder from "../assets/images/unnamed.jpg";
+import Upload from "../components/Upload";
+import bgImg from "../assets/images/background-5.png";
+
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -231,6 +234,8 @@ const Dashboard = () => {
           </AlertText>
         </PlanAlert>
 
+        <Upload />
+
         {projectModal && (
           <ModalOverlay>
             <Modal>
@@ -296,8 +301,11 @@ const Dashboard = () => {
 const Container = styled.div`
   display: flex;
   height: 100vh;
-  background: linear-gradient(120deg, #f0f4ff, #ffffff);
   font-style: inherit;
+  background-image: url(${bgImg});
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 `;
 
 const Sidebar = styled.aside`
