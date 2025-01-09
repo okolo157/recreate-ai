@@ -4,4 +4,5 @@
 -work on new project
 -pass data dynamically from onboard to dashboard
 -work intensively on homepage, maybe overhaual
+-complete focus on media queries
 -backend work && email logic
