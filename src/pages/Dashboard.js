@@ -9,60 +9,67 @@ import {
   faQuestionCircle,
   faHistory,
   faSignOutAlt,
-  faCaretDown,
+  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-// import logo from "../assets/images/mylogo.png";
 import avatarPlaceholder from "../assets/images/unnamed.jpg";
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("name");
-  const [selectedWorkspace, setSelectedWorkspace] = useState("personal");
-  const [showNewDropdown, setShowNewDropdown] = useState(false);
+  const [selectedProject, setSelectedProject] = useState("project1");
+  const [projects, setProjects] = useState([
+    { id: "project1", name: "Default" },
+  ]);
+  const [projectModal, setProjectModal] = useState(false);
+  const [newProjectName, setNewProjectName] = useState("");
+  const [searchModal, setSearchModal] = useState(false);
 
   const navigate = useNavigate();
 
-  const workspaces = [
-    { id: "personal", name: "Personal" },
-    { id: "team1", name: "Work" },
-    { id: "team2", name: "Others" },
-  ];
+  const handleAddProject = () => {
+    setProjectModal(true);
+    setNewProjectName("");
+  };
 
-  const projects = [
-    {
-      id: 1,
-      name: "Project 1",
-      thumbnail: "https://via.placeholder.com/400",
-      workspace: "personal",
-    },
-    {
-      id: 2,
-      name: "Project 2",
-      thumbnail: "https://via.placeholder.com/400",
-      workspace: "team1",
-    },
-    {
-      id: 3,
-      name: "Project 3",
-      thumbnail: "https://via.placeholder.com/400",
-      workspace: "personal",
-    },
-  ];
+  const handleProjectSave = () => {
+    if (newProjectName.trim()) {
+      const newProject = {
+        id: `project${projects.length + 1}`,
+        name: newProjectName,
+      };
+      setProjects([...projects, newProject]);
+      setSelectedProject(newProject.id);
+      setProjectModal(false);
+      setSidebarOpen(true);
+    } else {
+      alert("Project name cannot be empty.");
+    }
+  };
 
-  const filteredProjects = projects
-    .filter(
-      (project) =>
-        project.workspace === selectedWorkspace &&
-        project.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortBy === "name") return a.name.localeCompare(b.name);
-      if (sortBy === "recent") return b.id - a.id;
-      return 0;
-    });
+  const handleProjectCancel = () => {
+    setProjectModal(false);
+  };
+
+  const handleSearch = () => {
+    setSearchModal(true);
+  };
+
+  const handleSearchSubmit = () => {
+    // Filter projects based on searchTerm
+    const filteredProjects = projects.filter((project) =>
+      project.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    // Update the projects list with filtered results
+    setProjects(filteredProjects);
+    setSearchModal(false);
+  };
+
+  const handleSearchCancel = () => {
+    setSearchModal(false);
+    setSearchTerm("");
+  };
 
   return (
     <Container>
@@ -73,44 +80,49 @@ const Dashboard = () => {
 
         {isSidebarOpen ? (
           <SidebarContent>
+            <Icons>
+              <SearchIcon onClick={handleSearch}>
+                <FontAwesomeIcon title="Search" icon={faSearch} />
+              </SearchIcon>
+              <NewIcon title="New Project" onClick={handleAddProject}>
+                <FontAwesomeIcon title="New Project" icon={faEdit} />
+              </NewIcon>
+            </Icons>
             <UserSection>
-              <Avatar src={avatarPlaceholder} alt="User Avatar" />
+              <AvatarLink onClick={() => navigate("/settings")} title="View Profile">
+                <Avatar src={avatarPlaceholder} alt="User Avatar" />
+              </AvatarLink>
               <UserName>User 0</UserName>
               <PlanBadge>Free Plan</PlanBadge>
             </UserSection>
 
-            <WorkspacesSection>
-              <SectionTitle>WORKSPACES</SectionTitle>
-              {workspaces.map((workspace) => (
-                <WorkspaceItem
-                  key={workspace.id}
-                  isSelected={selectedWorkspace === workspace.id}
-                  onClick={() => setSelectedWorkspace(workspace.id)}
+            <ProjectsSection>
+              <SectionTitle>PROJECTS</SectionTitle>
+              {projects.map((project) => (
+                <ProjectItem
+                  key={project.id}
+                  isSelected={selectedProject === project.id}
+                  onClick={() => setSelectedProject(project.id)}
                 >
-                  {workspace.name}
-                </WorkspaceItem>
+                  {project.name}
+                </ProjectItem>
               ))}
-            </WorkspacesSection>
+            </ProjectsSection>
 
-            <Nav>
-              <NavItem href="/settings">
-                <FontAwesomeIcon icon={faGear} />
-                <span>Settings</span>
-              </NavItem>
-              <NavItem href="#">
-                <FontAwesomeIcon icon={faQuestionCircle} />
-                <span>Help</span>
-              </NavItem>
-              <NavItem href="#">
-                <FontAwesomeIcon icon={faHistory} />
-                <span>History</span>
-              </NavItem>
-              <NavItem href="/home">
-                <FontAwesomeIcon icon={faSignOutAlt} />
-                <span>Logout</span>
-              </NavItem>
-              <p>Logo</p>
-            </Nav>
+            <IconNav>
+              <IconNavItem onClick={() => navigate("/settings")}>
+                <FontAwesomeIcon title="settings" icon={faGear} />
+              </IconNavItem>
+              <IconNavItem>
+                <FontAwesomeIcon title="help" icon={faQuestionCircle} />
+              </IconNavItem>
+              <IconNavItem>
+                <FontAwesomeIcon title="history" icon={faHistory} />
+              </IconNavItem>
+              <IconNavItem onClick={() => navigate("/home")}>
+                <FontAwesomeIcon title="logout" icon={faSignOutAlt} />
+              </IconNavItem>
+            </IconNav>
           </SidebarContent>
         ) : (
           <CollapsedSidebar>
@@ -119,16 +131,17 @@ const Dashboard = () => {
                 <FontAwesomeIcon
                   onClick={() => navigate("/settings")}
                   icon={faGear}
+                  title="settings"
                 />
               </NavIcon>
               <NavIcon>
-                <FontAwesomeIcon icon={faQuestionCircle} />
+                <FontAwesomeIcon title="Help" icon={faQuestionCircle} />
               </NavIcon>
               <NavIcon>
-                <FontAwesomeIcon icon={faHistory} />
+                <FontAwesomeIcon title="History" icon={faHistory} />
               </NavIcon>
               <NavIcon>
-                <FontAwesomeIcon icon={faSignOutAlt} />
+                <FontAwesomeIcon title="Log out" icon={faSignOutAlt} />
               </NavIcon>
             </NavIconsWrapper>
           </CollapsedSidebar>
@@ -149,54 +162,49 @@ const Dashboard = () => {
           </AlertText>
         </PlanAlert>
 
-        <ControlsCard>
-          <SearchWrapper>
-            <SearchIcon>
-              <FontAwesomeIcon icon={faSearch} />
-            </SearchIcon>
-            <SearchInput
-              placeholder="Search projects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </SearchWrapper>
+        {projectModal && (
+          <ModalOverlay>
+            <Modal>
+              <ModalHeader>Add New Project</ModalHeader>
+              <ModalBody>
+                <Input
+                  type="text"
+                  placeholder="Project Name"
+                  value={newProjectName}
+                  onChange={(e) => setNewProjectName(e.target.value)}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button onClick={handleProjectSave}>Save</Button>
+                <Button secondary onClick={handleProjectCancel}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </ModalOverlay>
+        )}
 
-          <SortSelect
-            onChange={(e) => setSortBy(e.target.value)}
-            value={sortBy}
-          >
-            <option value="name">Sort by Name</option>
-            <option value="recent">Sort by Recent</option>
-          </SortSelect>
-          <div
-            onMouseEnter={() => setShowNewDropdown(true)}
-            onMouseLeave={() => setShowNewDropdown(false)}
-            style={{ position: "relative" }}
-          >
-            <CreateButton>
-              Create New <FontAwesomeIcon icon={faCaretDown} />
-            </CreateButton>
-            {showNewDropdown && (
-              <DropwdownContainer>
-                <DropdownItem onClick={() => navigate("/upload")}>
-                  New Project
-                </DropdownItem>
-                <DropdownItem onClick={() => navigate("")}>
-                  New Workspace
-                </DropdownItem>
-              </DropwdownContainer>
-            )}
-          </div>
-        </ControlsCard>
-
-        <ProjectGrid>
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id}>
-              <Thumbnail src={project.thumbnail} alt={project.name} />
-              <ProjectName>{project.name}</ProjectName>
-            </ProjectCard>
-          ))}
-        </ProjectGrid>
+        {searchModal && (
+          <ModalOverlay>
+            <Modal>
+              <ModalHeader>Search Projects</ModalHeader>
+              <ModalBody>
+                <Input
+                  type="text"
+                  placeholder="Search projects..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button onClick={handleSearchSubmit}>Search</Button>
+                <Button secondary onClick={handleSearchCancel}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </ModalOverlay>
+        )}
       </Content>
     </Container>
   );
@@ -234,19 +242,80 @@ const CollapsedSidebar = styled.div`
   height: 100%;
 `;
 
-// const LogoContainer = styled.div`
-//   padding: ${(props) => (props.small ? "10px 0" : "20px 0")};
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-// `;
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
 
-// const Logo = styled.img`
-//   width: ${(props) => (props.small ? "40px" : "120px")};
-//   height: auto;
-//   object-fit: contain;
-// `;
+const Modal = styled.div`
+  background: white;
+  width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+`;
+
+const ModalHeader = styled.div`
+  background: #0b6fcb;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const ModalBody = styled.div`
+  padding: 16px;
+  justify-self: center;
+`;
+
+const Input = styled.input`
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const ModalFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+  gap: 10px;
+  background: #f9f9f9;
+`;
+
+const Button = styled.button`
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: ${(props) => (props.secondary ? "#ccc" : "#0b6fcb")};
+  color: ${(props) => (props.secondary ? "black" : "white")};
+
+  &:hover {
+    background: ${(props) => (props.secondary ? "#b3b3b3" : "#084b96")};
+  }
+`;
+
+const NewIcon = styled.div`
+  color: white;
+  margin-left: 14px;
+  cursor: pointer;
+`;
+
+const Icons = styled.div`
+  display: flex;
+  font-size: 20px;
+`;
 
 const UserSection = styled.div`
   display: flex;
@@ -254,12 +323,22 @@ const UserSection = styled.div`
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px;
+  padding: 10px;
+  margin-top: -20px;
+`;
+
+const AvatarLink = styled.div`
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const Avatar = styled.img`
-  width: 64px;
-  height: 64px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 2px solid white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -279,7 +358,7 @@ const PlanBadge = styled.div`
   color: white;
 `;
 
-const WorkspacesSection = styled.div`
+const ProjectsSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -293,7 +372,7 @@ const SectionTitle = styled.div`
   margin-bottom: 4px;
 `;
 
-const WorkspaceItem = styled.button`
+const ProjectItem = styled.button`
   text-align: left;
   padding: 8px 12px;
   border-radius: 6px;
@@ -329,6 +408,26 @@ const NavIcon = styled.div`
   }
 `;
 
+const IconNav = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: auto;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+`;
+
+const IconNavItem = styled.div`
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  color: white;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
 const Content = styled.main`
   flex: 1;
   padding: 30px;
@@ -344,7 +443,6 @@ const PlanAlert = styled.div`
   align-items: center;
   gap: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
 `;
 
 const AlertIcon = styled.div`
@@ -378,83 +476,9 @@ const Credits = styled.button`
   align-self: flex-end;
 `;
 
-const ControlsCard = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const SearchWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border-radius: 4px;
-  padding: 10px;
-  margin-right: 10px;
-  flex: 1;
-  border: 1px solid;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-
 const SearchIcon = styled.div`
-  margin-right: 5px;
-  color: #888;
-`;
-
-const SearchInput = styled.input`
-  border: none;
-  outline: none;
-  flex: 1;
-`;
-
-const SortSelect = styled.select`
-  padding: 13px 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  margin-right: 10px;
-`;
-
-const CreateButton = styled.button`
-  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
+  color: white;
   cursor: pointer;
-  padding: 13px;
-`;
-
-const ProjectGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
-`;
-
-const ProjectCard = styled.div`
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-const Thumbnail = styled.img`
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-`;
-
-const ProjectName = styled.h3`
-  padding: 16px;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
 `;
 
 const ToggleIcon = styled.button`
@@ -475,55 +499,6 @@ const ToggleIcon = styled.button`
 
   &:hover {
     transform: scale(1.1);
-  }
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-`;
-
-const NavItem = styled.a`
-  text-decoration: none;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  span {
-    font-size: 14px;
-  }
-`;
-
-const DropwdownContainer = styled.div`
-  position: absolute;
-  right: 0;
-  background: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  z-index: 100;
-  min-width: 200px;
-`;
-
-const DropdownItem = styled.div`
-  padding: 10px 20px;
-  cursor: pointer;
-  color: #333;
-
-  &:hover {
-    background-color: #f0f4ff;
   }
 `;
 
