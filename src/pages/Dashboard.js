@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import {
   faBars,
@@ -25,8 +25,28 @@ const Dashboard = () => {
   const [projectModal, setProjectModal] = useState(false);
   const [newProjectName, setNewProjectName] = useState("");
   const [searchModal, setSearchModal] = useState(false);
+   const [hoveredProject, setHoveredProject] = useState(null);
+   const [dropdownProject, setDropdownProject] = useState(null);
+   const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownProject(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+
+  const handleDotsClick = (e, projectId) => {
+    e.stopPropagation(); // Prevent project selection when clicking dots
+    setDropdownProject(dropdownProject === projectId ? null : projectId);
+  };
 
   const handleAddProject = () => {
     setProjectModal(true);
@@ -56,14 +76,14 @@ const Dashboard = () => {
     setSearchModal(true);
   };
 
-  const handleSearchSubmit = () => {
-    // Filter projects based on searchTerm
-    const filteredProjects = projects.filter((project) =>
-      project.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    // Update the projects list with filtered results
-    setProjects(filteredProjects);
+  const filteredProjects = projects.filter((project) =>
+    project.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearchItemClick = (projectId) => {
+    setSelectedProject(projectId);
     setSearchModal(false);
+    setSearchTerm("");
   };
 
   const handleSearchCancel = () => {
@@ -89,7 +109,10 @@ const Dashboard = () => {
               </NewIcon>
             </Icons>
             <UserSection>
-              <AvatarLink onClick={() => navigate("/settings")} title="View Profile">
+              <AvatarLink
+                onClick={() => navigate("/settings")}
+                title="View Profile"
+              >
                 <Avatar src={avatarPlaceholder} alt="User Avatar" />
               </AvatarLink>
               <UserName>User 0</UserName>
@@ -99,13 +122,45 @@ const Dashboard = () => {
             <ProjectsSection>
               <SectionTitle>PROJECTS</SectionTitle>
               {projects.map((project) => (
-                <ProjectItem
+                <ProjectItemWrapper
                   key={project.id}
-                  isSelected={selectedProject === project.id}
-                  onClick={() => setSelectedProject(project.id)}
+                  onMouseEnter={() => setHoveredProject(project.id)}
+                  onMouseLeave={() => setHoveredProject(null)}
                 >
-                  {project.name}
-                </ProjectItem>
+                  <ProjectItem
+                    isSelected={selectedProject === project.id}
+                    onClick={() => setSelectedProject(project.id)}
+                  >
+                    <ProjectName>{project.name}</ProjectName>
+                    {(hoveredProject === project.id ||
+                      dropdownProject === project.id) && (
+                      <DotsButton
+                        onClick={(e) => handleDotsClick(e, project.id)}
+                        isActive={dropdownProject === project.id}
+                      >
+                        <svg
+                          width="16"
+                          height="4"
+                          viewBox="0 0 16 4"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle cx="2" cy="2" r="2" fill="white" />
+                          <circle cx="8" cy="2" r="2" fill="white" />
+                          <circle cx="14" cy="2" r="2" fill="white" />
+                        </svg>
+                      </DotsButton>
+                    )}
+                  </ProjectItem>
+                  {dropdownProject === project.id && (
+                    <DropdownMenu ref={dropdownRef}>
+                      <DropdownItem>Rename</DropdownItem>
+                      <DropdownItem>Duplicate</DropdownItem>
+                      <DropdownItem>Archive</DropdownItem>
+                      <DropdownItem danger>Delete</DropdownItem>
+                    </DropdownMenu>
+                  )}
+                </ProjectItemWrapper>
               ))}
             </ProjectsSection>
 
@@ -186,23 +241,37 @@ const Dashboard = () => {
 
         {searchModal && (
           <ModalOverlay>
-            <Modal>
+            <SearchModal>
               <ModalHeader>Search Projects</ModalHeader>
-              <ModalBody>
+              <SearchModalBody>
                 <Input
                   type="text"
                   placeholder="Search projects..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  autoFocus
                 />
-              </ModalBody>
+                <SearchResults>
+                  {filteredProjects.map((project) => (
+                    <SearchProjectItem
+                      key={project.id}
+                      isSelected={selectedProject === project.id}
+                      onClick={() => handleSearchItemClick(project.id)}
+                    >
+                      {project.name}
+                    </SearchProjectItem>
+                  ))}
+                  {filteredProjects.length === 0 && (
+                    <NoResults>No projects found</NoResults>
+                  )}
+                </SearchResults>
+              </SearchModalBody>
               <ModalFooter>
-                <Button onClick={handleSearchSubmit}>Search</Button>
                 <Button secondary onClick={handleSearchCancel}>
-                  Cancel
+                  Close
                 </Button>
               </ModalFooter>
-            </Modal>
+            </SearchModal>
           </ModalOverlay>
         )}
       </Content>
@@ -214,6 +283,7 @@ const Container = styled.div`
   display: flex;
   height: 100vh;
   background: linear-gradient(120deg, #f0f4ff, #ffffff);
+  font-style: inherit;
 `;
 
 const Sidebar = styled.aside`
@@ -223,6 +293,7 @@ const Sidebar = styled.aside`
   transition: width 0.3s ease;
   position: relative;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  y-overflow: scroll;
 `;
 
 const SidebarContent = styled.div`
@@ -266,7 +337,7 @@ const Modal = styled.div`
 `;
 
 const ModalHeader = styled.div`
-  background: #0b6fcb;
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   color: white;
   padding: 16px;
   font-size: 18px;
@@ -372,21 +443,6 @@ const SectionTitle = styled.div`
   margin-bottom: 4px;
 `;
 
-const ProjectItem = styled.button`
-  text-align: left;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: none;
-  background: ${(props) =>
-    props.isSelected ? "rgba(255, 255, 255, 0.2)" : "transparent"};
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-`;
 
 const NavIconsWrapper = styled.div`
   display: flex;
@@ -499,6 +555,150 @@ const ToggleIcon = styled.button`
 
   &:hover {
     transform: scale(1.1);
+  }
+`;
+
+const SearchModal = styled(Modal)`
+  width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const SearchModalBody = styled(ModalBody)`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  max-height: 60vh;
+`;
+
+const SearchResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+`;
+
+const ProjectItem = styled.button`
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: none;
+  background: ${(props) =>
+    props.isSelected ? "rgba(255, 255, 255, 0.2)" : "transparent"};
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+`;
+
+const SearchProjectItem = styled(ProjectItem)`
+  padding: 12px;
+  border-radius: 8px;
+  background: ${(props) =>
+    props.isSelected ? "rgba(11, 111, 203, 0.1)" : "white"};
+  color: ${(props) => (props.isSelected ? "#0b6fcb" : "#333")};
+  border: 1px solid #eee;
+
+  &:hover {
+    background: rgba(11, 111, 203, 0.05);
+    border-color: #0b6fcb;
+  }
+`;
+
+const NoResults = styled.div`
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+`;
+
+
+const ProjectItemWrapper = styled.div`
+  position: relative;
+`;
+
+
+
+const ProjectName = styled.span`
+  flex: 1;
+  margin-right: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const DotsButton = styled.button`
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+  opacity: ${(props) => (props.isActive ? 1 : 0.6)};
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg circle {
+    fill: white;
+  }
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  right: 12px;
+  top: 100%;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 160px;
+  z-index: 100;
+`;
+
+const DropdownItem = styled.button`
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: ${(props) => (props.danger ? "#dc3545" : "#333")};
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${(props) => (props.danger ? "#ffebee" : "#f5f5f5")};
   }
 `;
 
