@@ -112,7 +112,7 @@ const HeaderContainer = styled.div`
 `;
 
 const MoreButton = styled.button`
-  border-radius: 24px;
+  border-radius: 30px;
   background-color: #43a5fe;
   border: none;
   color: white;

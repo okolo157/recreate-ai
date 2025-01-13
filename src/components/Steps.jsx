@@ -79,8 +79,7 @@ function Steps() {
 }
 
 const AllWrapper = styled.div`
-  background: linear-gradient(135deg, rgba(16, 17, 40, 0.9), rgba(0, 0, 0, 0.7)),
-    url("../assets/images/background-5.png");
+  background: url("../assets/images/background-5.png");
   background-size: cover;
   background-position: center;
   padding: 40px 30px;
