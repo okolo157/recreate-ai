@@ -21,6 +21,8 @@ function Upload({
   setUploadedImage,
   isImageUploaded,
   setIsImageUploaded,
+  finalCode,
+  setFinalCode
 }) {
   const [selectedLanguage, setSelectedLanguage] = useState("JavaScript");
   const [hoveredHistory, setHoveredHistory] = useState(null);
@@ -28,7 +30,6 @@ function Upload({
   const [showCodeModal, setShowCodeModal] = useState(false);
   const [generatedCode, setGeneratedCode] = useState("");
   const [displayedCode, setDisplayedCode] = useState("");
-  const [finalCode, setFinalCode] = useState("");
 
   const fileInputRef = useRef(null);
 
@@ -55,7 +56,7 @@ function Upload({
         clearInterval(interval);
         if (callback) callback();
       }
-    }, 30); 
+    }, 30);
   };
 
   const handleImageUpload = async (e) => {
@@ -227,15 +228,6 @@ function Upload({
   );
 }
 
-const HistoryItemDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 8px;
-  font-size: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-`;
 
 const UploadPageContainer = styled.div`
   display: flex;

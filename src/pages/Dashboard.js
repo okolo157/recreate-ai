@@ -33,6 +33,7 @@ const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const [finalCode, setFinalCode] = useState("");
 
   const navigate = useNavigate();
 
@@ -71,6 +72,7 @@ const Dashboard = () => {
       setSelectedFile(null);
       setUploadedImage(null);
       setIsImageUploaded(false);
+      setFinalCode("");
     } else {
       alert("Project name cannot be empty.");
     }
@@ -264,6 +266,8 @@ const Dashboard = () => {
           setUploadedImage={setUploadedImage}
           isImageUploaded={isImageUploaded}
           setIsImageUploaded={setIsImageUploaded}
+          finalCode={finalCode}
+          setFinalCode={setFinalCode}
         />
 
         {projectModal && (
