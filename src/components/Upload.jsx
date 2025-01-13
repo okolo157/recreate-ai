@@ -384,7 +384,7 @@ const CodeModalContainer = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   overflow: auto;
   opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 `;
 
 const Backdrop = styled.div`
@@ -393,8 +393,19 @@ const Backdrop = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  z-index: 999; /* Below the modal but above other elements */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 // History Components

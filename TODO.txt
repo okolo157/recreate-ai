@@ -1,8 +1,8 @@
 -create settings - done
 -navigation to dashboard - done
--work on dashboard - in progress
--work on new project
--pass data dynamically from onboard to dashboard
+-work on dashboard - done
+-work on new project - done
+-pass data dynamically from onboard to dashboard - in progress
 -work intensively on homepage, maybe overhaual
 -complete focus on media queries
 -backend work && email logic

@@ -272,32 +272,47 @@ const Dashboard = () => {
 
         {projectModal && (
           <ModalOverlay>
-            <Modal>
-              <ModalHeader>Add New Project</ModalHeader>
+            <BaseModal>
+              <ModalHeader>
+                Create New Project
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  onClick={handleProjectCancel}
+                  size="lg"
+                />
+              </ModalHeader>
               <ModalBody>
                 <Input
                   type="text"
-                  placeholder="Project Name"
+                  placeholder="Enter project name..."
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
+                  autoFocus
                 />
               </ModalBody>
               <ModalFooter>
-                <Button onClick={handleProjectSave}>Save</Button>
-                <Button secondary onClick={handleProjectCancel}>
-                  Cancel
+                <Button onClick={handleProjectCancel}>Cancel</Button>
+                <Button primary onClick={handleProjectSave}>
+                  Create Project
                 </Button>
               </ModalFooter>
-            </Modal>
+            </BaseModal>
           </ModalOverlay>
         )}
 
         {searchModal && (
           <ModalOverlay>
-            <SearchModal>
-              <ModalHeader>Search Projects</ModalHeader>
-              <SearchModalBody>
-                <Input
+            <BaseModal wide>
+              <ModalHeader>
+                Search Projects
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  onClick={handleSearchCancel}
+                  size="lg"
+                />
+              </ModalHeader>
+              <ModalBody>
+                <SearchInput
                   type="text"
                   placeholder="Search projects..."
                   value={searchTerm}
@@ -318,13 +333,11 @@ const Dashboard = () => {
                     <NoResults>No projects found</NoResults>
                   )}
                 </SearchResults>
-              </SearchModalBody>
+              </ModalBody>
               <ModalFooter>
-                <Button secondary onClick={handleSearchCancel}>
-                  Close
-                </Button>
+                <Button onClick={handleSearchCancel}>Close</Button>
               </ModalFooter>
-            </SearchModal>
+            </BaseModal>
           </ModalOverlay>
         )}
       </Content>
@@ -390,63 +403,206 @@ const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
-const Modal = styled.div`
+const BaseModal = styled.div`
   background: white;
-  width: 400px;
-  border-radius: 8px;
+  width: ${(props) => (props.wide ? "500px" : "400px")};
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 const ModalHeader = styled.div`
   background: #05051e;
   color: white;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: bold;
+  padding: 20px 24px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  svg {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 const ModalBody = styled.div`
-  padding: 16px;
-  justify-self: center;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 const Input = styled.input`
   width: 90%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  justify-self: center;
+  align-self: center;
+  padding: 12px 16px;
+  margin: 0px
+  border: 2px solid #eaeaea;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #05051e;
+    box-shadow: 0 0 0 3px rgba(5, 5, 30, 0.1);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+`;
+
+const SearchInput = styled(Input)`
+  padding-left: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E")
+    no-repeat 12px center;
 `;
 
 const ModalFooter = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: 16px;
-  gap: 10px;
-  background: #f9f9f9;
+  padding: 20px 24px;
+  gap: 12px;
+  background: #f8f9fa;
+  border-top: 1px solid #eaeaea;
 `;
 
 const Button = styled.button`
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  background: ${(props) => (props.secondary ? "#ccc" : " #05051e;")};
-  color: ${(props) => (props.secondary ? "black" : "white")};
+  font-weight: 500;
+  transition: all 0.2s;
+  font-size: 14px;
+
+  ${(props) =>
+    props.primary
+      ? `
+    background: #05051e;
+    color: white;
+    
+    &:hover {
+      background: #0f0f3d;
+      transform: translateY(-1px);
+    }
+  `
+      : `
+    background: #eaeaea;
+    color: #333;
+    
+    &:hover {
+      background: #d5d5d5;
+    }
+  `}
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+const SearchResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-top: 8px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+`;
+
+const SearchProjectItem = styled.button`
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  background: ${(props) =>
+    props.isSelected ? "rgba(5, 5, 30, 0.05)" : "white"};
+  color: ${(props) => (props.isSelected ? "#05051e" : "#333")};
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-size: 14px;
 
   &:hover {
-    background: ${(props) =>
-      props.secondary ? "#b3b3b3" : "rgb(21, 21, 53);"};
+    background: rgba(5, 5, 30, 0.02);
+    border-color: #05051e;
+    transform: translateY(-1px);
   }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+const NoResults = styled.div`
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px dashed #ddd;
 `;
 
 const NewIcon = styled.div`
@@ -629,48 +785,6 @@ const ToggleIcon = styled.button`
   }
 `;
 
-const SearchModal = styled(Modal)`
-  width: 500px;
-  max-height: 80vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-const SearchModalBody = styled(ModalBody)`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  max-height: 60vh;
-`;
-
-const SearchResults = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 8px;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-`;
-
 const ProjectItem = styled.button`
   width: 100%;
   padding: 12px 16px;
@@ -689,27 +803,6 @@ const ProjectItem = styled.button`
   &:hover {
     background: rgba(255, 255, 255, 0.1);
   }
-`;
-
-const SearchProjectItem = styled(ProjectItem)`
-  padding: 12px;
-  border-radius: 8px;
-  background: ${(props) =>
-    props.isSelected ? "rgba(11, 111, 203, 0.1)" : "white"};
-  color: ${(props) => (props.isSelected ? "#0b6fcb" : "#333")};
-  border: 1px solid #eee;
-
-  &:hover {
-    background: rgba(11, 111, 203, 0.05);
-    border-color: #0b6fcb;
-  }
-`;
-
-const NoResults = styled.div`
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-style: italic;
 `;
 
 const ProjectItemWrapper = styled.div`
