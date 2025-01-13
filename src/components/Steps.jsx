@@ -35,7 +35,7 @@ function Steps() {
   return (
     <AllWrapper>
       <Title>
-        From design to <code>{"<code>"}</code> in 3 easy steps ⤵
+        From design to <code>{"<code/>"}</code> in 3 easy steps
       </Title>
       <FeaturesContainer>
         {features.map((feature, index) => (

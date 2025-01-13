@@ -254,6 +254,12 @@ const GradientButton = styled.button`
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const DashButton = styled.button`

@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import faqbg from "../assets/images/section-bg.png";
 
-
 function FAQs() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -81,7 +80,6 @@ function FAQs() {
     </FaqContainer>
   );
 }
-
 
 const FaqContainer = styled.div`
   margin-top: 70px;
@@ -198,6 +196,5 @@ const ToggleButton = styled.button`
     font-size: 1em;
   }
 `;
-
 
 export default FAQs;

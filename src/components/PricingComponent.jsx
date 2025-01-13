@@ -119,18 +119,23 @@ const MoreButton = styled.button`
   padding: 17px;
   font-size: 17px;
   margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    background-color: rgb(0, 110, 214);
-    cursor: pointer;
-    transition: 0.3s ease;
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: large;
+  font-size: 15px;
   color: grey;
   margin-top: 10px;
+  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const TextElements = styled.div`

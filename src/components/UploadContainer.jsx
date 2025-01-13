@@ -58,7 +58,6 @@ const Container = styled.div`
   background-position: center;
   background-blend-mode: overlay;
   background-attachment: fixed;
-  
   height: 90vh;
 
   @media (max-width: 1200px) {
@@ -194,7 +193,7 @@ const StyledButton = styled.button`
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px);
+    transform: scale(1.08);
   }
 `;
 

@@ -115,10 +115,12 @@ const FeatureTeam = styled.div`
   padding: 30px;
   margin-bottom: 40px;
   color: white;
-  transition: background 0.4s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
 
   &:hover {
-    background: linear-gradient(90deg, #0a0c26, #101128);
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 
   h3 {

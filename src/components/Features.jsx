@@ -132,9 +132,11 @@ const FeatureItem = styled.div`
   align-items: start;
   padding: 30px;
 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
   &:hover {
-    background: linear-gradient(90deg, #0a0c26, #101128);
-    transition: 0.4s ease-in-out;
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 
   p {
