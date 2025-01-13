@@ -3,8 +3,12 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/background-5.png";
+import { useNavigate } from "react-router-dom";
 
 function PricingComponent() {
+
+const navigate = useNavigate();
+
   const plans = [
     {
       name: "Free",
@@ -46,7 +50,13 @@ function PricingComponent() {
             with AI.
           </Subtitle>
         </TextElements>
-        <MoreButton>See more features</MoreButton>
+        <MoreButton
+          onClick={() => {
+            navigate("/pricing");
+          }}
+        >
+          See more features
+        </MoreButton>
       </HeaderContainer>
       <PricingWrapper>
         {plans.map((plan, index) => (
@@ -110,9 +120,9 @@ const MoreButton = styled.button`
   font-size: 17px;
 
   &:hover {
-    background-color:rgb(0, 110, 214);
+    background-color: rgb(0, 110, 214);
     cursor: pointer;
-    transition: 0.3s ease
+    transition: 0.3s ease;
   }
 `;
 

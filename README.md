@@ -91,10 +91,11 @@ recreate-ai-code-generator/
 
 ## Features
 
-- Upload images and convert them to code
+- Extract UI elements directly from Figma designs and convert them to code using Figma's API
+- Upload images/mockups of UI elements for code generation
 - User authentication (Sign Up, Sign In)
-- Responsive design
-- Interactive UI
+- Responsive design for seamless use across devices
+- Interactive and user-friendly interface
 
 ## Technologies Used
 
