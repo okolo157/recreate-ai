@@ -23,6 +23,7 @@ function SignUp() {
       toast.info("Please use Sign Up with Google for Gmail accounts");
       return;
     }
+    localStorage.setItem("email", email);
     Navigate("/password", { state: { isSignUp: true } });
   };
 

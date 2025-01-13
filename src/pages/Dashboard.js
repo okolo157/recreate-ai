@@ -36,6 +36,7 @@ const Dashboard = () => {
   const [finalCode, setFinalCode] = useState("");
 
   const navigate = useNavigate();
+  const email = localStorage.getItem("email");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -138,7 +139,7 @@ const Dashboard = () => {
               >
                 <Avatar src={avatarPlaceholder} alt="User  Avatar" />
               </AvatarLink>
-              <UserName>User 0</UserName>
+              <UserName>{email}</UserName>
               <PlanBadge>Free Plan</PlanBadge>
             </UserSection>
 
