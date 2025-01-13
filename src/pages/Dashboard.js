@@ -7,7 +7,6 @@ import {
   faCreditCard,
   faGear,
   faQuestionCircle,
-  faHistory,
   faSignOutAlt,
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
@@ -204,9 +203,7 @@ const Dashboard = () => {
                   icon={faQuestionCircle}
                 />
               </IconNavItem>
-              <IconNavItem>
-                <FontAwesomeIcon title="History" icon={faHistory} />
-              </IconNavItem>
+
               <IconNavItem onClick={() => navigate("/home")}>
                 <FontAwesomeIcon title="Logout" icon={faSignOutAlt} />
               </IconNavItem>
@@ -229,9 +226,7 @@ const Dashboard = () => {
                   icon={faQuestionCircle}
                 />
               </NavIcon>
-              <NavIcon>
-                <FontAwesomeIcon title="History" icon={faHistory} />
-              </NavIcon>
+
               <NavIcon>
                 <FontAwesomeIcon
                   onClick={() => navigate("/home")}

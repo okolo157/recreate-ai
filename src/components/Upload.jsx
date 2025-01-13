@@ -28,6 +28,7 @@ function Upload({
   const [hoveredHistory, setHoveredHistory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showCodeModal, setShowCodeModal] = useState(false);
+  // eslint-disable-next-line
   const [generatedCode, setGeneratedCode] = useState("");
   const [displayedCode, setDisplayedCode] = useState("");
 

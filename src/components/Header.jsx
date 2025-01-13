@@ -87,13 +87,20 @@ function Header() {
             Get Started
           </GradientButton>
         )}
-        {locator === "/settings" && (
+        {(locator === "/settings" || locator === "/help-center") && (
           <DashButton
             onClick={() => {
               navigate("/dashboard");
             }}
+            s
           >
-            Go to Dashboard
+            {locator === "/settings" ? (
+              <p>Go to Dashboard</p>
+            ) : locator === "/help-center" ? (
+              <p>Back to Dashboard</p>
+            ) : (
+              ""
+            )}
           </DashButton>
         )}
         {locator === "/stats" && (
