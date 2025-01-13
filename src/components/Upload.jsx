@@ -249,13 +249,13 @@ const HandleImageContainer = styled.div`
   justify-content: space-between;
   width: 80%;
   margin-top: 20px;
-  height: 40vh;
+  height: 60vh; /* Increased height */
   gap: 20px;
 `;
 
 // Upload Area Components
 const LeftElements = styled.div`
-  flex: 1;
+  flex: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,7 +287,7 @@ const StyledImage = styled.img`
 `;
 
 const RightElements = styled.div`
-  flex: 1;
+  flex: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
