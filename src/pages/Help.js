@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import bg from "../assets/images/background-5.png";
 
 function HelpCenter() {
   return (
@@ -146,6 +146,7 @@ function HelpCenter() {
 const HelpContainer = styled.div`
   padding: 48px 24px;
   min-height: 100vh;
+  background-image: url(${bg});
 `;
 
 const ContentWrapper = styled.div`
@@ -256,7 +257,7 @@ const ContactText = styled.p`
 `;
 
 const Button = styled.button`
-  background: #0b6fcb;
+  background:rgb(85, 98, 239);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -266,9 +267,8 @@ const Button = styled.button`
   transition: background 0.2s;
 
   &:hover {
-    background: #5469d4;
+    background:rgb(55, 62, 148);
   }
 `;
-
 
 export default HelpCenter;
