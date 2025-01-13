@@ -50,12 +50,13 @@ function Teams() {
 
 
 const AllTeams = styled.div`
-  margin-top: 80px;
+  // margin-top: 80px;
   background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-8.png");
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
   padding: 20px;
+  background-attachment: fixed;
 
   h2 {
     color: white;

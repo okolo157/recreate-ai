@@ -6,10 +6,10 @@ import {
   faCheckDouble,
   faGears,
   faPeopleArrows,
+  faShieldAlt,
+  faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import bg from "../assets/images/background-5.png";
-
-
 
 function Features() {
   const features = [
@@ -36,6 +36,18 @@ function Features() {
       description:
         "Our seamless GUI provides an interactive experience to our users, with limitless customization.",
       icon: faPeopleArrows,
+    },
+    {
+      heading: "Enhanced Security",
+      description:
+        "We prioritize security to ensure your data and projects are always safe and protected.",
+      icon: faShieldAlt,
+    },
+    {
+      heading: "Fast Performance",
+      description:
+        "Experience lightning-fast performance with our optimized algorithms and efficient processing.",
+      icon: faRocket,
     },
   ];
 
@@ -66,13 +78,14 @@ function Features() {
   );
 }
 
-
 const FeaturesAll = styled.div`
-  margin-top: 100px;
+  // margin-top: 100px;
   background-image: url(${bg});
   background-size: cover;
   background-blend-mode: overlay;
   padding: 20px;
+  background-position: center;
+  background-attachment: fixed;
 
   @media (max-width: 768px) {
     margin-top: 50px;
@@ -165,6 +178,5 @@ const Subtitle = styled.p`
     text-align: center;
   }
 `;
-
 
 export default Features;

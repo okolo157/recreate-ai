@@ -84,6 +84,7 @@ const PricingContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+  background-attachment: fixed;
 
   @media (max-width: 768px) {
     padding: 20px;

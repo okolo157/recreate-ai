@@ -63,6 +63,7 @@ const SectionContainer = styled.div`
   background-position: center;
   background-blend-mode: overlay;
   padding-top: 40px;
+  background-attachment: fixed;
 
   @media (max-width: 768px) {
     flex-direction: column;

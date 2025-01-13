@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
+import bg from "../assets/images/background-5.png";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [checked, setChecked] = useState(false);
@@ -14,16 +15,35 @@ function SignUp() {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!checked) {
       toast.info("Please accept terms and conditions");
+      return;
+    }
+
+    if (email === "") {
+      toast.info("Please enter your email address");
+      return;
+    }
+
+    // Validate email format regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.info("Please enter a valid email address");
+      return;
     }
 
     if (email.includes("gmail.com")) {
       toast.info("Please use Sign Up with Google for Gmail accounts");
       return;
     }
-    localStorage.setItem("email", email);
+
+    // Sanitize email input for local storage
+    const sanitizedEmail = email.replace(/[^\w@.-]/g, "");
+
+    localStorage.setItem("email", sanitizedEmail);
     Navigate("/password", { state: { isSignUp: true } });
   };
 
@@ -86,6 +106,8 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 1rem;
+  background-image: url(${bg});
+  background-attachment: fixed;
 `;
 
 const Card = styled.div`

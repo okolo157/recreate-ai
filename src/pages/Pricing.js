@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 import bg from "../assets/images/background-5.png";
+import bg2 from "../assets/images/section-bg-6.png";
 import FAQs from "../components/FAQs";
 
 const Support = () => {
@@ -191,6 +192,8 @@ const Container = styled.div`
   padding: 3rem 1rem;
   background-image: url(${bg});
   background-blend-mode: overlay;
+  background-attachment: fixed;
+  background-size: cover;
 `;
 
 const ContentWrapper = styled.div`
@@ -365,6 +368,11 @@ const Td = styled.td`
 const SupportContainer = styled.div`
   color: white;
   padding: 70px;
+  background-image: url(${bg2});
+  background-blend-mode: overlay;
+  background-attachment: fixed;
+  // background-position: center;
+  background-size: cover;
 `;
 
 const TextElements = styled.div`

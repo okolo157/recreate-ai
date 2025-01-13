@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+import bg from "../assets/images/background-5.png";
+
 function PasswordScreen() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -40,10 +42,12 @@ function PasswordScreen() {
       if (isSignUp) {
         navigate("/settings");
       } else {
-        navigate("/dashboard"); 
+        navigate("/dashboard");
       }
     } else {
-      setError("Password must be at least 8 characters, include a number, an uppercase letter, and a special character.");
+      setError(
+        "Password must be at least 8 characters, include a number, an uppercase letter, and a special character."
+      );
     }
   };
 
@@ -94,7 +98,7 @@ function PasswordScreen() {
           {location.pathname !== "/signup" && !isSignUp && (
             <ForgotPwd>
               Forgot Password? Click{" "}
-              <StyledLink to="/resetpwd">here</StyledLink>{" "}to reset it
+              <StyledLink to="/resetpwd">here</StyledLink> to reset it
             </ForgotPwd>
           )}
         </Content>
@@ -110,6 +114,8 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 1rem;
+  background-image: url(${bg});
+  background-attachment: fixed;
 `;
 
 const Card = styled.div`

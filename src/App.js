@@ -72,7 +72,7 @@ const AppContainer = styled.div`
 
 const MainContent = styled.main`
   margin-top: ${({ location }) =>
-    location.pathname === "/dashboard" ? "0" : "110px"};
+    location.pathname === "/dashboard" ? "0" : "100px"};
 `;
 
 const HeaderWrapper = styled.header``;

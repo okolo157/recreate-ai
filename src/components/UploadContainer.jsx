@@ -57,6 +57,8 @@ const Container = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+  background-attachment: fixed;
+  
   height: 90vh;
 
   @media (max-width: 1200px) {

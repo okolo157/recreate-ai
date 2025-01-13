@@ -3,6 +3,6 @@
 -work on dashboard - done
 -work on new project - done
 -pass data dynamically from onboard to dashboard - done
--work intensively on homepage, maybe overhaual - in progress
+-work intensively on homepage, maybe overhaual - done, used fixed attachment for cleaner look
 -complete focus on media queries
 -backend work && email logic
