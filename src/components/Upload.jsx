@@ -22,7 +22,7 @@ function Upload({
   isImageUploaded,
   setIsImageUploaded,
   finalCode,
-  setFinalCode
+  setFinalCode,
 }) {
   const [selectedLanguage, setSelectedLanguage] = useState("JavaScript");
   const [hoveredHistory, setHoveredHistory] = useState(null);
@@ -193,7 +193,13 @@ function Upload({
                 onMouseEnter={() => setHoveredHistory(item.id)}
                 onMouseLeave={() => setHoveredHistory(null)}
               >
-                <HistoryItem>
+                <HistoryItem
+                  onClick={() => {
+                    const code = generateDummyCode(item.name);
+                    setDisplayedCode(code);
+                    setShowCodeModal(true);
+                  }}
+                >
                   <HistoryName>
                     <FileIcon>📄</FileIcon>
                     <div>
@@ -227,7 +233,6 @@ function Upload({
     </UploadPageContainer>
   );
 }
-
 
 const UploadPageContainer = styled.div`
   display: flex;
