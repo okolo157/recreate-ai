@@ -35,7 +35,6 @@ function Header() {
         </Link>
       </LogoContainer>
       <NavItems open={isMenuOpen}>
-        
         <div
           onMouseEnter={() => setShowServicesDropdown(true)}
           onMouseLeave={() => setShowServicesDropdown(false)}
@@ -153,7 +152,6 @@ const NavItems = styled.nav`
   align-items: center;
   height: 100%;
   padding: 20px;
-
 
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? "flex" : "none")};

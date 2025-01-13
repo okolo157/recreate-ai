@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProject, setSelectedProject] = useState("project1");
   const [projects, setProjects] = useState([
-    { id: "project1", name: "Default" },
+    { id: "project1", name: "Default", history: [] },
   ]);
   const [projectModal, setProjectModal] = useState(false);
   const [newProjectName, setNewProjectName] = useState("");
@@ -30,6 +30,9 @@ const Dashboard = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [dropdownProject, setDropdownProject] = useState(null);
   const dropdownRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
 
   const navigate = useNavigate();
 
@@ -59,11 +62,15 @@ const Dashboard = () => {
       const newProject = {
         id: `project${projects.length + 1}`,
         name: newProjectName,
+        history: [],
       };
       setProjects([...projects, newProject]);
       setSelectedProject(newProject.id);
       setProjectModal(false);
       setSidebarOpen(true);
+      setSelectedFile(null);
+      setUploadedImage(null);
+      setIsImageUploaded(false);
     } else {
       alert("Project name cannot be empty.");
     }
@@ -127,7 +134,7 @@ const Dashboard = () => {
                 onClick={() => navigate("/settings")}
                 title="View Profile"
               >
-                <Avatar src={avatarPlaceholder} alt="User Avatar" />
+                <Avatar src={avatarPlaceholder} alt="User  Avatar" />
               </AvatarLink>
               <UserName>User 0</UserName>
               <PlanBadge>Free Plan</PlanBadge>
@@ -233,7 +240,6 @@ const Dashboard = () => {
           </CollapsedSidebar>
         )}
       </Sidebar>
-
       <Content>
         <PlanAlert>
           <AlertIcon>
@@ -248,7 +254,17 @@ const Dashboard = () => {
           </AlertText>
         </PlanAlert>
 
-        <Upload />
+        <Upload
+          selectedProject={selectedProject}
+          projects={projects}
+          setProjects={setProjects}
+          selectedFile={selectedFile}
+          setSelectedFile={setSelectedFile}
+          uploadedImage={uploadedImage}
+          setUploadedImage={setUploadedImage}
+          isImageUploaded={isImageUploaded}
+          setIsImageUploaded={setIsImageUploaded}
+        />
 
         {projectModal && (
           <ModalOverlay>

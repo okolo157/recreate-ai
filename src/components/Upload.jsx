@@ -1,22 +1,40 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
-function Upload() {
-  const [selectedFile, setSelectedFile] = useState(null);
+function Upload({
+  selectedProject,
+  projects,
+  setProjects,
+  selectedFile,
+  setSelectedFile,
+  uploadedImage,
+  setUploadedImage,
+  isImageUploaded,
+  setIsImageUploaded,
+}) {
   const [selectedLanguage, setSelectedLanguage] = useState("JavaScript");
-    const fileInputRef = useRef(null);  
+  const fileInputRef = useRef(null);
 
-  const onFileChange = (event) => {
-    const file = event.target.files[0];
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
     if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setUploadedImage(imageUrl);
       setSelectedFile(file);
-      console.log("File selected:", file);
+      setIsImageUploaded(true);
+      setProjects((prevProjects) =>
+        prevProjects.map((project) =>
+          project.id === selectedProject
+            ? { ...project, history: [...project.history, imageUrl] }
+            : project
+        )
+      );
     }
   };
 
-    const triggerFileInput = () => {
-      fileInputRef.current.click();
-    };
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
@@ -42,13 +60,18 @@ function Upload() {
 
       <HandleImageContainer>
         <LeftElements onClick={triggerFileInput}>
-          <p>Click anywhere to upload image</p>
+          {!isImageUploaded ? <p>Click anywhere to upload image</p> : ""}
           <FileInput
             type="file"
             accept="image/*"
-            onChange={onFileChange}
+            onChange={handleImageUpload}
             ref={fileInputRef}
           />
+          {uploadedImage && (
+            <ImageContainer>
+              <img src={uploadedImage} alt="Uploaded" />
+            </ImageContainer>
+          )}
         </LeftElements>
 
         <RightElements>
@@ -62,6 +85,18 @@ function Upload() {
           </CodeContainer>
         </RightElements>
       </HandleImageContainer>
+      <HistorySection>
+        <h3>Conversion History</h3>
+        <HistoryList>
+          {projects
+            .find((project) => project.id === selectedProject)
+            ?.history.map((image, index) => (
+              <HistoryItem key={index}>
+                <img src={image} alt={`History ${index}`} />
+              </HistoryItem>
+            ))}
+        </HistoryList>
+      </HistorySection>
     </UploadPageContainer>
   );
 }
@@ -87,6 +122,8 @@ const LanguageDropdown = styled.select`
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  background: none;
+  color: white
 `;
 
 const HandleImageContainer = styled.div`
@@ -95,7 +132,7 @@ const HandleImageContainer = styled.div`
   width: 80%;
   margin-top: 20px;
   height: 40vh;
-  gap: 20px
+  gap: 20px;
 `;
 
 const LeftElements = styled.div`
@@ -129,6 +166,17 @@ const RightElements = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
 `;
 
+const ImageContainer = styled.div`
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: inline-block;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+`;
+
 const CodeContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -139,6 +187,29 @@ const CodeContainer = styled.div`
   padding: 10px;
   overflow: auto;
   font-family: monospace;
+`;
+
+const HistorySection = styled.div`
+  margin: 100px;
+`;
+
+const HistoryList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+const HistoryItem = styled.div`
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const FileInput = styled.input`
