@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import bg from "../assets/images/background-7.png";
+import bg from "../assets/images/background-5.png";
 
 function Settings() {
   const [showDelete, setShowDelete] = useState(false);
@@ -115,9 +115,9 @@ const Container = styled.div`
   padding: 40px;
   text-align: left;
   background-image: url(${bg});
-  background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+  background-attachment: fixed
 `;
 
 const BasicInfo = styled.div`

@@ -238,7 +238,7 @@ const Dashboard = () => {
           </CollapsedSidebar>
         )}
       </Sidebar>
-      <Content>
+      <Content isSidebarOpen={isSidebarOpen}>
         <PlanAlert>
           <AlertIcon>
             <FontAwesomeIcon icon={faCreditCard} />
@@ -356,7 +356,11 @@ const Sidebar = styled.aside`
   background: #05051e;
   color: white;
   transition: width 0.3s ease;
-  position: relative;
+  position: fixed; /* Change to fixed */
+  left: 0; /* Align to the left */
+  top: 0; /* Align to the top */
+  height: 100%; /* Full height */
+  z-index: 1000; /* Ensure it is above other content */
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
   overflow: auto;
 
@@ -366,10 +370,6 @@ const Sidebar = styled.aside`
   }
 
   scrollbar-width: none;
-
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-  }
 
   ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.3);
@@ -711,6 +711,10 @@ const Content = styled.main`
   flex: 1;
   padding: 30px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 80px;
 `;
 
 const PlanAlert = styled.div`
@@ -718,6 +722,8 @@ const PlanAlert = styled.div`
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
+  width: 100%;
+  max-width: 800px; /* Set a max-width for better centering */
   display: flex;
   align-items: center;
   gap: 12px;

@@ -147,6 +147,7 @@ const HelpContainer = styled.div`
   padding: 48px 24px;
   min-height: 100vh;
   background-image: url(${bg});
+  background-attachment: fixed;
 `;
 
 const ContentWrapper = styled.div`

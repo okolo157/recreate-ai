@@ -121,6 +121,10 @@ function Upload({
     console.log("Selected language:", event.target.value);
   };
 
+  const currentProject = projects.find(
+    (project) => project.id === selectedProject
+  );
+
   return (
     <UploadPageContainer>
       <DropdownContainer>
@@ -186,9 +190,8 @@ function Upload({
       <HistorySection>
         <SectionTitle>CONVERSION HISTORY</SectionTitle>
         <HistoryList>
-          {projects
-            .find((project) => project.id === selectedProject)
-            ?.history.map((item, index) => (
+          {currentProject?.history.length > 0 ? (
+            currentProject.history.map((item, index) => (
               <HistoryItemWrapper
                 key={item.id || index}
                 onMouseEnter={() => setHoveredHistory(item.id)}
@@ -228,7 +231,10 @@ function Upload({
                   )}
                 </HistoryItem>
               </HistoryItemWrapper>
-            ))}
+            ))
+          ) : (
+            <NoHistoryText>No conversion history yet.</NoHistoryText>
+          )}
         </HistoryList>
       </HistorySection>
     </UploadPageContainer>
@@ -243,6 +249,7 @@ const UploadPageContainer = styled.div`
   height: 100vh;
   color: white;
   padding: 20px;
+  width: 100%;
 `;
 
 const HandleImageContainer = styled.div`
@@ -411,7 +418,7 @@ const Backdrop = styled.div`
 
 // History Components
 const HistorySection = styled.div`
-  margin-top: 30px;
+  margin-top: 40px;
   width: 80%;
 `;
 
@@ -468,6 +475,7 @@ const SectionTitle = styled.div`
   color: rgba(255, 255, 255, 0.7);
   padding: 0 12px;
   margin-bottom: 8px;
+
 `;
 
 const ActionButton = styled.button`
@@ -487,6 +495,13 @@ const ActionButton = styled.button`
   svg circle {
     fill: white;
   }
+`;
+
+const NoHistoryText = styled.div`
+  text-align: center;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
 `;
 
 export default Upload;

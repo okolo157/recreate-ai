@@ -6,8 +6,7 @@ import bg from "../assets/images/background-5.png";
 import { useNavigate } from "react-router-dom";
 
 function PricingComponent() {
-
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const plans = [
     {
@@ -109,6 +108,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   margin-bottom: 44px;
   flex-direction: column;
+  text-align: center;
 `;
 
 const MoreButton = styled.button`
@@ -118,6 +118,7 @@ const MoreButton = styled.button`
   color: white;
   padding: 17px;
   font-size: 17px;
+  margin-top: 20px;
 
   &:hover {
     background-color: rgb(0, 110, 214);
@@ -129,6 +130,7 @@ const MoreButton = styled.button`
 const Subtitle = styled.p`
   font-size: large;
   color: grey;
+  margin-top: 10px;
 `;
 
 const TextElements = styled.div`
@@ -152,7 +154,7 @@ const Title = styled.h2`
 const PricingWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 27px;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
@@ -161,13 +163,21 @@ const PricingWrapper = styled.div`
 `;
 
 const PricingCard = styled.div`
-  backdrop-filter: blur(20px);
-  border: groove 1px green;
+  backdrop-filter: blur(4px);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #424286;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   padding: 30px;
-  width: 300px;
+  width: 280px;
   text-align: center;
+  // background: rgba(16, 17, 40, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    // background: linear-gradient(135deg, #1e1e4a, #0f0f33);
+  }
 
   @media (max-width: 768px) {
     width: 100%;
@@ -214,11 +224,7 @@ const FeaturesList = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 64%;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 const FeaturesContainer = styled.div`
@@ -232,7 +238,7 @@ const FeatureItem = styled.li`
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   @media (max-width: 768px) {
     font-size: 0.9em;
@@ -252,6 +258,7 @@ const SubscribeButton = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   font-size: 1em;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #0b6fcb;
