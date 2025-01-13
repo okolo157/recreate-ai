@@ -25,6 +25,11 @@ function Upload({
   const [selectedLanguage, setSelectedLanguage] = useState("JavaScript");
   const [hoveredHistory, setHoveredHistory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showCodeModal, setShowCodeModal] = useState(false);
+  const [generatedCode, setGeneratedCode] = useState("");
+  const [displayedCode, setDisplayedCode] = useState("");
+  const [finalCode, setFinalCode] = useState("");
+
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -35,6 +40,23 @@ function Upload({
       }
     };
   }, [uploadedImage]);
+
+  const generateDummyCode = (fileName) => {
+    return `// Code generated for ${fileName}\n\nfunction example() {\n  console.log("This is a dummy code for ${fileName}");\n}`;
+  };
+
+  const simulateTypewriterEffect = (code, callback) => {
+    let index = 0;
+    setDisplayedCode("");
+    const interval = setInterval(() => {
+      setDisplayedCode((prev) => prev + code[index]);
+      index++;
+      if (index === code.length) {
+        clearInterval(interval);
+        if (callback) callback();
+      }
+    }, 30); 
+  };
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -72,6 +94,14 @@ function Upload({
               : project
           )
         );
+
+        // Generate dummy code and show code modal
+        const code = generateDummyCode(file.name);
+        setGeneratedCode(code);
+        setShowCodeModal(true);
+        simulateTypewriterEffect(code, () => {
+          setFinalCode(code);
+        });
       } catch (error) {
         console.error("Error processing image:", error);
       } finally {
@@ -87,22 +117,6 @@ function Upload({
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
     console.log("Selected language:", event.target.value);
-  };
-
-  const renderHistory = () => {
-    const currentProject = projects.find(
-      (project) => project.id === selectedProject
-    );
-
-    return currentProject?.history.map((item) => (
-      <HistoryItem key={item.id}>
-        <HistoryItemDetails>
-          <div>{item.name}</div>
-          <div>{new Date(item.timestamp).toLocaleDateString()}</div>
-          <div>{(item.size / 1024).toFixed(2)} KB</div>
-        </HistoryItemDetails>
-      </HistoryItem>
-    ));
   };
 
   return (
@@ -154,13 +168,18 @@ function Upload({
         <RightElements>
           <h2>Generated Code</h2>
           <CodeContainer>
-            <pre>
-              {selectedFile
-                ? `// Code generated for ${selectedFile.name}`
-                : "// No code generated yet."}
-            </pre>
+            <pre>{finalCode ? finalCode : "// No code generated yet."}</pre>
           </CodeContainer>
         </RightElements>
+
+        {showCodeModal && (
+          <>
+            <Backdrop onClick={() => setShowCodeModal(false)} />
+            <CodeModalContainer>
+              <pre>{displayedCode}</pre>
+            </CodeModalContainer>
+          </>
+        )}
       </HandleImageContainer>
       <HistorySection>
         <SectionTitle>CONVERSION HISTORY</SectionTitle>
@@ -208,7 +227,6 @@ function Upload({
   );
 }
 
-
 const HistoryItemDetails = styled.div`
   display: flex;
   flex-direction: column;
@@ -218,7 +236,6 @@ const HistoryItemDetails = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 `;
-
 
 const UploadPageContainer = styled.div`
   display: flex;
@@ -351,6 +368,36 @@ const CodeContainer = styled.div`
   padding: 10px;
   overflow: auto;
   font-family: monospace;
+`;
+
+const CodeModalContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #00ff00;
+  font-family: monospace;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+`;
+
+const Backdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Below the modal but above other elements */
 `;
 
 // History Components
