@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import faqbg from "../assets/images/section-bg.png";
+import faqbg from "../assets/images/background-5.png";
 
 function FAQs() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -82,14 +82,12 @@ function FAQs() {
 }
 
 const FaqContainer = styled.div`
-  margin-top: 70px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  // background-image: url(${faqbg});
-  background-size: cover;
+  padding: 40px;
+  background-image: url(${faqbg});
   background-position: center;
   background-blend-mode: overlay;
   color: white;

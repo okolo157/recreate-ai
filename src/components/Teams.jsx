@@ -1,8 +1,7 @@
 import React from "react";
 import { DesignServices, DeveloperMode, Message } from "@mui/icons-material";
 import styled from "styled-components";
-
-
+import bg from "../assets/images/galaxy-bg.jpg";
 
 function Teams() {
   const features = [
@@ -29,12 +28,6 @@ function Teams() {
   return (
     <AllTeams>
       <h2>Connect the dots between teams</h2>
-      <Paragraph>
-        Build communication without friction across teams and keep everyone in
-        the loop whether they’re working in an office or remotely. <br />{" "}
-        Deliver better outcomes faster with a design to CSS tool that makes the
-        collaboration process easy.
-      </Paragraph>
       <FeaturesTeams>
         {features.map((feature, index) => (
           <FeatureTeam key={index}>
@@ -48,15 +41,15 @@ function Teams() {
   );
 }
 
-
 const AllTeams = styled.div`
   // margin-top: 80px;
-  background-image: url("https://wphtml.com/html/tf/aithm-demo/assets/img/banner/background-8.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(${bg});
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay;
-  padding: 20px;
+  padding: 40px;
   background-attachment: fixed;
+  padding: 20px;
 
   h2 {
     color: white;
@@ -117,7 +110,6 @@ const FeatureTeam = styled.div`
   color: white;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 
-
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -152,11 +144,10 @@ const FeatureTeam = styled.div`
 `;
 
 const Paragraph = styled.p`
-  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
+  background: white;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
-
 
 export default Teams;

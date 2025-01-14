@@ -5,7 +5,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import bg from "../assets/images/gen-ai.webp";
-import bg2 from "../assets/images/background-5.png";
+import bg2 from "../assets/images/galaxy-bg.jpg";
 
 
 function AboutSection() {
@@ -15,9 +15,6 @@ function AboutSection() {
         <Image src={bg} height="700px" alt="left side" />
       </Left>
       <RightSide>
-        <Paragraph style={{ marginBottom: "-20px" }}>
-          What recreate can do
-        </Paragraph>
         <Title>Code Quicker with Recreate.</Title>
         <Subtitle>
           Our AI systems can analyze data, to provide pixel perfect code for
@@ -58,11 +55,11 @@ function AboutSection() {
 
 const SectionContainer = styled.div`
   display: flex;
-  background-image: url(${bg2});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(${bg2});
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay;
-  padding-top: 40px;
+  padding: 40px;
   background-attachment: fixed;
 
   @media (max-width: 768px) {
@@ -71,6 +68,7 @@ const SectionContainer = styled.div`
     padding-top: 20px;
   }
 `;
+
 
 const Left = styled.div`
   flex: 50%;

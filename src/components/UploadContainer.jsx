@@ -15,75 +15,95 @@ function UploadContainer() {
   const subHeadingRef = useRef(null);
   const uploadContainerRef = useRef(null);
 
-  useEffect(() => {
-    // Set initial states
-    gsap.set(
-      [headingRef.current, subHeadingRef.current, uploadContainerRef.current],
-      {
-        opacity: 0,
-        y: 20,
-      }
-    );
-
-    // Create timeline
-    const tl = gsap.timeline();
-
-    // Animate title
-    tl.fromTo(
-      titleRef.current,
-      {
-        width: 0,
-        opacity: 1,
-      },
-      {
-        duration: 2,
-        width: "auto",
-        ease: "steps(25)",
-      }
-    )
-      // Animate heading
-      .to(headingRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out",
-      })
-      // Animate subheading
-      .to(
-        subHeadingRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.4"
-      )
-      // Animate container
-      .to(
-        uploadContainerRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.4"
-      );
-
-    // Add cursor blink animation
-    gsap.to(titleRef.current, {
-      borderRight: "3px solid transparent",
-      repeat: -1,
-      duration: 0.8,
-      ease: "steps(1)",
-      yoyo: true,
+  // Utility function to split text into spans
+  const splitText = (element) => {
+    const text = element.textContent;
+    element.textContent = "";
+    text.split("").forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char === " " ? "\u00A0" : char; // Handle spaces
+      element.appendChild(span);
     });
+  };
 
-    return () => {
-      tl.kill();
-    };
-  }, []);
+ useEffect(() => {
+   // Split text for animations
+   splitText(titleRef.current);
+   splitText(headingRef.current);
+   splitText(subHeadingRef.current);
+
+   // Select all spans
+   const titleSpans = titleRef.current.querySelectorAll("span");
+   const headingSpans = headingRef.current.querySelectorAll("span");
+   const subHeadingSpans = subHeadingRef.current.querySelectorAll("span");
+
+   // Set initial states
+   gsap.set([titleSpans, headingSpans, subHeadingSpans], {
+     opacity: 0,
+     y: 50,
+     rotateX: 90,
+   });
+
+   gsap.set(uploadContainerRef.current, {
+     opacity: 0,
+     scale: 0.8,
+   });
+
+   // Create timeline
+   const tl = gsap.timeline({ delay: 0.5 });
+
+   // Animate title
+   tl.to(titleSpans, {
+     opacity: 1,
+     y: 0,
+     rotateX: 0,
+     duration: 1.2,
+     stagger: 0.05,
+     ease: "back.out(1.7)",
+   })
+     // Animate heading
+     .to(
+       headingSpans,
+       {
+         opacity: 1,
+         y: 0,
+         rotateX: 0,
+         duration: 1,
+         stagger: 0.04,
+         ease: "elastic.out(1, 0.5)",
+       },
+       "-=0.5"
+     )
+     // Animate subheading
+     .to(
+       subHeadingSpans,
+       {
+         opacity: 1,
+         y: 0,
+         rotateX: 0,
+         duration: 1,
+         stagger: 0.03,
+         ease: "power4.out",
+       },
+       "-=0.8"
+     )
+     // Animate container with bounce effect
+     .to(
+       uploadContainerRef.current,
+       {
+         opacity: 1,
+         scale: 1,
+         duration: 1,
+         ease: "bounce.out",
+       },
+       "-=0.5"
+     );
+
+   return () => {
+     tl.kill();
+   };
+ }, []);
+
 
   const handleNavigate = () => {
     gsap.to(
@@ -156,7 +176,6 @@ const StyledParagraph = styled.p`
   font-size: 24px;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid #0b6fcb;
   margin: 0;
   padding: 0;
 
