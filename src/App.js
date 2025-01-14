@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Upload from "./components/Upload";
 import Footer from "./components/Footer";
@@ -25,9 +25,9 @@ function App() {
       <AppContainer>
         {location.pathname !== "/upload" &&
           location.pathname !== "/dashboard" && (
-            <HeaderWrapper>
-              <Header />
-            </HeaderWrapper>
+            <NavWrapper>
+              <Navbar />
+            </NavWrapper>
           )}
         <MainContent location={location}>
           <Routes>
@@ -44,7 +44,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/stats" element={<UsageInfo />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="help-center" element={<HelpCenter />} />
+            <Route path="/help-center" element={<HelpCenter />} />
           </Routes>
         </MainContent>
         {location.pathname !== "/upload" &&
@@ -75,7 +75,7 @@ const MainContent = styled.main`
     location.pathname === "/dashboard" ? "0" : "90px"};
 `;
 
-const HeaderWrapper = styled.header``;
+const NavWrapper = styled.header``;
 
 const FooterWrapper = styled.footer`
 `;

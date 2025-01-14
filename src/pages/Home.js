@@ -1,5 +1,5 @@
 import React from "react";
-import UploadContainer from "../components/UploadContainer";
+import Header from "../components/Header";
 import Features from "../components/Features";
 import AboutSection from "../components/AboutSection";
 import Steps from "../components/Steps";
@@ -10,7 +10,7 @@ import FAQs from "../components/FAQs";
 function Home() {
   return (
     <>
-      <UploadContainer />
+      <Header />
       <Steps />
       <Pricing />
       <AboutSection />
