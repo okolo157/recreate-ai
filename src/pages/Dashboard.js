@@ -14,7 +14,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import avatarPlaceholder from "../assets/images/unnamed.jpg";
 import Upload from "../components/Upload";
-import bgImg from "../assets/images/background-5.png";
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -345,10 +344,8 @@ const Container = styled.div`
   display: flex;
   height: 100vh;
   font-style: inherit;
-  background-image: url(${bgImg});
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
+  background:rgb(10, 10, 40); 
+
 `;
 
 const Sidebar = styled.aside`

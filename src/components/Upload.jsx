@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
 import styled from "styled-components";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { TextPlugin } from "gsap/TextPlugin";
+
+// Register GSAP plugins
+gsap.registerPlugin(TextPlugin);
 
 const LazyImage = React.lazy(() =>
   Promise.resolve({
@@ -28,15 +34,13 @@ function Upload({
   const [hoveredHistory, setHoveredHistory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showCodeModal, setShowCodeModal] = useState(false);
-  // eslint-disable-next-line
   const [generatedCode, setGeneratedCode] = useState("");
-  const [displayedCode, setDisplayedCode] = useState("");
+  const codeModalRef = useRef(null);
 
   const fileInputRef = useRef(null);
-
+  
   useEffect(() => {
     return () => {
-      // Cleanup any existing object URLs
       if (uploadedImage) {
         URL.revokeObjectURL(uploadedImage);
       }
@@ -45,19 +49,6 @@ function Upload({
 
   const generateDummyCode = (fileName) => {
     return `// Code generated for ${fileName}\n\nfunction example() {\n  console.log("This is a dummy code for ${fileName}");\n}`;
-  };
-
-  const simulateTypewriterEffect = (code, callback) => {
-    let index = 0;
-    setDisplayedCode("");
-    const interval = setInterval(() => {
-      setDisplayedCode((prev) => prev + code[index]);
-      index++;
-      if (index === code.length) {
-        clearInterval(interval);
-        if (callback) callback();
-      }
-    }, 30);
   };
 
   const handleImageUpload = async (e) => {
@@ -70,7 +61,7 @@ function Upload({
           URL.revokeObjectURL(uploadedImage);
         }
 
-        // Simulating some processing time
+        // Simulating processing time
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
         const imageUrl = URL.createObjectURL(file);
@@ -97,13 +88,10 @@ function Upload({
           )
         );
 
-        // Generate dummy code and show code modal
         const code = generateDummyCode(file.name);
         setGeneratedCode(code);
         setShowCodeModal(true);
-        simulateTypewriterEffect(code, () => {
-          setFinalCode(code);
-        });
+        setFinalCode(code);
       } catch (error) {
         console.error("Error processing image:", error);
       } finally {
@@ -118,12 +106,32 @@ function Upload({
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
-    console.log("Selected language:", event.target.value);
   };
 
   const currentProject = projects.find(
     (project) => project.id === selectedProject
   );
+
+  // GSAP animation for code modal
+  useGSAP(() => {
+    if (showCodeModal && codeModalRef.current) {
+      gsap.fromTo(
+        codeModalRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.3 }
+      );
+
+      // Typewriter effect
+      gsap.to(codeModalRef.current, {
+        duration: generatedCode.length * 0.03,
+        text: {
+          value: generatedCode,
+          delimiter: "",
+        },
+        ease: "none",
+      });
+    }
+  }, [showCodeModal, generatedCode]);
 
   return (
     <UploadPageContainer>
@@ -174,19 +182,21 @@ function Upload({
         <RightElements>
           <h2>Generated Code</h2>
           <CodeContainer>
-            <pre>{finalCode ? finalCode : "// No code generated yet."}</pre>
+            <pre>{finalCode || "// No code generated yet."}</pre>
           </CodeContainer>
         </RightElements>
 
         {showCodeModal && (
           <>
             <Backdrop onClick={() => setShowCodeModal(false)} />
-            <CodeModalContainer>
-              <pre>{displayedCode}</pre>
+            <CodeModalContainer ref={codeModalRef}>
+              <CloseButton onClick={() => setShowCodeModal(false)}>×</CloseButton>
+              <pre></pre>
             </CodeModalContainer>
           </>
         )}
       </HandleImageContainer>
+
       <HistorySection>
         <SectionTitle>CONVERSION HISTORY</SectionTitle>
         <HistoryList>
@@ -200,7 +210,7 @@ function Upload({
                 <HistoryItem
                   onClick={() => {
                     const code = generateDummyCode(item.name);
-                    setDisplayedCode(code);
+                    setGeneratedCode(code);
                     setShowCodeModal(true);
                   }}
                 >
@@ -257,11 +267,10 @@ const HandleImageContainer = styled.div`
   justify-content: space-between;
   width: 80%;
   margin-top: 20px;
-  height: 60vh; /* Increased height */
+  height: 60vh;
   gap: 20px;
 `;
 
-// Upload Area Components
 const LeftElements = styled.div`
   flex: 5;
   display: flex;
@@ -306,7 +315,6 @@ const RightElements = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
 `;
 
-// Loading Components
 const LoadingContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -342,27 +350,27 @@ const UploadPrompt = styled.p`
   opacity: 0.8;
 `;
 
-// Form Components
 const DropdownContainer = styled.div`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: monospace;
 `;
 
 const LanguageDropdown = styled.select`
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
-  background: none;
-  color: white;
+  background: #111;
+  color: #00ff00;
+  font-family: monospace;
 `;
 
 const FileInput = styled.input`
   display: none;
 `;
 
-// Code Display Components
 const CodeContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -391,8 +399,23 @@ const CodeModalContainer = styled.div`
   font-family: monospace;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   overflow: auto;
-  opacity: 1;
-  transition: opacity 0.4s ease-in-out;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #00ff00;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const Backdrop = styled.div`
@@ -416,7 +439,6 @@ const Backdrop = styled.div`
   }
 `;
 
-// History Components
 const HistorySection = styled.div`
   margin-top: 40px;
   width: 80%;
@@ -447,7 +469,6 @@ const HistoryItem = styled.div`
   }
 `;
 
-// History Item Components
 const HistoryName = styled.div`
   display: flex;
   align-items: center;
@@ -475,7 +496,6 @@ const SectionTitle = styled.div`
   color: rgba(255, 255, 255, 0.7);
   padding: 0 12px;
   margin-bottom: 8px;
-
 `;
 
 const ActionButton = styled.button`

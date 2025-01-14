@@ -1,51 +1,123 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { gsap } from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
 import background from "../assets/images/bg-image.png";
 
+// Register GSAP plugins
+gsap.registerPlugin(TextPlugin);
 
 function UploadContainer() {
   const navigate = useNavigate();
+  const titleRef = useRef(null);
+  const headingRef = useRef(null);
+  const subHeadingRef = useRef(null);
+  const uploadContainerRef = useRef(null);
+
+  useEffect(() => {
+    // Set initial states
+    gsap.set(
+      [headingRef.current, subHeadingRef.current, uploadContainerRef.current],
+      {
+        opacity: 0,
+        y: 20,
+      }
+    );
+
+    // Create timeline
+    const tl = gsap.timeline();
+
+    // Animate title
+    tl.fromTo(
+      titleRef.current,
+      {
+        width: 0,
+        opacity: 1,
+      },
+      {
+        duration: 2,
+        width: "auto",
+        ease: "steps(25)",
+      }
+    )
+      // Animate heading
+      .to(headingRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      })
+      // Animate subheading
+      .to(
+        subHeadingRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      )
+      // Animate container
+      .to(
+        uploadContainerRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
+
+    // Add cursor blink animation
+    gsap.to(titleRef.current, {
+      borderRight: "3px solid transparent",
+      repeat: -1,
+      duration: 0.8,
+      ease: "steps(1)",
+      yoyo: true,
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   const handleNavigate = () => {
-    navigate("/signup");
+    gsap.to(
+      [
+        titleRef.current,
+        headingRef.current,
+        subHeadingRef.current,
+        uploadContainerRef.current,
+      ],
+      {
+        y: -50,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        onComplete: () => navigate("/signup"),
+      }
+    );
   };
 
   return (
-    <Container style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-      <StyledParagraph>Recreate AI Code Generator</StyledParagraph>
-      <StyledHeading>
+    <Container>
+      <StyledParagraph ref={titleRef}>
+        Recreate AI Code Generator
+      </StyledParagraph>
+      <StyledHeading ref={headingRef}>
         Generate clean, reusable UI code <br />
-        <SubHeading>from screenshots/mockups</SubHeading>
       </StyledHeading>
-      <UploadContainerDiv>
+      <SubHeading ref={subHeadingRef}>from screenshots/mockups</SubHeading>
+      <UploadContainerDiv ref={uploadContainerRef}>
         <StyledButton onClick={handleNavigate}>Get Started</StyledButton>
       </UploadContainerDiv>
     </Container>
   );
 }
-
-
-const typewriter = keyframes`
-  from { width: 0; }
-  to { width: 25%; }
-`;
-
-const blink = keyframes`
-  from { border-right-color: transparent }
-  to { border-right-color: #0b6fcb }
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 const Container = styled.div`
   color: white;
@@ -59,6 +131,8 @@ const Container = styled.div`
   background-blend-mode: overlay;
   background-attachment: fixed;
   height: 90vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  gap: 20px;
 
   @media (max-width: 1200px) {
     height: 85vh;
@@ -80,12 +154,11 @@ const StyledParagraph = styled.p`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 24px;
-  width: 0;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid #0b6fcb;
-  animation: ${typewriter} 2s steps(25) 1s forwards,
-    ${blink} 0.8s steps(25) infinite;
+  margin: 0;
+  padding: 0;
 
   @media (max-width: 1200px) {
     font-size: 22px;
@@ -97,25 +170,16 @@ const StyledParagraph = styled.p`
   @media (max-width: 480px) {
     font-size: 16px;
   }
-
-  @media (max-width: 768px) {
-    animation: ${keyframes`
-      from { width: 0; }
-      to { width: 50%; }
-    `} 2s steps(20, end) forwards;
-  }
 `;
 
 const StyledHeading = styled.h1`
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 60px;
   font-weight: 800;
-  margin-top: -10px;
   color: alicewhite;
   width: 90%;
   text-align: center;
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-out 3s forwards;
+  margin: 0;
+  padding: 0;
 
   @media (max-width: 1200px) {
     font-size: 50px;
@@ -134,16 +198,15 @@ const StyledHeading = styled.h1`
 `;
 
 const SubHeading = styled.div`
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 60px;
   font-weight: 800;
-  margin-top: -10px;
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-out 3.5s forwards;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 
   @media (max-width: 1200px) {
     font-size: 50px;
@@ -163,8 +226,7 @@ const UploadContainerDiv = styled.div`
   backdrop-filter: blur(40px);
   position: relative;
   border: 1px solid rgb(69, 69, 69);
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-out 4s forwards;
+  margin-top: 20px;
 
   @media (max-width: 1200px) {
     width: 35%;
@@ -196,6 +258,5 @@ const StyledButton = styled.button`
     transform: scale(1.08);
   }
 `;
-
 
 export default UploadContainer;
