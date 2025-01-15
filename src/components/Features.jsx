@@ -83,7 +83,7 @@ const FeaturesAll = styled.div`
   background-image: url(${bg});
   background-size: cover;
   background-blend-mode: overlay;
-  padding: 20px;
+  padding: 30px;
   background-position: center;
   background-attachment: fixed;
 
