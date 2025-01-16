@@ -152,9 +152,8 @@ const Logo = styled.img`
 const NavItems = styled.nav`
   flex: 2;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  height: 100%;
   padding: 30px;
 
   @media (max-width: 768px) {
@@ -217,11 +216,15 @@ const LinkItem = styled(Link)`
   font-size: 17px;
   text-decoration: none;
   display: flex;
-  margin: 7px;
+  justify-content: center; 
 
   &:hover {
     color: #43a5fe;
     transition: 0.4s ease;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
   }
 `;
 
