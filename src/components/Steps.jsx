@@ -87,6 +87,10 @@ const AllWrapper = styled.div`
   @media (max-width: 768px) {
     padding: 20px 10px;
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding: 30px 20px;
+    }
 `;
 
 const Description = styled.div`
@@ -126,6 +130,11 @@ const FeaturesContainer = styled.div`
     align-items: center;
     gap: 10px;
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    gap: 30px;
+    margin-top: 30px;
+  }
 `;
 
 const FeatureCard = styled.div`
@@ -159,6 +168,10 @@ const FeatureCard = styled.div`
     @media (max-width: 768px) {
       font-size: 20px;
     }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      font-size: 30px;
+    }
   }
 
   ul {
@@ -173,7 +186,15 @@ const FeatureCard = styled.div`
       @media (max-width: 768px) {
         font-size: 14px;
       }
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 24px;
+      }
     }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 70%;
   }
 `;
 
