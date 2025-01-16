@@ -11,7 +11,6 @@ import { ArrowDropDown } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/mylogo.png";
-// import avatar from "../assets/images/unnamed.jpg";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -25,9 +24,9 @@ function Header() {
   return (
     <HeaderContainer>
       <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <Line />
-        <Line />
-        <Line />
+        <Line $isOpen={isMenuOpen} />
+        <Line $isOpen={isMenuOpen} />
+        <Line $isOpen={isMenuOpen} />
       </HamburgerMenu>
       <LogoContainer>
         <Link to="/home">
@@ -35,10 +34,9 @@ function Header() {
         </Link>
       </LogoContainer>
       <NavItems open={isMenuOpen}>
-        <div
+        <DropdownContainer
           onMouseEnter={() => setShowServicesDropdown(true)}
           onMouseLeave={() => setShowServicesDropdown(false)}
-          style={{ position: "relative" }}
         >
           <LinkItem>
             Services <ArrowDropDown />
@@ -55,11 +53,10 @@ function Header() {
               </DropdownItem>
             </DropdownMenu>
           )}
-        </div>
-        <div
+        </DropdownContainer>
+        <DropdownContainer
           onMouseEnter={() => setShowDocsDropdown(true)}
           onMouseLeave={() => setShowDocsDropdown(false)}
-          style={{ position: "relative" }}
         >
           <LinkItem>
             Docs <ArrowDropDown />
@@ -74,8 +71,10 @@ function Header() {
               </DropdownItem>
             </DropdownMenu>
           )}
-        </div>
-        <LinkItem to="/pricing">Pricing</LinkItem>
+        </DropdownContainer>
+        <DropdownContainer>
+          <LinkItem to="/pricing">Pricing</LinkItem>
+        </DropdownContainer>
       </NavItems>
       <RightElements>
         {(locator === "/home" || locator === "/pricing") && (
@@ -92,7 +91,6 @@ function Header() {
             onClick={() => {
               navigate("/dashboard");
             }}
-            s
           >
             {locator === "/settings" ? (
               <p>Go to Dashboard</p>
@@ -121,7 +119,6 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   height: 15vh;
-  // border-bottom: solid 1px rgb(39, 39, 39);
   backdrop-filter: blur(10px);
   top: 0;
   width: 100%;
@@ -153,23 +150,64 @@ const Logo = styled.img`
 `;
 
 const NavItems = styled.nav`
-  flex: 3;
+  flex: 2;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
-  padding: 20px;
+  padding: 30px;
 
   @media (max-width: 768px) {
-    display: ${({ open }) => (open ? "flex" : "none")};
+    display: flex;
     flex-direction: column;
     position: absolute;
     top: 10vh;
-    left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.95);
     z-index: 999;
+    overflow: hidden;
+    opacity: ${({ open }) => (open ? "1" : "0")};
+    transform: translateY(${({ open }) => (open ? "0" : "-10px")});
+    transition: all 0.3s ease-in-out;
+    visibility: ${({ open }) => (open ? "visible" : "hidden")};
+    padding: 30px;
+    padding-bottom: 70px;
+    justify-content: flex-start;
+
+    > div {
+      width: 100%;
+      opacity: ${({ open }) => (open ? "1" : "0")};
+      transform: translateY(${({ open }) => (open ? "0" : "-10px")});
+      transition: all 0.3s ease-in-out;
+      transition-delay: ${({ open }) => (open ? "0.2s" : "0")};
+    }
+  }
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const Line = styled.div`
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out;
+
+  &:nth-child(1) {
+    transform: ${({ $isOpen }) =>
+      $isOpen ? "rotate(45deg) translate(5px, 5px)" : "rotate(0)"};
+  }
+
+  &:nth-child(2) {
+    opacity: ${({ $isOpen }) => ($isOpen ? "0" : "1")};
+  }
+
+  &:nth-child(3) {
+    transform: ${({ $isOpen }) =>
+      $isOpen ? "rotate(-45deg) translate(5px, -5px)" : "rotate(0)"};
   }
 `;
 
@@ -179,8 +217,7 @@ const LinkItem = styled(Link)`
   font-size: 17px;
   text-decoration: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 7px;
 
   &:hover {
     color: #43a5fe;
@@ -228,13 +265,6 @@ const HamburgerMenu = styled.div`
   }
 `;
 
-const Line = styled.div`
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 4px 0;
-`;
-
 const RightElements = styled.div`
   flex: 2;
   display: flex;
@@ -265,8 +295,7 @@ const GradientButton = styled.button`
 const DashButton = styled.button`
   background: none;
   color: #0b6fcb;
-  border: none;
-  font-size: medium;
+  border: none font-size: medium;
   cursor: pointer;
 
   &:hover {
