@@ -67,7 +67,6 @@ const AppContainer = styled.div`
   background-color: #05051e;
   display: flex;
   flex-direction: column;
-  width: 100%;
 `;
 
 const MainContent = styled.main`
@@ -77,7 +76,6 @@ const MainContent = styled.main`
 
 const NavWrapper = styled.header``;
 
-const FooterWrapper = styled.footer`
-`;
+const FooterWrapper = styled.footer``;
 
 export default App;

@@ -2,137 +2,63 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { gsap } from "gsap";
-import { TextPlugin } from "gsap/TextPlugin";
 import background from "../assets/images/bg-image.png";
 
 // Register GSAP plugins
-gsap.registerPlugin(TextPlugin);
-
 function Header() {
   const navigate = useNavigate();
-  const titleRef = useRef(null);
-  const headingRef = useRef(null);
-  const subHeadingRef = useRef(null);
-  const uploadContainerRef = useRef(null);
+  const containerRef = useRef(null);
 
-  // Utility function to split text into spans
-  const splitText = (element) => {
-    const text = element.textContent;
-    element.textContent = "";
-    text.split("").forEach((char) => {
-      const span = document.createElement("span");
-      span.textContent = char === " " ? "\u00A0" : char; // Handle spaces
-      element.appendChild(span);
+  useEffect(() => {
+    // Create a local variable for the container reference
+    const container = containerRef.current;
+
+    // Select all text elements within the container
+    const textElements = container.querySelectorAll("p, h1, div");
+
+    // Set initial state for all text elements
+    gsap.set(textElements, {
+      opacity: 0,
+      y: -50, // Start above the view
+    });
+
+    // Animate each text element downward one by one
+    gsap.to(textElements, {
+      opacity: 1,
+      y: 0, // Move to the original position
+      duration: 0.5,
+      stagger: 0.2, // Delay between each animation
+      ease: "power1.out",
+    });
+
+    return () => {
+      // Clean up animations for all text elements
+      gsap.killTweensOf(textElements);
+    };
+  }, []);
+
+  const handleNavigate = () => {
+    gsap.to(containerRef.current, {
+      y: 50, // Animate downward
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => navigate("/signup"),
     });
   };
 
- useEffect(() => {
-   // Split text for animations
-   splitText(titleRef.current);
-   splitText(headingRef.current);
-   splitText(subHeadingRef.current);
-
-   // Select all spans
-   const titleSpans = titleRef.current.querySelectorAll("span");
-   const headingSpans = headingRef.current.querySelectorAll("span");
-   const subHeadingSpans = subHeadingRef.current.querySelectorAll("span");
-
-   // Set initial states
-   gsap.set([titleSpans, headingSpans, subHeadingSpans], {
-     opacity: 0,
-     y: 50,
-     rotateX: 90,
-   });
-
-   gsap.set(uploadContainerRef.current, {
-     opacity: 0,
-     scale: 0.8,
-   });
-
-   // Create timeline
-   const tl = gsap.timeline({ delay: 0.5 });
-
-   // Animate title
-   tl.to(titleSpans, {
-     opacity: 1,
-     y: 0,
-     rotateX: 0,
-     duration: 1.2,
-     stagger: 0.05,
-     ease: "back.out(1.7)",
-   })
-     // Animate heading
-     .to(
-       headingSpans,
-       {
-         opacity: 1,
-         y: 0,
-         rotateX: 0,
-         duration: 1,
-         stagger: 0.04,
-         ease: "elastic.out(1, 0.5)",
-       },
-       "-=0.5"
-     )
-     // Animate subheading
-     .to(
-       subHeadingSpans,
-       {
-         opacity: 1,
-         y: 0,
-         rotateX: 0,
-         duration: 1,
-         stagger: 0.03,
-         ease: "power4.out",
-       },
-       "-=0.8"
-     )
-     // Animate container with bounce effect
-     .to(
-       uploadContainerRef.current,
-       {
-         opacity: 1,
-         scale: 1,
-         duration: 1,
-         ease: "bounce.out",
-       },
-       "-=0.5"
-     );
-
-   return () => {
-     tl.kill();
-   };
- }, []);
-
-
-  const handleNavigate = () => {
-    gsap.to(
-      [
-        titleRef.current,
-        headingRef.current,
-        subHeadingRef.current,
-        uploadContainerRef.current,
-      ],
-      {
-        y: -50,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        onComplete: () => navigate("/signup"),
-      }
-    );
-  };
-
   return (
-    <Container>
-      <StyledParagraph ref={titleRef}>
-        Recreate AI Code Generator
-      </StyledParagraph>
-      <StyledHeading ref={headingRef}>
-        Generate clean, reusable UI code <br />
-      </StyledHeading>
-      <SubHeading ref={subHeadingRef}>from screenshots/mockups</SubHeading>
-      <UploadContainerDiv ref={uploadContainerRef}>
+    <Container ref={containerRef}>
+      <StyledParagraph>Recreate AI Code Generator</StyledParagraph>
+      <BigText>
+        <StyledHeading>
+          Generate clean, <br /> Reusable UI code
+        </StyledHeading>
+        <SubHeading>
+          from Screenshots
+          <br /> or Mockups
+        </SubHeading>
+      </BigText>
+      <UploadContainerDiv>
         <StyledButton onClick={handleNavigate}>Get Started</StyledButton>
       </UploadContainerDiv>
     </Container>
@@ -150,22 +76,29 @@ const Container = styled.div`
   background-position: center;
   background-blend-mode: overlay;
   background-attachment: fixed;
-  height: 90vh;
+  min-height: 90vh;
+  width: 100%;
   font-family: "Plus Jakarta Sans", sans-serif;
   gap: 20px;
+  padding: clamp(20px, 5vw, 40px);
+  box-sizing: border-box;
 
-  @media (max-width: 1200px) {
-    height: 85vh;
-    padding: 40px 20px;
-  }
   @media (max-width: 768px) {
-    height: auto;
-    padding: 30px 15px;
     min-height: 80vh;
+    gap: 15px;
   }
-  @media (max-width: 480px) {
-    padding: 20px 10px;
-  }
+`;
+
+const BigText = styled.div`
+  width: min(90%, 1200px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(10px, 3vw, 30px);
+  box-sizing: border-box;
+
 `;
 
 const StyledParagraph = styled.p`
@@ -173,92 +106,38 @@ const StyledParagraph = styled.p`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 24px;
-  white-space: nowrap;
-  overflow: hidden;
+  font-size: clamp(16px, 4vw, 24px);
   margin: 0;
-  padding: 0;
-
-  @media (max-width: 1200px) {
-    font-size: 22px;
-  }
-  @media (max-width: 768px) {
-    font-size: 18px;
-    text-align: center;
-  }
-  @media (max-width: 480px) {
-    font-size: 16px;
-  }
+  text-align: center;
 `;
 
 const StyledHeading = styled.h1`
-  font-size: 60px;
+  font-size: clamp(28px, 6vw, 60px);
   font-weight: 800;
   color: alicewhite;
-  width: 90%;
-  text-align: center;
   margin: 0;
-  padding: 0;
-
-  @media (max-width: 1200px) {
-    font-size: 50px;
-    width: 95%;
-  }
-  @media (max-width: 768px) {
-    font-size: 40px;
-    width: 100%;
-  }
-  @media (max-width: 480px) {
-    font-size: 32px;
-    br {
-      display: none;
-    }
-  }
+  line-height: 1.2;
 `;
 
 const SubHeading = styled.div`
-  font-size: 60px;
+  font-size: clamp(28px, 6vw, 60px);
   font-weight: 800;
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-align: center;
   margin: 0;
-  padding: 0;
-
-  @media (max-width: 1200px) {
-    font-size: 50px;
-  }
-  @media (max-width: 768px) {
-    font-size: 40px;
-  }
-  @media (max-width: 480px) {
-    font-size: 32px;
-  }
+  line-height: 1.2;
 `;
 
 const UploadContainerDiv = styled.div`
-  padding: 39px;
-  width: 24%;
+  padding: clamp(20px, 4vw, 39px);
+  width: min(80%, 400px);
   border-radius: 30px;
   backdrop-filter: blur(40px);
-  position: relative;
   border: 1px solid rgb(69, 69, 69);
-  margin-top: 20px;
-
-  @media (max-width: 1200px) {
-    width: 35%;
-    padding: 30px;
-  }
-  @media (max-width: 768px) {
-    width: 80%;
-    padding: 25px;
-  }
-  @media (max-width: 480px) {
-    width: 80%;
-    padding: 20px;
-  }
+  margin-top: clamp(10px, 2vw, 20px);
+  box-sizing: border-box;
 `;
 
 const StyledButton = styled.button`
@@ -266,15 +145,15 @@ const StyledButton = styled.button`
   background: linear-gradient(90deg, #0b6fcb, #43a5fe);
   color: white;
   border: none;
-  padding: 16px 32px;
+  padding: clamp(12px, 2vw, 16px) clamp(20px, 4vw, 32px);
   border-radius: 24px;
-  font-size: 18px;
+  font-size: clamp(16px, 3vw, 18px);
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 `;
 

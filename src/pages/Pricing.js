@@ -209,7 +209,7 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   font-weight: 700;
   color: white;
 `;
