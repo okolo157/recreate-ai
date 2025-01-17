@@ -9,40 +9,43 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 import bg from "../assets/images/background-5.png";
-import bg2 from "../assets/images/section-bg-6.png";
+import bg2 from "../assets/images/galaxy-bg.jpg";
+import bg3 from "../assets/images/galaxy-bg.jpg";
 import FAQs from "../components/FAQs";
 
 const Support = () => {
   return (
     <SupportContainer>
-      <TextElements>
-        <h1>We're here to help!</h1>
-        <Paragraph>
-          Choosing the right plan can be a big decision, and we want to make
-          sure you find the one that fits your needs best. If you have any
-          questions or if something’s not covered in our FAQ, we’re here for
-          you. Just reach out in the way that’s easiest for you!
-        </Paragraph>
-      </TextElements>
-      <OtherElements>
-        <Logoleft>
-          <div
-            style={{
-              background: "linear-gradient(90deg, #0b6fcb, #43a5fe)",
-              padding: "7px",
-              borderRadius: "8px",
-            }}
-          >
-            <MailOutline sx={{ fontSize: "40px" }} />
-          </div>
-        </Logoleft>
-        <ContentRight>
-          <Bold>
-            Send us a message <KeyboardArrowRight />{" "}
-          </Bold>
-          <p>We usually get back to you within a few hours.</p>
-        </ContentRight>
-      </OtherElements>
+      <MainContainer>
+        <TextElements>
+          <h1>We're here to help!</h1>
+          <Paragraph>
+            Choosing the right plan can be a big decision, and we want to make
+            sure you find the one that fits your needs best. If you have any
+            questions or if something’s not covered in our FAQ, we’re here for
+            you. Just reach out in the way that’s easiest for you!
+          </Paragraph>
+        </TextElements>
+        <OtherElements>
+          <Logoleft>
+            <div
+              style={{
+                background: "linear-gradient(90deg, #0b6fcb, #43a5fe)",
+                padding: "7px",
+                borderRadius: "8px",
+              }}
+            >
+              <MailOutline sx={{ fontSize: "40px" }} />
+            </div>
+          </Logoleft>
+          <ContentRight>
+            <Bold>
+              Send us a message <KeyboardArrowRight />{" "}
+            </Bold>
+            <p>We usually get back to you within a few hours.</p>
+          </ContentRight>
+        </OtherElements>
+      </MainContainer>
     </SupportContainer>
   );
 };
@@ -124,7 +127,7 @@ const Pricing = () => {
               </Card>
             ))}
           </CardsContainer>
-
+          <ImageContainer />
           <CompareSection>
             <CompareTitle>Compare Plans</CompareTitle>
             <Table>
@@ -187,6 +190,15 @@ const Subtitle = styled.p`
   margin-bottom: 0px;
 `;
 
+const ImageContainer = styled.div`
+  background-image: url(${bg3});
+  background-attachment: fixed;
+  background-size: cover;
+  background-blend-mode: overlay;
+  height: 50vh;
+  width: 100%;
+`;
+
 const Container = styled.div`
   min-height: 100vh;
   padding: 3rem 1rem;
@@ -197,7 +209,7 @@ const Container = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -368,11 +380,16 @@ const Td = styled.td`
 const SupportContainer = styled.div`
   color: white;
   padding: 70px;
-  background-image: url(${bg2});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+    url(${bg2});
   background-blend-mode: overlay;
   background-attachment: fixed;
   // background-position: center;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const TextElements = styled.div`
@@ -380,6 +397,14 @@ const TextElements = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`;
+
+const MainContainer = styled.div`
+  border: 1px solid rgb(66, 126, 255);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  width: 70%;
 `;
 
 const OtherElements = styled.div`
@@ -395,6 +420,7 @@ const Logoleft = styled.div`
 const Paragraph = styled.p`
   width: 70%;
   text-align: center;
+  font-weight: bold;
 `;
 
 const ContentRight = styled.div``;
