@@ -115,7 +115,7 @@ const Container = styled.div`
   justify-content: center;
   padding: 1rem;
   background-attachment: fixed;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const Card = styled.div`

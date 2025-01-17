@@ -41,7 +41,7 @@ const FooterContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
     flex-direction: column;

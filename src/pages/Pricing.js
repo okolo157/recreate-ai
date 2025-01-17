@@ -206,7 +206,7 @@ const Container = styled.div`
   background-blend-mode: overlay;
   background-attachment: fixed;
   background-size: cover;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const ContentWrapper = styled.div`

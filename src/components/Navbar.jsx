@@ -125,7 +125,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   z-index: 1000;
   justify-content: space-between;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
     height: 10vh;
@@ -141,7 +141,7 @@ const LogoContainer = styled.div`
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    flex: 0.5;  
+    flex: 0.5;
   }
 `;
 
@@ -176,7 +176,7 @@ const NavItems = styled.nav`
     padding: 30px;
     padding-bottom: 70px;
     justify-content: flex-start;
-    margin-left: ${({open}) => (open ? "-10px": "-10px")};
+    margin-left: ${({ open }) => (open ? "-10px" : "-10px")};
 
     > div {
       width: 100%;

@@ -26,7 +26,7 @@ const Container = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const TextELements = styled.div`

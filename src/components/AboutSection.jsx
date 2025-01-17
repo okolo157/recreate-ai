@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import bg from "../assets/images/gen-ai.webp";
 import bg2 from "../assets/images/galaxy-bg.jpg";
 
-
 function AboutSection() {
   return (
     <SectionContainer>
@@ -52,7 +51,6 @@ function AboutSection() {
   );
 }
 
-
 const SectionContainer = styled.div`
   display: flex;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -61,7 +59,7 @@ const SectionContainer = styled.div`
   background-position: center;
   padding: 40px;
   background-attachment: fixed;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -73,7 +71,6 @@ const SectionContainer = styled.div`
     padding-top: 40px;
   }
 `;
-
 
 const Left = styled.div`
   flex: 50%;

@@ -50,7 +50,7 @@ const AllTeams = styled.div`
   padding: 40px;
   background-attachment: fixed;
   padding: 20px;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   h2 {
     color: white;

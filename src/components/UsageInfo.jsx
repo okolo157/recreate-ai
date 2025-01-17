@@ -118,7 +118,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const Header = styled.div`

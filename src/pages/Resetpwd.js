@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 import bg from "../assets/images/background-5.png";
 
-
 function Resetpwd() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -72,7 +71,7 @@ const Container = styled.div`
   padding: 1rem;
   background-image: url(${bg});
   background-attachment: fixed;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const Card = styled.div`

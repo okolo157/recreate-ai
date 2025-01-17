@@ -148,7 +148,7 @@ const HelpContainer = styled.div`
   min-height: 100vh;
   background-image: url(${bg});
   background-attachment: fixed;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const ContentWrapper = styled.div`
@@ -259,7 +259,7 @@ const ContactText = styled.p`
 `;
 
 const Button = styled.button`
-  background:rgb(85, 98, 239);
+  background: rgb(85, 98, 239);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -269,7 +269,7 @@ const Button = styled.button`
   transition: background 0.2s;
 
   &:hover {
-    background:rgb(55, 62, 148);
+    background: rgb(55, 62, 148);
   }
 `;
 

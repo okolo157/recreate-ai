@@ -63,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     outline: 1px sol
   }
+  font-family: 'Plus Jakarta Sans', sans-serif;
 `;
 
 const AppContainer = styled.div`
@@ -70,7 +71,6 @@ const AppContainer = styled.div`
   background-color: #05051e;
   display: flex;
   flex-direction: column;
-  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const MainContent = styled.main`

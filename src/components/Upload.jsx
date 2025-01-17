@@ -38,7 +38,7 @@ function Upload({
   const codeModalRef = useRef(null);
 
   const fileInputRef = useRef(null);
-  
+
   useEffect(() => {
     return () => {
       if (uploadedImage) {
@@ -190,7 +190,9 @@ function Upload({
           <>
             <Backdrop onClick={() => setShowCodeModal(false)} />
             <CodeModalContainer ref={codeModalRef}>
-              <CloseButton onClick={() => setShowCodeModal(false)}>×</CloseButton>
+              <CloseButton onClick={() => setShowCodeModal(false)}>
+                ×
+              </CloseButton>
               <pre></pre>
             </CodeModalContainer>
           </>
@@ -260,7 +262,7 @@ const UploadPageContainer = styled.div`
   color: white;
   padding: 20px;
   width: 100%;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const HandleImageContainer = styled.div`

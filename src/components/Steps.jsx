@@ -84,7 +84,7 @@ const AllWrapper = styled.div`
   background-blend-mode: overlay;
   background-position: center;
   padding: 40px 30px;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
     padding: 20px 10px;

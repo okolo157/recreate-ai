@@ -107,7 +107,7 @@ const TermsContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const Title = styled.h1`
@@ -129,6 +129,5 @@ const Paragraph = styled.p`
   margin: 10px 0;
   width: 80%;
 `;
-
 
 export default Terms;

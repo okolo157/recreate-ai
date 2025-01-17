@@ -86,7 +86,7 @@ const FeaturesAll = styled.div`
   padding: 30px;
   background-position: center;
   background-attachment: fixed;
-  font-family: "'Plus Jakarta Sans', sans-serif";
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
     margin-top: 50px;
