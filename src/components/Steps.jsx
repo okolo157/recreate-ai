@@ -81,6 +81,7 @@ function Steps() {
 const AllWrapper = styled.div`
   background: url("../assets/images/background-5.png");
   background-size: cover;
+  background-blend-mode: overlay;
   background-position: center;
   padding: 40px 30px;
 

@@ -154,6 +154,7 @@ const Question = styled.h3`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
 
   @media (max-width: 768px) {
     font-size: 18px;

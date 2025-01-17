@@ -65,7 +65,11 @@ const SectionContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 0px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding-top: 40px;
   }
 `;
 
@@ -99,7 +103,11 @@ const Image = styled.img`
   width: 70%;
 
   @media (max-width: 768px) {
-    width: 90%;
+    width: fit-content;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: fit-content;
   }
 `;
 
@@ -110,7 +118,7 @@ const Title = styled.h2`
   margin-bottom: 10px;
 
   @media (max-width: 768px) {
-    font-size: xx-large;
+    font-size: 40px;
     text-align: center;
   }
 `;
@@ -165,8 +173,12 @@ const AboutButton = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 70%;
     text-align: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 50%;
   }
 `;
 

@@ -104,7 +104,7 @@ const FeaturesMain = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0px 8px 0px;
-  padding: 30px;
+  padding: 33px;
   gap: 40px;
 
   @media (max-width: 1024px) {
@@ -114,16 +114,21 @@ const FeaturesMain = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 23px;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    padding: 30px;
     gap: 20px;
   }
 `;
 
 const FeatureItem = styled.div`
-  width: 80%;
   height: 300px;
   backdrop-filter: blur(40px);
-  border: 1px inset #424286;
+  border: 1px solid #424286;
   border-radius: 2px;
   display: flex;
   flex-direction: column;
