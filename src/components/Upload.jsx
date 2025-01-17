@@ -260,6 +260,7 @@ const UploadPageContainer = styled.div`
   color: white;
   padding: 20px;
   width: 100%;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const HandleImageContainer = styled.div`

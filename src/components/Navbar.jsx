@@ -125,6 +125,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   z-index: 1000;
   justify-content: space-between;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 
   @media (max-width: 768px) {
     height: 10vh;

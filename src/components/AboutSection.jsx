@@ -61,6 +61,7 @@ const SectionContainer = styled.div`
   background-position: center;
   padding: 40px;
   background-attachment: fixed;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 
   @media (max-width: 768px) {
     flex-direction: column;

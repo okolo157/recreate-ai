@@ -91,6 +91,7 @@ const FaqContainer = styled.div`
   background-position: center;
   background-blend-mode: overlay;
   color: white;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 
   @media (max-width: 768px) {
     flex-direction: column;

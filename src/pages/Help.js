@@ -148,6 +148,7 @@ const HelpContainer = styled.div`
   min-height: 100vh;
   background-image: url(${bg});
   background-attachment: fixed;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const ContentWrapper = styled.div`

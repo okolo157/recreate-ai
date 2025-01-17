@@ -25,7 +25,8 @@ const Container = styled.div`
   background-image: url(${bg});
   background-position: center;
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: fixed;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const TextELements = styled.div`

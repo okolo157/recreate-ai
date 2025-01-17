@@ -344,8 +344,8 @@ const Container = styled.div`
   display: flex;
   height: 100vh;
   font-style: inherit;
-  background:rgb(10, 10, 40); 
-
+  background: rgb(10, 10, 40);
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const Sidebar = styled.aside`

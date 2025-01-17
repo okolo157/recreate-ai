@@ -117,7 +117,8 @@ const Container = styled.div`
   background-image: url(${bg});
   background-position: center;
   background-blend-mode: overlay;
-  background-attachment: fixed
+  background-attachment: fixed;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const BasicInfo = styled.div`

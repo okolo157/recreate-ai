@@ -107,6 +107,7 @@ const TermsContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const Title = styled.h1`

@@ -84,6 +84,7 @@ const AllWrapper = styled.div`
   background-blend-mode: overlay;
   background-position: center;
   padding: 40px 30px;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 
   @media (max-width: 768px) {
     padding: 20px 10px;
@@ -91,7 +92,7 @@ const AllWrapper = styled.div`
 
   @media (min-width: 768px) and (max-width: 1024px) {
     padding: 30px 20px;
-    }
+  }
 `;
 
 const Description = styled.div`

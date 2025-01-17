@@ -114,8 +114,8 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 1rem;
-  background-image: url(${bg});
   background-attachment: fixed;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const Card = styled.div`

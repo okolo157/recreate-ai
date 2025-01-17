@@ -4,8 +4,6 @@ import { Email, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import bg from "../assets/images/background-5.png";
 
-
-
 function Footer() {
   return (
     <FooterContainer>
@@ -43,6 +41,7 @@ const FooterContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -107,6 +106,5 @@ const FooterIcons = styled.div`
     margin-top: 10px;
   }
 `;
-
 
 export default Footer;

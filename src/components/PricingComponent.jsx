@@ -94,6 +94,7 @@ const PricingContainer = styled.div`
   background-position: center;
   background-blend-mode: overlay;
   background-attachment: fixed;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 
   @media (max-width: 768px) {
     padding: 20px;
