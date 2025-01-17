@@ -163,7 +163,7 @@ const PricingWrapper = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    gap: 10px;
+    gap: 30px;
   }
 `;
 

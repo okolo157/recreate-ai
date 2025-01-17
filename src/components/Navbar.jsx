@@ -166,17 +166,16 @@ const NavItems = styled.nav`
     z-index: 999;
     overflow: hidden;
     opacity: ${({ open }) => (open ? "1" : "0")};
-    transform: translateY(${({ open }) => (open ? "0" : "-10px")});
     transition: all 0.3s ease-in-out;
     visibility: ${({ open }) => (open ? "visible" : "hidden")};
     padding: 30px;
     padding-bottom: 70px;
     justify-content: flex-start;
+    margin-left: ${({open}) => (open ? "-10px": "-10px")};
 
     > div {
       width: 100%;
       opacity: ${({ open }) => (open ? "1" : "0")};
-      transform: translateY(${({ open }) => (open ? "0" : "-10px")});
       transition: all 0.3s ease-in-out;
       transition-delay: ${({ open }) => (open ? "0.2s" : "0")};
     }
@@ -216,7 +215,7 @@ const LinkItem = styled(Link)`
   font-size: 17px;
   text-decoration: none;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 
   &:hover {
     color: #43a5fe;
@@ -225,6 +224,7 @@ const LinkItem = styled(Link)`
 
   @media (max-width: 768px) {
     justify-content: flex-start;
+    padding: 10px;
   }
 `;
 
