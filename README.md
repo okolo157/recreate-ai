@@ -76,10 +76,6 @@ recreate-ai-code-generator/
 │   │   ├── Home.jsx
 │   │   ├── Upload.jsx
 │   │   └── ...
-│   ├── styles/
-│   │   ├── Footer.css
-│   │   ├── Header.css
-│   │   └── ...
 │   ├── App.js
 │   ├── index.js
 │   └── ...
