@@ -402,7 +402,7 @@ const TextElements = styled.div`
 const MainContainer = styled.div`
   border: 1px solid rgb(66, 126, 255);
   border-radius: 10px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(40px);
   padding: 40px;
   width: 70%;
 `;
