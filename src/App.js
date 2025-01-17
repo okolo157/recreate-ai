@@ -60,6 +60,9 @@ function App() {
 
 const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+  * {
+    outline: 1px sol
+  }
 `;
 
 const AppContainer = styled.div`
@@ -67,6 +70,7 @@ const AppContainer = styled.div`
   background-color: #05051e;
   display: flex;
   flex-direction: column;
+  font-family: "'Plus Jakarta Sans', sans-serif";
 `;
 
 const MainContent = styled.main`

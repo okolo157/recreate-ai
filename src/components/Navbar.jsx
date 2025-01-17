@@ -138,6 +138,10 @@ const LogoContainer = styled.div`
   @media (max-width: 768px) {
     flex: 1;
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex: 0.5;  
+  }
 `;
 
 const Logo = styled.img`

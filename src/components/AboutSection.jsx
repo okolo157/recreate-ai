@@ -103,7 +103,7 @@ const Image = styled.img`
   width: 70%;
 
   @media (max-width: 768px) {
-    width: fit-content;
+    width: 390px;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
