@@ -10,53 +10,53 @@ import bg2 from "../assets/images/galaxy-bg.webp";
 function AboutSection() {
   return (
     <SectionContainer>
-        <Left>
-          <Image src={bg} alt="left side" />
-        </Left>
-        <RightSide>
-          <Title>Code Quicker with Recreate.</Title>
-          <Subtitle>
-            Our AI systems can analyze data, to provide pixel perfect code for
-            your UI element, from simple to even more complex elements.
-          </Subtitle>
-          <CheckElementsContainer>
-            <CheckElement>
-              <FontAwesomeIcon
-                icon={faCheck}
-                color="white"
-                size="2x"
-                style={{ marginRight: "14px" }}
-              />
-              <Paragraph>Accurate Detection</Paragraph>
-            </CheckElement>
-            <CheckElement>
-              <FontAwesomeIcon
-                icon={faCheck}
-                color="white"
-                size="2x"
-                style={{ marginRight: "14px" }}
-              />
-              <Paragraph>Quicker coding</Paragraph>
-            </CheckElement>
-            <CheckElement>
-              <FontAwesomeIcon
-                icon={faCheck}
-                color="white"
-                size="2x"
-                style={{ marginRight: "14px" }}
-              />
-              <Paragraph>Easy to use</Paragraph>
-            </CheckElement>
-          </CheckElementsContainer>
-          <AboutButton to="/signup">Get Started</AboutButton>
-        </RightSide>
+      <Left>
+        <Image src={bg} alt="left side" />
+      </Left>
+      <RightSide>
+        <Title>Code Quicker with Recreate.</Title>
+        <Subtitle>
+          Our AI systems can analyze data, to provide pixel perfect code for
+          your UI element, from simple to even more complex elements.
+        </Subtitle>
+        <CheckElementsContainer>
+          <CheckElement>
+            <FontAwesomeIcon
+              icon={faCheck}
+              color="#43a5fe"
+              size="2x"
+              style={{ marginRight: "14px" }}
+            />
+            <Paragraph>Accurate Detection</Paragraph>
+          </CheckElement>
+          <CheckElement>
+            <FontAwesomeIcon
+              icon={faCheck}
+              color="#43a5fe"
+              size="2x"
+              style={{ marginRight: "14px" }}
+            />
+            <Paragraph>Quicker coding</Paragraph>
+          </CheckElement>
+          <CheckElement>
+            <FontAwesomeIcon
+              icon={faCheck}
+              color="#43a5fe"
+              size="2x"
+              style={{ marginRight: "14px" }}
+            />
+            <Paragraph>Easy to use</Paragraph>
+          </CheckElement>
+        </CheckElementsContainer>
+        <AboutButton to="/signup">Get Started</AboutButton>
+      </RightSide>
     </SectionContainer>
   );
 }
 
 const SectionContainer = styled.div`
   display: flex;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
     url(${bg2});
   background-size: cover;
   background-position: center;
@@ -74,7 +74,6 @@ const SectionContainer = styled.div`
     padding-top: 40px;
   }
 `;
-
 
 const Left = styled.div`
   flex: 50%;
