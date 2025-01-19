@@ -11,7 +11,7 @@ function AboutSection() {
   return (
     <SectionContainer>
       <Left>
-        <Image src={bg} height="700px" alt="left side" />
+        <Image src={bg} alt="left side" />
       </Left>
       <RightSide>
         <Title>Code Quicker with Recreate.</Title>
