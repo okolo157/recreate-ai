@@ -5,51 +5,51 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import bg from "../assets/images/gen-ai.webp";
-import bg2 from "../assets/images/galaxy-bg.jpg";
+import bg2 from "../assets/images/galaxy-bg.webp";
 
 function AboutSection() {
   return (
     <SectionContainer>
-      <Left>
-        <Image src={bg} alt="left side" />
-      </Left>
-      <RightSide>
-        <Title>Code Quicker with Recreate.</Title>
-        <Subtitle>
-          Our AI systems can analyze data, to provide pixel perfect code for
-          your UI element, from simple to even more complex elements.
-        </Subtitle>
-        <CheckElementsContainer>
-          <CheckElement>
-            <FontAwesomeIcon
-              icon={faCheck}
-              color="white"
-              size="2x"
-              style={{ marginRight: "14px" }}
-            />
-            <Paragraph>Accurate Detection</Paragraph>
-          </CheckElement>
-          <CheckElement>
-            <FontAwesomeIcon
-              icon={faCheck}
-              color="white"
-              size="2x"
-              style={{ marginRight: "14px" }}
-            />
-            <Paragraph>Quicker coding</Paragraph>
-          </CheckElement>
-          <CheckElement>
-            <FontAwesomeIcon
-              icon={faCheck}
-              color="white"
-              size="2x"
-              style={{ marginRight: "14px" }}
-            />
-            <Paragraph>Easy to use</Paragraph>
-          </CheckElement>
-        </CheckElementsContainer>
-        <AboutButton to="/signup">Get Started</AboutButton>
-      </RightSide>
+        <Left>
+          <Image src={bg} alt="left side" />
+        </Left>
+        <RightSide>
+          <Title>Code Quicker with Recreate.</Title>
+          <Subtitle>
+            Our AI systems can analyze data, to provide pixel perfect code for
+            your UI element, from simple to even more complex elements.
+          </Subtitle>
+          <CheckElementsContainer>
+            <CheckElement>
+              <FontAwesomeIcon
+                icon={faCheck}
+                color="white"
+                size="2x"
+                style={{ marginRight: "14px" }}
+              />
+              <Paragraph>Accurate Detection</Paragraph>
+            </CheckElement>
+            <CheckElement>
+              <FontAwesomeIcon
+                icon={faCheck}
+                color="white"
+                size="2x"
+                style={{ marginRight: "14px" }}
+              />
+              <Paragraph>Quicker coding</Paragraph>
+            </CheckElement>
+            <CheckElement>
+              <FontAwesomeIcon
+                icon={faCheck}
+                color="white"
+                size="2x"
+                style={{ marginRight: "14px" }}
+              />
+              <Paragraph>Easy to use</Paragraph>
+            </CheckElement>
+          </CheckElementsContainer>
+          <AboutButton to="/signup">Get Started</AboutButton>
+        </RightSide>
     </SectionContainer>
   );
 }
@@ -74,6 +74,7 @@ const SectionContainer = styled.div`
     padding-top: 40px;
   }
 `;
+
 
 const Left = styled.div`
   flex: 50%;
@@ -184,10 +185,8 @@ const AboutButton = styled(Link)`
 `;
 
 const Paragraph = styled.p`
-  background: linear-gradient(90deg, #0b6fcb, #43a5fe);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
+  font-weight: bold;
 `;
 
 export default AboutSection;

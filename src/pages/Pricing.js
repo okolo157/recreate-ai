@@ -9,8 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { KeyboardArrowRight, MailOutline } from "@mui/icons-material";
 import bg from "../assets/images/background-5.png";
-import bg2 from "../assets/images/galaxy-bg.jpg";
-import bg3 from "../assets/images/galaxy-bg.jpg";
+import bg2 from "../assets/images/galaxy-bg.webp";
+import bg3 from "../assets/images/galaxy-bg.webp";
 import FAQs from "../components/FAQs";
 
 const Support = () => {

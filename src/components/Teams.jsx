@@ -1,7 +1,7 @@
 import React from "react";
 import { DesignServices, DeveloperMode, Message } from "@mui/icons-material";
 import styled from "styled-components";
-import bg from "../assets/images/galaxy-bg.jpg";
+import bg from "../assets/images/galaxy-bg.webp";
 
 function Teams() {
   const features = [
