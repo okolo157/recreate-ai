@@ -24,6 +24,7 @@ function AboutSection() {
             <FontAwesomeIcon
               icon={faCheck}
               color="white"
+              size="2x"
               style={{ marginRight: "14px" }}
             />
             <Paragraph>Accurate Detection</Paragraph>
@@ -32,6 +33,7 @@ function AboutSection() {
             <FontAwesomeIcon
               icon={faCheck}
               color="white"
+              size="2x"
               style={{ marginRight: "14px" }}
             />
             <Paragraph>Quicker coding</Paragraph>
@@ -40,6 +42,7 @@ function AboutSection() {
             <FontAwesomeIcon
               icon={faCheck}
               color="white"
+              size="2x"
               style={{ marginRight: "14px" }}
             />
             <Paragraph>Easy to use</Paragraph>
