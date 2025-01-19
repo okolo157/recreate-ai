@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -21,7 +21,6 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
       <AppContainer>
         {location.pathname !== "/upload" &&
           location.pathname !== "/dashboard" && (
@@ -58,13 +57,6 @@ function App() {
   );
 }
 
-const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-  * {
-    outline: 1px sol
-  }
-  font-family: 'Plus Jakarta Sans', sans-serif;
-`;
 
 const AppContainer = styled.div`
   text-align: center;
