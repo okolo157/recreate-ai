@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-import bg from "../assets/images/background-5-transformed.webp";
 
 function PasswordScreen() {
   const location = useLocation();

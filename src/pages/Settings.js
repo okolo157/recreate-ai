@@ -119,6 +119,18 @@ const Container = styled.div`
   background-blend-mode: overlay;
   background-attachment: fixed;
   font-family: "Plus Jakarta Sans", sans-serif;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 30px 20px 40px 20px;
+    height: auto;
+    gap: 15px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    padding: 100px 30px;
+    gap: 15px;
+  }
 `;
 
 const BasicInfo = styled.div`
@@ -130,8 +142,13 @@ const BasicInfo = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  // background-color: #0d132a;
   backdrop-filter: blur(10px);
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 200px;
+    margin-bottom: 15px;
+  }
 `;
 
 const AccountInfo = styled.div`
@@ -143,7 +160,11 @@ const AccountInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  // align-content: center;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 250px;
+  }
 `;
 
 const UsageInfo = styled.div`
@@ -155,6 +176,11 @@ const UsageInfo = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   backdrop-filter: blur(10px);
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 350px;
+  }
 `;
 
 const InfoRow = styled.div`
@@ -162,12 +188,20 @@ const InfoRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 12px;
+  }
 `;
 
 const StatTitle = styled.p`
   color: #fff;
   margin: 0;
   font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const StatValue = styled.p`
@@ -175,6 +209,124 @@ const StatValue = styled.p`
   margin: 0;
   font-weight: bold;
   font-size: 1.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const Title = styled.h2`
+  color: #fff;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  margin-bottom: 20px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
+
+const StyledButton = styled.button`
+  flex: 1;
+  height: 40px;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid white;
+  background-color: #05051e;
+  border-radius: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 0 15px;
+
+  @media (max-width: 768px) {
+    height: 35px;
+    font-size: 0.9rem;
+  }
+`;
+
+const Left = styled.div`
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const Right = styled.div`
+  flex: 0.6;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const PlanBadge = styled.button`
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 3px;
+  font-size: 0.875rem;
+
+  @media (max-width: 768px) {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+`;
+
+const InfoGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
+`;
+
+const InfoItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+
+  strong {
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const CardHeader = styled.div`
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 15px;
+  }
+`;
+
+const CardContent = styled.div`
+  @media (max-width: 768px) {
+    padding: 0 5px;
+  }
 `;
 
 const ProgressBar = styled.div`
@@ -206,16 +358,6 @@ const SeeMoreButton = styled.button`
   }
 `;
 
-const CardHeader = styled.div`
-  margin-bottom: 20px;
-`;
-
-const CardContent = styled.div``;
-
-const Title = styled.h2`
-  color: #fff;
-  margin: 0;
-`;
 
 const HeaderGroup = styled.div`
   display: flex;
@@ -224,67 +366,6 @@ const HeaderGroup = styled.div`
   gap: 10px;
 `;
 
-const InfoGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const InfoItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fff;
-
-  strong {
-    font-weight: 600;
-  }
-
-  p {
-    margin: 0;
-  }
-`;
-
-const Left = styled.div`
-  flex: 0.4;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Right = styled.div`
-  flex: 0.6;
-`;
-
-const PlanBadge = styled.button`
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 3px;
-  font-size: 0.875rem;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: space-around;
-  gap: 16px;
-  margin-bottom: 20px;
-`;
-
-const StyledButton = styled.button`
-  flex: 1;
-  height: 40px;
-  cursor: pointer;
-  color: #fff;
-  border: 1px solid white;
-  background-color: #05051e;
-  border-radius: 3px;
-  font-weight: 500;
-
-  &:hover {
-    opacity: 0.9;
-  }
-`;
 
 const AdvancedSection = styled.div`
   padding-left: 20px;

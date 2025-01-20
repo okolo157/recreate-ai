@@ -119,12 +119,30 @@ const Container = styled.div`
   flex-direction: column;
   gap: 24px;
   font-family: "Plus Jakarta Sans", sans-serif;
+
+  @media (max-width: 1024px) {
+    padding: 32px;
+    margin: 20px;
+    // height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    height: 100vh;
+    padding: 20px;
+    margin: 10px;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 const Title = styled.h2`
@@ -132,6 +150,10 @@ const Title = styled.h2`
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const TimeSelect = styled.select`
@@ -143,6 +165,11 @@ const TimeSelect = styled.select`
   font-size: 0.875rem;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
   option {
     background: #1a1a1a;
     color: white;
@@ -153,13 +180,15 @@ const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const StatCard = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 16px;
+const StatChange = styled.span`
+  font-size: 0.875rem;
+  color: ${(props) => (props.isPositive ? "#4ade80" : "#ef4444")};
 `;
 
 const StatHeader = styled.div`
@@ -183,32 +212,52 @@ const IconWrapper = styled.span`
   color: #a0a0a0;
 `;
 
-const StatChange = styled.span`
-  font-size: 0.875rem;
-  color: ${(props) => (props.isPositive ? "#4ade80" : "#ef4444")};
+const StatCard = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
 `;
 
 const StatValue = styled.div`
   color: white;
   font-size: 1.25rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ChartSection = styled.div`
   flex-grow: 1;
   min-height: 0;
-`;
 
-const ChartTitle = styled.h3`
-  color: white;
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin: 0 0 16px 0;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ChartContainer = styled.div`
   height: calc(100% - 40px);
   width: 100%;
+
+
+`;
+const ChartTitle = styled.h3`
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
 `;
 
 export default UsageInfo;
