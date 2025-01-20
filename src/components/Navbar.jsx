@@ -10,7 +10,7 @@ import {
 import { ArrowDropDown } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../assets/images/mylogo.png";
+import logo from "../assets/images/mylogonew.webp";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);

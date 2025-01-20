@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-import bg from "../assets/images/background-5.png";
+import bg from "../assets/images/background-5-transformed.webp";
 
 function Resetpwd() {
   const [email, setEmail] = useState("");

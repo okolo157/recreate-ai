@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import bg from "../assets/images/sectionbg-1.png";
+import bg from "../assets/images/sectionbg-1.webp";
 
 function ErrorPage() {
   return (
@@ -31,6 +31,14 @@ const Container = styled.div`
 
 const TextELements = styled.div`
   margin-top: -200px;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 const Text = styled.h1`

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import bg from "../assets/images/background-5.png";
+import bg from "../assets/images/background-5-transformed.webp";
 
 function Settings() {
   const [showDelete, setShowDelete] = useState(false);

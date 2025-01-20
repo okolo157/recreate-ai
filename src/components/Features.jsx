@@ -9,7 +9,7 @@ import {
   faShieldAlt,
   faRocket,
 } from "@fortawesome/free-solid-svg-icons";
-import bg from "../assets/images/background-5.png";
+import bg from "../assets/images/background-5-transformed.webp";
 
 function Features() {
   const features = [

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { gsap } from "gsap";
-import background from "../assets/images/bg-image.png";
+import background from "../assets/images/bg-image.webp";
 
 // Register GSAP plugins
 function Header() {

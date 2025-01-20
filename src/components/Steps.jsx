@@ -79,7 +79,7 @@ function Steps() {
 }
 
 const AllWrapper = styled.div`
-  background: url("../assets/images/background-5.png");
+  background: url("../assets/images/background-5-transformed.webp");
   background-size: cover;
   background-blend-mode: overlay;
   background-position: center;

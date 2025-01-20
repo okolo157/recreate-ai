@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Email, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import bg from "../assets/images/background-5.png";
+import bg from "../assets/images/background-5-transformed.webp";
 
 function Footer() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import bg from "../assets/images/background-5.png";
+import bg from "../assets/images/background-5-transformed.webp";
 
 function HelpCenter() {
   return (
@@ -144,7 +144,7 @@ function HelpCenter() {
 }
 
 const HelpContainer = styled.div`
-  padding: 48px 24px;
+  // padding: 48px 24px;
   min-height: 100vh;
   background-image: url(${bg});
   background-attachment: fixed;
@@ -152,8 +152,20 @@ const HelpContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
+  // max-width: 1000px;
+  // margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 const Header = styled.header`
@@ -181,7 +193,7 @@ const SearchBar = styled.input`
   border: 2px solid #e6e8eb;
   border-radius: 8px;
   font-size: 1.1rem;
-  margin: 32px 0;
+  // margin: 32px 0;
   transition: border-color 0.2s;
 
   &:focus {
@@ -195,6 +207,15 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   margin-top: 32px;
+
+  @media (max-width: 768px) {
+    width: 80%;
+    background-color: yellow;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 const CategoryCard = styled.div`
@@ -206,6 +227,14 @@ const CategoryCard = styled.div`
 
   &:hover {
     transform: translateY(-4px);
+  }
+
+  @media (max-width: 768px) {
+    width: 70px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 80%;
   }
 `;
 

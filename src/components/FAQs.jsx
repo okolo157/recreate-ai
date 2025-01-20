@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import faqbg from "../assets/images/background-5.png";
+import faqbg from "../assets/images/background-5-transformed.webp";
 
 function FAQs() {
   const [openIndex, setOpenIndex] = useState(null);
