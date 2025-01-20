@@ -2,11 +2,14 @@ import { faSquareCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import first from "../assets/images/firststep.webp";
+import second from '../assets/images/gencode.webp'
+import third from '../assets/images/export.webp'
 
 function Steps() {
   const features = [
     {
-      img: "https://teleporthq.io/design-to-code-import-400w.png",
+      img: `${first}`,
       alt: "first-step",
       heading: "Import",
       subheading: "Seamlessly bring your designs to life:",
@@ -14,20 +17,20 @@ function Steps() {
       description2: "Start with your existing images or design files.",
     },
     {
-      img: "https://teleporthq.io/design-to-code-customize-400w.png",
+      img: `${second}`, 
       alt: "second-step",
-      heading: "Customize",
-      subheading: "Personalize your project with ease:",
+      heading: "Convert",
+      subheading: "Convert into code with ease:",
       description1:
         "Turn your work into HTML, CSS, and 5 different JS frameworks.",
-      description2: "Modify layouts, typography, and styles effortlessly.",
+      description2: "Create accurate code with the click of a button.",
     },
     {
-      img: "https://teleporthq.io/design-to-code-export-400w.png",
+      img: `${third}`,
       alt: "third-step",
       heading: "Export",
       subheading: "Generate production-ready code:",
-      description1: "Get clean code for your projects.",
+      description1: "Easily copy and use clean code for your projects.",
       description2: "Export to React, Next.js, Vue, and more.",
     },
   ];
@@ -41,7 +44,10 @@ function Steps() {
         {features.map((feature, index) => (
           <FeatureCard key={index}>
             <ImageContainer>
-              <img src={feature.img} alt={feature.alt} />
+              <img
+                src={feature.img}
+                alt={feature.alt}
+              />
             </ImageContainer>
             <Description>
               <h3>{feature.heading}</h3>
@@ -203,7 +209,6 @@ const FeatureCard = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   height: 160px;
-  background-color: #d1d1ff;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -211,7 +216,7 @@ const ImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: center;
   }
 `;
 

@@ -741,7 +741,7 @@ const PlanAlert = styled.div`
 `;
 
 const AlertIcon = styled.div`
-  color: #0b6fcb;
+  color: #0b6fcb;#
 `;
 
 const AlertText = styled.div`
@@ -753,7 +753,7 @@ const AlertText = styled.div`
     flex-direction: column;
   }
 
-  
+
 `;
 
 const Credits = styled.button`

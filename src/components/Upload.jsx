@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy, faDownload } from "@fortawesome/free-solid-svg-icons";
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
@@ -180,8 +182,22 @@ function Upload({
         </LeftElements>
 
         <RightElements>
-          <h2>Generated Code</h2>
+          {/* <h2>Generated Code</h2> */}
+
           <CodeContainer>
+            <Icons>
+              <Codelanguage>{selectedLanguage}</Codelanguage>
+              <Actualicons>
+                <FontAwesomeIcon
+                  style={{ paddingRight: "14px", fontSize: "20px", cursor: "pointer" }}
+                  icon={faCopy}
+                />
+                <FontAwesomeIcon
+                  style={{ paddingRight: "14px", fontSize: "20px", cursor: "pointer" }}
+                  icon={faDownload}
+                />
+              </Actualicons>
+            </Icons>
             <pre>{finalCode || "// No code generated yet."}</pre>
           </CodeContainer>
         </RightElements>
@@ -265,6 +281,26 @@ const UploadPageContainer = styled.div`
   font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
+const Icons = styled.div`
+  display: flex;
+  align-items: center;
+  // width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  background-color: rgb(48, 48, 48);
+  padding: 10px;
+`;
+
+const Actualicons = styled.div`
+  flex: 0.8;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const Codelanguage = styled.p`
+  flex: 0.2;
+`;
+
 const HandleImageContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -277,7 +313,6 @@ const HandleImageContainer = styled.div`
     flex-direction: column;
     width: 90%;
   }
-
 `;
 
 const LeftElements = styled.div`
@@ -320,7 +355,6 @@ const RightElements = styled.div`
   justify-content: flex-start;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
   background-color: rgba(255, 255, 255, 0.2);
 `;
 
@@ -370,7 +404,6 @@ const DropdownContainer = styled.div`
   @media (max-width: 768px) {
     width: 70%;
   }
-
 `;
 
 const LanguageDropdown = styled.select`
@@ -393,8 +426,6 @@ const CodeContainer = styled.div`
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.8);
   color: #00ff00;
-  padding: 10px;
-  overflow: auto;
   font-family: monospace;
 `;
 
