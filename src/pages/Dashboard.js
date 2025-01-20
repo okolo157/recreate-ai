@@ -243,10 +243,15 @@ const Dashboard = () => {
             <FontAwesomeIcon icon={faCreditCard} />
           </AlertIcon>
           <AlertText>
-            Upgrade to Pro Plan to unlock advanced features!
-            <UpgradeButton onClick={() => navigate("/settings")}>
-              Upgrade Now
-            </UpgradeButton>
+            <div>
+              <span
+                style={{ cursor: "pointer", color: "blue" }}
+                onClick={() => navigate("/settings")}
+              >
+                Upgrade to Pro Plan
+              </span>{" "}
+              to unlock advanced features.
+            </div>
             <Credits>You have 10 credits remaining</Credits>
           </AlertText>
         </PlanAlert>
@@ -353,15 +358,14 @@ const Sidebar = styled.aside`
   background: #05051e;
   color: white;
   transition: width 0.3s ease;
-  position: fixed; /* Change to fixed */
-  left: 0; /* Align to the left */
-  top: 0; /* Align to the top */
-  height: 100%; /* Full height */
-  z-index: 1000; /* Ensure it is above other content */
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1000;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
   overflow: auto;
 
-  /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
   ::-webkit-scrollbar {
     width: 0;
   }
@@ -720,11 +724,20 @@ const PlanAlert = styled.div`
   padding: 16px;
   margin-bottom: 24px;
   width: 100%;
-  max-width: 800px; /* Set a max-width for better centering */
+  max-width: 800px;
   display: flex;
   align-items: center;
   gap: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    font-size: small;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: large;
+  }
 `;
 
 const AlertIcon = styled.div`
@@ -732,30 +745,21 @@ const AlertIcon = styled.div`
 `;
 
 const AlertText = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
   gap: 12px;
-`;
 
-const UpgradeButton = styled.button`
-  color: #0b6fcb;
-  background: none;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
+
+  
 `;
 
 const Credits = styled.button`
   color: rgb(99, 99, 99);
   border: none;
   background: none;
-  justify-self: flex-end;
-  align-self: flex-end;
 `;
 
 const SearchIcon = styled.div`

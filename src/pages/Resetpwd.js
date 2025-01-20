@@ -76,7 +76,7 @@ const Container = styled.div`
 
 const Card = styled.div`
   width: 100%;
-  max-width: 28rem;
+  max-width: 30rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border-radius: 1rem;

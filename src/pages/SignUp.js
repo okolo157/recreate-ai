@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 import bg from "../assets/images/background-5-transformed.webp";
+
 function SignUp() {
   const [email, setEmail] = useState("");
   const [checked, setChecked] = useState(false);
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -44,7 +45,7 @@ function SignUp() {
     const sanitizedEmail = email.replace(/[^\w@.-]/g, "");
 
     localStorage.setItem("email", sanitizedEmail);
-    Navigate("/password", { state: { isSignUp: true } });
+    navigate("/password", { state: { isSignUp: true } });
   };
 
   return (
@@ -101,23 +102,30 @@ function SignUp() {
 
 const Container = styled.div`
   min-height: 100vh;
-  // background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 1rem;
   background-image: url(${bg});
   background-attachment: fixed;
   font-family: "Plus Jakarta Sans", sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
 const Card = styled.div`
   width: 100%;
-  max-width: 28rem;
+  max-width: 34rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 const Header = styled.div`
@@ -130,11 +138,19 @@ const Title = styled.h1`
   font-size: 1.875rem;
   font-weight: bold;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const SubTitle = styled.p`
   color: rgba(255, 255, 255, 0.8);
   margin: 0.5rem 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
 `;
 
 const Content = styled.div`

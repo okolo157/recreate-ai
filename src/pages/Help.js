@@ -144,7 +144,7 @@ function HelpCenter() {
 }
 
 const HelpContainer = styled.div`
-  // padding: 48px 24px;
+  padding: 48px 24px;
   min-height: 100vh;
   background-image: url(${bg});
   background-attachment: fixed;
@@ -152,20 +152,8 @@ const HelpContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  // max-width: 1000px;
-  // margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    width: 80%;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width: 80%;
-  }
+  max-width: 1000px;
+  margin: 0 auto;
 `;
 
 const Header = styled.header`
@@ -178,27 +166,50 @@ const Title = styled.h1`
   color: #fff;
   margin-bottom: 16px;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3rem;
+  }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.25rem;
-  color: #4f566b;
+  font-size: 1.2rem;
+  color: #6772e5;
   max-width: 600px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const SearchBar = styled.input`
   width: 100%;
   padding: 16px;
-  border: 2px solid #e6e8eb;
   border-radius: 8px;
+  border: 2px solid #6772e5;
   font-size: 1.1rem;
-  // margin: 32px 0;
+  margin: 32px 0;
   transition: border-color 0.2s;
 
   &:focus {
     border-color: #6772e5;
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
   }
 `;
 
@@ -207,20 +218,12 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   margin-top: 32px;
-
-  @media (max-width: 768px) {
-    width: 80%;
-    background-color: yellow;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width: 80%;
-  }
 `;
 
 const CategoryCard = styled.div`
-  background: white;
+  backdrop-filter: blur(40px);
   border-radius: 12px;
+  border: 1px solid #6772e5;
   padding: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
@@ -228,19 +231,11 @@ const CategoryCard = styled.div`
   &:hover {
     transform: translateY(-4px);
   }
-
-  @media (max-width: 768px) {
-    width: 70px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width: 80%;
-  }
 `;
 
 const CategoryTitle = styled.h2`
   font-size: 1.5rem;
-  color: #1a1f36;
+  color: white;
   margin-bottom: 16px;
   font-weight: 600;
 `;
@@ -270,19 +265,20 @@ const ContactSection = styled.div`
   margin-top: 64px;
   text-align: center;
   padding: 32px;
-  background: white;
+  backdrop-filter: blur(40px);
+  border: 1px solid #6772e5;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const ContactTitle = styled.h2`
   font-size: 2rem;
-  color: #1a1f36;
+  color: white;
   margin-bottom: 16px;
 `;
 
 const ContactText = styled.p`
-  color: #4f566b;
+  color: #6772e5;
   font-size: 1.1rem;
   margin-bottom: 24px;
 `;

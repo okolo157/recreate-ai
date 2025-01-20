@@ -272,6 +272,12 @@ const HandleImageContainer = styled.div`
   margin-top: 20px;
   height: 60vh;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 90%;
+  }
+
 `;
 
 const LeftElements = styled.div`
@@ -356,9 +362,15 @@ const UploadPrompt = styled.p`
 const DropdownContainer = styled.div`
   margin-bottom: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   font-family: monospace;
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+
 `;
 
 const LanguageDropdown = styled.select`

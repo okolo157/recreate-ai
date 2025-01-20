@@ -9,7 +9,7 @@ import bg from "../assets/images/background-5-transformed.webp";
 function SignIn() {
   const [email, setEmail] = useState("");
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,7 +20,7 @@ function SignIn() {
       toast.info("Please use Sign In with Google for Gmail accounts");
       return;
     }
-    Navigate("/password", { state: { isSignUp: false } });
+    navigate("/password", { state: { isSignUp: false } });
   };
 
   return (
@@ -72,21 +72,26 @@ function SignIn() {
 const Container = styled.div`
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Center vertically */
   justify-content: center;
   padding: 1rem;
   background-image: url(${bg});
   background-attachment: fixed;
   font-family: "Plus Jakarta Sans", sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem; /* Adjust padding for mobile */
+  }
 `;
 
 const Card = styled.div`
   width: 100%;
-  max-width: 28rem;
+  max-width: 34rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 `;
 
 const Header = styled.div`
@@ -99,6 +104,10 @@ const Title = styled.h1`
   font-size: 1.875rem;
   font-weight: bold;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem; /* Adjust title size for mobile */
+  }
 `;
 
 const Content = styled.div`
@@ -176,6 +185,7 @@ const StyledInput = styled.input`
 const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 `;
 
