@@ -72,7 +72,7 @@ function SignIn() {
 const Container = styled.div`
   min-height: 100vh;
   display: flex;
-  align-items: center; /* Center vertically */
+  align-items: center;
   justify-content: center;
   padding: 1rem;
   background-image: url(${bg});
@@ -80,7 +80,7 @@ const Container = styled.div`
   font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
-    padding: 0.5rem; /* Adjust padding for mobile */
+    padding: 0.5rem;
   }
 `;
 

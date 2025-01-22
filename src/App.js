@@ -16,6 +16,7 @@ import Settings from "./pages/Settings.js";
 import UsageInfo from "./components/UsageInfo.jsx";
 import Terms from "./pages/Terms";
 import HelpCenter from "./pages/Help.js";
+
 function App() {
   const location = useLocation();
 
