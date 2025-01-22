@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-import bg from "../assets/images/background-5-transformed.webp";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -75,8 +74,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-image: url(${bg});
-  background-attachment: fixed;
   font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
