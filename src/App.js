@@ -16,6 +16,7 @@ import Settings from "./pages/Settings.js";
 import UsageInfo from "./components/UsageInfo.jsx";
 import Terms from "./pages/Terms";
 import HelpCenter from "./pages/Help.js";
+import WebService from "./pages/WebServices.js";
 
 function App() {
   const location = useLocation();
@@ -30,7 +31,7 @@ function App() {
             </NavWrapper>
           )}
         <MainContent location={location}>
-          <Routes>
+          {/* <Routes>
             <Route index element={<Home />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Home />} />
@@ -45,7 +46,9 @@ function App() {
             <Route path="/stats" element={<UsageInfo />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/help-center" element={<HelpCenter />} />
-          </Routes>
+            <Route path="/service2" element={<WebService />} />
+          </Routes> */}
+          <WebService />
         </MainContent>
         {location.pathname !== "/upload" &&
           location.pathname !== "/dashboard" && (
@@ -57,7 +60,6 @@ function App() {
     </>
   );
 }
-
 
 const AppContainer = styled.div`
   text-align: center;
