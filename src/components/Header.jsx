@@ -59,7 +59,7 @@ function Header() {
         </SubHeading>
       </BigText>
       <UploadContainerDiv>
-        <StyledButton onClick={handleNavigate}>Get Started</StyledButton>
+        <StyledButton disabled onClick={handleNavigate}>Get Started</StyledButton>
       </UploadContainerDiv>
     </Container>
   );
